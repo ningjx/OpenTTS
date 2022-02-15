@@ -22,7 +22,7 @@ namespace SpeechGenerator {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace SpeechGenerator {
         ///   返回此类使用的缓存的 ResourceManager 实例。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SpeechGenerator.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace SpeechGenerator {
         ///   使用此强类型资源类的所有资源查找执行重写。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,17 +61,51 @@ namespace SpeechGenerator {
         }
         
         /// <summary>
+        ///   查找类似 [
+        ///  {
+        ///    &quot;名字&quot;: &quot;小晗&quot;,
+        ///    &quot;编码&quot;: &quot;zh-CN-XiaohanNeural&quot;,
+        ///    &quot;性别&quot;: true,
+        ///    &quot;语言&quot;: 0,
+        ///    &quot;语气&quot;: null,
+        ///    &quot;角色&quot;: null,
+        ///    &quot;支持的角色&quot;: null,
+        ///
+        ///    &quot;支持的语气&quot;: [
+        ///      {
+        ///        &quot;语气&quot;: &quot;cheerful&quot;,
+        ///        &quot;描述&quot;: &quot;以较高的音调和音量表达欢快、热情的语气&quot;
+        ///      },
+        ///      {
+        ///        &quot;语气&quot;: &quot;sad&quot;,
+        ///        &quot;描述&quot;: &quot;以较高的音调、较低的强度和较低的音量表达悲伤的语气。 这种情绪的常见特征是说话时呜咽或哭泣。&quot;
+        ///      },
+        ///      {
+        ///        &quot;语气&quot;: &quot;angry&quot;,
+        ///        &quot;描述&quot;: &quot;以较低的音调、较高的强度和较高的音量来表达恼怒的语气。 说话者处于愤怒、生气和被冒犯的状态。&quot;
+        ///      },
+        ///      {
+        ///        &quot;语气&quot;: &quot;fearful&quot;,
+        ///        &quot;描述&quot;: &quot;以较高的音 [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SpeechResources {
+            get {
+                return ResourceManager.GetString("SpeechResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 &lt;speak version=&quot;1.0&quot;
         ///    xmlns=&quot;http://www.w3.org/2001/10/synthesis&quot;
-        ///    xmlns:mstts=&quot;https://www.w3.org/2001/mstts&quot; xml:lang=&quot;zh-cn&quot;&gt;
-        ///    &lt;voice name=&quot;zh-cn-XiaoxiaoNeural&quot; rate=&quot;+30.00%&quot;&gt;
-        ///        &lt;mstts:express-as style=&quot;sad&quot; styledegree=&quot;2&quot;&gt;
-        ///            @@@
-        ///        &lt;/mstts:express-as&gt;
+        ///    xmlns:mstts=&quot;https://www.w3.org/2001/mstts&quot; xml:lang=&quot;@Param1&quot;&gt;
+        ///    &lt;voice name=&quot;@Param2&quot; rate=&quot;@Param3&quot;&gt;
+        ///        &lt;mstts:express-as style=&quot;@Param4&quot; styledegree=&quot;@Param5&quot;&gt;
+        ///			@Param6
+        ///		&lt;/mstts:express-as&gt;
         ///    &lt;/voice&gt;
         ///&lt;/speak&gt; 的本地化字符串。
         /// </summary>
-        internal static string ssml {
+        public static string ssml {
             get {
                 return ResourceManager.GetString("ssml", resourceCulture);
             }

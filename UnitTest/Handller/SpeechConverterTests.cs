@@ -17,28 +17,29 @@ namespace SpeechGenerator.Handller.Tests
         public void CreateAudioFileFromTextTest()
         {
             var key = File.ReadAllText(@"D:\config.txt");
+            SpeechConf sConfig = new SpeechConf
+            {
+                SpeechLang = "zh-cn",
+                SpeechName = "zh-TW-HsiaoChenNeural",
+                SpeechRate = "1.1",
+                SpeechStyle = "affectionate",
+                SpeechDegree = "1"
+            };
+
             Config config = new Config
             {
                 SubscriptionKey = key,
                 Region = "southeastasia",
                 SavePath = @"D:\",
-
-                SpeechLang = "zh-cn",
-                SpeechName = "zh-cn-XiaoxiaoNeural",
-                SpeechRate = "+10%",
-                SpeechStyle = "affectionate",
-                SpeechDegree = "1"
+                SpeechConf = sConfig
             };
 
             var converter = new SpeechConverter(config);
             TextItem text = new TextItem { FileName = "测试文件.wav", Text = "欢迎使用EdgeTx" };
             var res = converter.CreateAudioFileFromText("ztest", text);
-        }
 
-        [TestMethod()]
-        public void CreateAudioFileFromTextTest1()
-        {
-            Assert.Fail();
+            TextItem text2 = new TextItem { FileName = "测试文件2.wav", Text = "欢迎使用OpenTx" };
+            var res2 = converter.CreateAudioFileFromText("ztest", text2);
         }
     }
 }

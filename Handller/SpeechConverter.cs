@@ -18,14 +18,7 @@ namespace SpeechGenerator.Handller
 
         public Result CreateAudioFileFromText(string dicName, TextItem textItem)
         {
-            var xml = Resources.ssml;
-            xml = xml.Replace("@Param1", config.SpeechLang);
-            xml = xml.Replace("@Param2", config.SpeechName);
-            xml = xml.Replace("@Param3", config.SpeechRate);
-            xml = xml.Replace("@Param4", config.SpeechStyle);
-            xml = xml.Replace("@Param5", config.SpeechDegree);
-            xml = xml.Replace("@Param6", textItem.Text);
-
+            var xml = ReplaceParams(Resources.ssml, textItem);
             var audioRes = speech.GetAudioFromText(xml);
 
             if (audioRes.Success)
@@ -40,6 +33,29 @@ namespace SpeechGenerator.Handller
             {
                 return Result.Fail(audioRes.Message);
             }
+        }
+
+        private string ReplaceParams(string xml, TextItem textItem)
+        {
+            var result = xml;
+            if (textItem.SpeechConf == null)
+            {
+                result = result.Replace("@Param1", config.SpeechConf.SpeechLang);
+                result = result.Replace("@Param2", config.SpeechConf.SpeechName);
+                result = result.Replace("@Param3", config.SpeechConf.SpeechRate);
+                result = result.Replace("@Param4", config.SpeechConf.SpeechStyle);
+                result = result.Replace("@Param5", config.SpeechConf.SpeechDegree);
+            }
+            else
+            {
+                result = result.Replace("@Param1", textItem.SpeechConf.SpeechLang);
+                result = result.Replace("@Param2", textItem.SpeechConf.SpeechName);
+                result = result.Replace("@Param3", textItem.SpeechConf.SpeechRate);
+                result = result.Replace("@Param4", textItem.SpeechConf.SpeechStyle);
+                result = result.Replace("@Param5", textItem.SpeechConf.SpeechDegree);
+            }
+            result = result.Replace("@Param6", textItem.Text);
+            return result;
         }
     }
 }
