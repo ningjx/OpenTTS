@@ -23,7 +23,7 @@ namespace SpeechGenerator.Models
         /// <summary>
         /// 语速 默认1
         /// </summary>
-        public string SpeechRate { get; set; }
+        public double SpeechRate { get; set; }
         /// <summary>
         /// 语气类型 不同语音可以支持的与其类型不尽相同
         /// </summary>
@@ -31,6 +31,6 @@ namespace SpeechGenerator.Models
         /// <summary>
         /// 语气强度 0.01-2 默认1
         /// </summary>
-        public string SpeechDegree { get; set; }
+        public double SpeechDegree { get; set; }
     }
 }

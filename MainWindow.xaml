@@ -5,8 +5,84 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpeechGenerator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="430" Width="330" Closing="Window_Closing">
+    <Grid Height="400" Width="300">
+        <Grid x:Name="update" Background="White" Visibility="Hidden">
+            <StackPanel>
+                <Label Content="有新版本" HorizontalAlignment="Center"></Label>
+                <TextBlock Height="300" x:Name="updateMessage"></TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="忽略" Margin="50,0,50,0"></Button>
+                    <Button Content="更新" Margin="50,0,50,0"></Button>
+                </StackPanel>
+                    
+                
+                
+            </StackPanel>
+        </Grid>
+
+        <Grid Height="400" Width="300" x:Name="configKey" Background="White" Visibility="Hidden">
+            <StackPanel Width="300" Height="150">
+                <TextBox x:Name="keyinput" Height="50" Width="300" BorderBrush="Black" Margin="0,0,0,0" Text="输入秘钥" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="keyinput_TextChanged"></TextBox>
+                <TextBox x:Name="reginput" Height="50" Width="300" BorderBrush="Black" Margin="0,50,0,0" Text="输入区域标识符" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="reginput_TextChanged"></TextBox>
+            </StackPanel>
+            <Button x:Name="keynetxbutton" Height="30" Width="100" Content="下一步" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,10" Click="NextStep"></Button>
+        </Grid>
+
+        <Grid x:Name="configSpeech" Height="400" Width="300" Background="White" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="330"/>
+            </Grid.RowDefinitions>
+            <!--列定义，3列-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Grid.Row="0" >
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="选择讲话风格" Width="100"></Label>
+                    <ComboBox x:Name="speechSelect" Width="200" SelectionChanged="speechSelect_SelectionChanged"></ComboBox>
+                </StackPanel>
+            </Grid>
+
+
+            <Grid Grid.Column="0" Grid.Row="1"  Margin="0,10,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="选择语气" Width="100"></Label>
+                    <ComboBox x:Name="styleSelect" Width="200" SelectionChanged="styleSelect_SelectionChanged"></ComboBox>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="0" Grid.Row="2" Margin="0,10,0,0">
+                <StackPanel Orientation="Horizontal" >
+                    <Label x:Name="degreelable" Content="语气强度" Width="100"></Label>
+                    <Slider x:Name="degree" Minimum="0" Maximum="2" Width="200" Value="0" TickFrequency="0.1" IsSnapToTickEnabled="True" TickPlacement="TopLeft" ValueChanged="degree_ValueChanged_1"></Slider>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="0" Grid.Row="3"  Margin="0,10,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="ratelable" Content="语速" Width="100"></Label>
+                    <Slider x:Name="rate" Minimum="0" Maximum="10" Width="200" Value="0" TickFrequency="0.1" IsSnapToTickEnabled="True" TickPlacement="TopLeft"  ValueChanged="degree_ValueChanged_1"></Slider>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="0" Grid.Row="4" Margin="0,10,0,0">
+                <StackPanel Orientation="Vertical">
+                    <TextBox Height="200" Width="300" HorizontalAlignment="Left" x:Name="speechText" BorderBrush="Black" TextWrapping="Wrap"></TextBox>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="splastbutton" Content="上一步" Height="30" Width="100" Click="LastStep"></Button>
+                        <Button Content="试听" Height="30" Width="100" HorizontalAlignment="Center" Click="Button_Click"></Button>
+                        <Button x:Name="spnextbutton" Content="下一步" Height="30" Width="100" Click="NextStep"></Button>
+                    </StackPanel>
+                    
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="convertgrid" Height="400" Width="300" Background="White" Visibility="Hidden"></Grid>
     </Grid>
 </Window>

@@ -1,11 +1,6 @@
 ﻿using SpeechGenerator.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SpeechGenerator.Handller
+namespace SpeechGenerator
 {
     public class ResourcePool
     {
@@ -16,14 +11,8 @@ namespace SpeechGenerator.Handller
             get
             {
                 if (pool == null)
-                {
                     pool = new ResourcePool();
-                    return pool;
-                }
-                else
-                {
-                    return pool;
-                }
+                return pool;
             }
         }
 
@@ -32,8 +21,8 @@ namespace SpeechGenerator.Handller
 
         private ResourcePool()
         {
-
-
+            SpeechResource = SpeechResource.LoadSpeechResources();
+            Config = Config.LoadConfig();
         }
 
 

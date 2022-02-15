@@ -28,5 +28,28 @@ namespace SpeechGenerator.Handller
                 return Result.Fail(ex.Message);
             }
         }
+
+        public static Result SaveFile(string path, string filename, string text)
+        {
+            path = path.TrimEnd('\\');
+            //if (!Directory.Exists(path))
+            //{
+            //    return Result<string>.Fail(null, $"保存路径{path}不存在");
+            //}
+
+            var dic = new DirectoryInfo(path);
+            if (!dic.Exists)
+                dic.Create();
+
+            try
+            {
+                File.WriteAllText($"{path}\\{filename}", text);
+                return Result.Sucess();
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
     }
 }
