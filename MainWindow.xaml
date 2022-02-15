@@ -15,16 +15,16 @@
                     <Button Content="忽略" Margin="50,0,50,0"></Button>
                     <Button Content="更新" Margin="50,0,50,0"></Button>
                 </StackPanel>
-                    
-                
-                
+
+
+
             </StackPanel>
         </Grid>
 
         <Grid Height="400" Width="300" x:Name="configKey" Background="White" Visibility="Hidden">
             <StackPanel Width="300" Height="150">
-                <TextBox x:Name="keyinput" Height="50" Width="300" BorderBrush="Black" Margin="0,0,0,0" Text="输入秘钥" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="keyinput_TextChanged"></TextBox>
-                <TextBox x:Name="reginput" Height="50" Width="300" BorderBrush="Black" Margin="0,50,0,0" Text="输入区域标识符" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="reginput_TextChanged"></TextBox>
+                <TextBox x:Name="keyinput" Height="50" Width="300" BorderBrush="Black" Margin="0,0,0,0" ToolTip="输入秘钥" Text="输入秘钥" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="keyinput_TextChanged" MouseEnter="textbox_MouseEnter"></TextBox>
+                <TextBox x:Name="reginput" Height="50" Width="300" BorderBrush="Black" Margin="0,50,0,0" ToolTip="输入区域标识符" Text="输入区域标识符" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="reginput_TextChanged" MouseEnter="textbox_MouseEnter"></TextBox>
             </StackPanel>
             <Button x:Name="keynetxbutton" Height="30" Width="100" Content="下一步" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,10" Click="NextStep"></Button>
         </Grid>
@@ -78,11 +78,49 @@
                         <Button Content="试听" Height="30" Width="100" HorizontalAlignment="Center" Click="Button_Click"></Button>
                         <Button x:Name="spnextbutton" Content="下一步" Height="30" Width="100" Click="NextStep"></Button>
                     </StackPanel>
-                    
+
                 </StackPanel>
             </Grid>
         </Grid>
 
-        <Grid x:Name="convertgrid" Height="400" Width="300" Background="White" Visibility="Hidden"></Grid>
+        <Grid x:Name="convertgrid" Height="400" Width="300" Background="White" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="290"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1"  Margin="0,10,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="flodertext" ToolTip="保存路径" Text="保存路径" Width="250" MouseDoubleClick="Button_Click_1" MouseEnter="textbox_MouseEnter"/>
+                    <Button Width="50" Content="浏览..." Click="Button_Click_1"></Button>
+                </StackPanel>
+
+            </Grid>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="filetext" ToolTip="资源文件" Text="资源文件" Width="250" MouseDoubleClick="Button_Click_2" MouseEnter="textbox_MouseEnter"/>
+                    <Button Width="50" Content="浏览..." Click="Button_Click_2"></Button>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <DataGrid Name="datagrid" Width="300" Height="280" Margin="0,10,0,0" VerticalAlignment="Top" Grid.Column="3" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding FileName}" Header="文件名" IsReadOnly="True" Width="80"/>
+                        <DataGridTextColumn Binding="{Binding Text}" Header="文本" IsReadOnly="True"  Width="170"/>
+                        <DataGridCheckBoxColumn Binding="{Binding IsProcessed}" Header="已保存" IsReadOnly="True"  Width="50" CanUserResize="False"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid Grid.Row="3" Width="300">
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="connextstep" Content="上一步" Width="80" Click="LastStep"></Button>
+                    <Button Content="开始" Height="30" Width="80"  Margin="30,0,0,0" Click="Button_Click_3"></Button>
+                    <Button Content="停止" Height="30" Width="80" Margin="30,0,0,0" Click="Button_Click_4"></Button>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
     </Grid>
 </Window>

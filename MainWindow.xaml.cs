@@ -1,6 +1,8 @@
 ﻿using SpeechGenerator.Handller;
 using SpeechGenerator.Models;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,9 +16,10 @@ namespace SpeechGenerator
         public MainWindow()
         {
             InitializeComponent();
+
             speechSelect.ItemsSource = ResourcePool.Instance.SpeechResource.Select(t => t.Name).ToArray();
-            keyinput.Text = ResourcePool.Instance.Config.SubscriptionKey;
-            reginput.Text = ResourcePool.Instance.Config.Region;
+            keyinput.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.SubscriptionKey) ? keyinput.Text : ResourcePool.Instance.Config.SubscriptionKey;
+            reginput.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.Region) ? reginput.Text : ResourcePool.Instance.Config.Region;
 
             if (string.IsNullOrEmpty(ResourcePool.Instance.Config.SubscriptionKey))
             {
@@ -28,6 +31,9 @@ namespace SpeechGenerator
             styleSelect.SelectedValue = ResourcePool.Instance.Config.SpeechConf.SpeechStyle;
             degree.Value = ResourcePool.Instance.Config.SpeechConf.SpeechDegree;
             rate.Value = ResourcePool.Instance.Config.SpeechConf.SpeechRate;
+
+            flodertext.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.SavePath) ? flodertext.Text : ResourcePool.Instance.Config.SavePath;
+            filetext.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.FilePath) ? filetext.Text : ResourcePool.Instance.Config.FilePath;
         }
 
         private void styleSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -52,7 +58,7 @@ namespace SpeechGenerator
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            TextItem text = new TextItem { FileName = "", Text = speechText.Text };
+            TextItem text = new TextItem("", speechText.Text);
             var res = SpeechConverter.Instance.CreateAudioFromText(text);
         }
 
@@ -101,6 +107,11 @@ namespace SpeechGenerator
                 configSpeech.Visibility = Visibility.Hidden;
                 configKey.Visibility = Visibility.Visible;
             }
+            if (bu.Name == "connextstep")
+            {
+                configSpeech.Visibility = Visibility.Visible;
+                convertgrid.Visibility = Visibility.Hidden;
+            }
 
         }
 
@@ -120,5 +131,107 @@ namespace SpeechGenerator
                     ResourcePool.Instance.Config.SpeechConf.SpeechRate = slider.Value;
             }
         }
+
+        /// <summary>
+        /// 选择文件夹
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                ResourcePool.Instance.Config.SavePath = dialog.SelectedPath.TrimEnd('\\');
+                flodertext.Text = dialog.SelectedPath.TrimEnd('\\');
+            }
+            else
+            {
+                //点击了取消
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                ResourcePool.Instance.Config.FilePath = dialog.FileName;
+                filetext.Text = dialog.FileName;
+                var readfile = FileHelper.ReadFile(dialog.FileName);
+
+                if (!readfile.Success)
+                    MessageBox.Show(readfile.Message);
+                else
+                {
+                    ResourcePool.Instance.TextResource.DicName = dialog.SafeFileName.Split('.')[0];
+                    var data = (string[])readfile.Data;
+
+                    data.ToList().ForEach(x =>
+                    {
+                        var item = x.Split(' ');
+                        ResourcePool.Instance.TextResource.Add(new TextItem(item[0], item[1]));
+                    });
+                    datagrid.ItemsSource = ResourcePool.Instance.TextResource;
+                }
+            }
+            else
+            {
+                //点击了取消
+            }
+        }
+
+        private void textbox_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            var box = sender as TextBox;
+            string message = "";
+            switch (box.Name)
+            {
+                case "keyinput":
+                    message = "输入秘钥";
+                    break;
+                case "reginput":
+                    message = "输入区域标识符";
+                    break;
+                case "flodertext":
+                    message = "保存路径";
+                    break;
+                case "filetext":
+                    message = "资源文件";
+                    break;
+                default: break;
+            }
+            //box.ToolTip = message;
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.Dispatcher.Invoke(new ProcessAudio(ConvertAudio));
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void ConvertAudio()
+        {
+            foreach (var item in ResourcePool.Instance.TextResource)
+            {
+                Thread.Sleep(1000);
+                var res = SpeechConverter.Instance.CreateAudioFileFromText(ResourcePool.Instance.TextResource.DicName, item);
+                if (!res.Success)
+                {
+                    MessageBox.Show(res.Message);
+
+                    break;
+
+                }
+            }
+        }
+
+        public delegate void ProcessAudio();
     }
 }

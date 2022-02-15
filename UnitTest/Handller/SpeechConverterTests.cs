@@ -16,9 +16,7 @@ namespace SpeechGenerator.Handller.Tests
         [TestMethod()]
         public void CreateAudioFileFromTextTest()
         {
-            var tes2t = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            var test = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
-            var testq = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+
             var key = File.ReadAllText(@"D:\config.txt");
             SpeechConf sConfig = new SpeechConf
             {
@@ -37,7 +35,7 @@ namespace SpeechGenerator.Handller.Tests
                 SpeechConf = sConfig
             };
 
-            TextItem text = new TextItem { FileName = "测试文件.wav", Text = "警告！油门摇杆不在最低！" };
+            TextItem text = new TextItem("测试文件.wav", "警告！油门摇杆不在最低！");
             var res = SpeechConverter.Instance.CreateAudioFileFromText("ztest", text);
 
             //TextItem text2 = new TextItem { FileName = "测试文件2.wav", Text = "欢迎使用OpenTx" };

@@ -12,6 +12,7 @@ namespace SpeechGenerator
         public string SubscriptionKey { get; set; } = "";
         public string Region { get; set; } = "";
         public string SavePath { get; set; } = "";
+        public string FilePath { get; set; } = "";
 
         public SpeechConf SpeechConf { get; set; }
 
@@ -54,7 +55,7 @@ namespace SpeechGenerator
             Config config = new Config
             {
                 SubscriptionKey = "",
-                Region = "southeastasia",
+                Region = "",
                 SavePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
                 SpeechConf = sConfig
             };

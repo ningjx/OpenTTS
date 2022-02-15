@@ -51,5 +51,24 @@ namespace SpeechGenerator.Handller
                 return Result.Fail(ex.Message);
             }
         }
+
+        public static Result ReadFile(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+                return Result.Fail("文件路径为空");
+            if (!File.Exists(path))
+                return Result.Fail("文件不存在");
+
+            try
+            {
+                var texts = File.ReadAllLines(path);
+                return Result.Sucess("", texts);
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+
+        }
     }
 }

@@ -21,5 +21,13 @@ namespace SpeechGenerator.Models
         /// 可以为每条语音配置单独的语气
         /// </summary>
         public SpeechConf SpeechConf { get; set; }
+
+        public bool IsProcessed { get; set; }
+
+        public TextItem(string filename, string text)
+        {
+            FileName = filename;
+            Text = text;
+        }
     }
 }

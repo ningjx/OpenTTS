@@ -25,6 +25,7 @@ namespace SpeechGenerator
             Config = Config.LoadConfig();
         }
 
+        public TextResource TextResource = new TextResource();
 
     }
 }
