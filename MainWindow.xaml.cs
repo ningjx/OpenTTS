@@ -1,5 +1,6 @@
 ﻿using SpeechGenerator.Handller;
 using SpeechGenerator.Models;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -74,6 +75,7 @@ namespace SpeechGenerator
             ResourcePool.Instance.Config.SpeechConf.SpeechName = voice.Code;
 
             styleSelect.ItemsSource = voice.Styles?.Select(t => t.Style).ToArray();
+            //styleSelect.ToolTip = "2222";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -219,5 +221,16 @@ namespace SpeechGenerator
         }
 
         private delegate void WindowDelegate();
+
+        private void styleSelect_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            var com = sender as ComboBox;
+            var selectStyle = Convert.ToString(com.SelectedValue);
+            var selectSpeech = Convert.ToString(speechSelect.SelectedValue);
+            if (!string.IsNullOrEmpty(selectStyle) && !string.IsNullOrEmpty(selectSpeech))
+            {
+                com.ToolTip = ResourcePool.Instance.SpeechResource.FirstOrDefault(t => t.Name == selectSpeech)?.Styles.FirstOrDefault(t => t.Style == selectStyle)?.Description;
+            }
+        }
     }
 }

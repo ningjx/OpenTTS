@@ -44,7 +44,7 @@
             <Grid Grid.Column="0" Grid.Row="0" >
                 <StackPanel Orientation="Horizontal">
                     <Label Content="选择讲话风格" Width="100"></Label>
-                    <ComboBox x:Name="speechSelect" Width="200" SelectionChanged="speechSelect_SelectionChanged"></ComboBox>
+                    <ComboBox x:Name="speechSelect" VerticalContentAlignment="Center" Width="200" SelectionChanged="speechSelect_SelectionChanged"></ComboBox>
                 </StackPanel>
             </Grid>
 
@@ -52,7 +52,7 @@
             <Grid Grid.Column="0" Grid.Row="1"  Margin="0,10,0,0">
                 <StackPanel Orientation="Horizontal">
                     <Label Content="选择语气" Width="100"></Label>
-                    <ComboBox x:Name="styleSelect" Width="200" SelectionChanged="styleSelect_SelectionChanged"></ComboBox>
+                    <ComboBox x:Name="styleSelect"  VerticalContentAlignment="Center" Width="200" SelectionChanged="styleSelect_SelectionChanged" MouseEnter="styleSelect_MouseEnter"></ComboBox>
                 </StackPanel>
             </Grid>
 
