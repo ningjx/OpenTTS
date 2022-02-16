@@ -36,7 +36,8 @@ namespace SpeechGenerator
             filetext.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.FilePath) ? filetext.Text : ResourcePool.Instance.Config.FilePath;
 
             ResourcePool.Instance.TextRowChanged += Instance_TextRowChanged;
-            ResourcePool.Instance.TitleChange += Instance_TitleChange; ;
+            ResourcePool.Instance.TitleChange += Instance_TitleChange;
+            //ResourcePool.Instance.Finish += Instance_Finish; 
         }
 
         private void Instance_TitleChange(object sender, int index)

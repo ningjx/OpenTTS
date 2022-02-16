@@ -1,6 +1,7 @@
 ﻿using SpeechGenerator.Handller;
 using SpeechGenerator.Models;
 using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace SpeechGenerator
         private static ResourcePool pool = null;
         private Task ConvertTask = null;
         private bool CancleReq = false;
-        private readonly Regex PathRegex = new Regex(@"(?<=\\).*(?=\.txt$)");
+        private readonly Regex PathRegex = new Regex(@"(?<=^[A-Z]:\\).*(?=\.txt$)");
         private System.Timers.Timer Timer = new System.Timers.Timer(1000);
         private int Count = 10;//请求受限等待时间
         private int Backwards;
@@ -75,7 +76,7 @@ namespace SpeechGenerator
 
         private void ConvertingTask()
         {
-            TextResource.DicName = PathRegex.Match(Config.FilePath).Value;
+            TextResource.DicName = PathRegex.Match(Config.FilePath).Value?.Split('\\').ToList().LastOrDefault();
             foreach (var item in TextResource)
             {
                 if (CancleReq)
@@ -91,6 +92,7 @@ namespace SpeechGenerator
                 Thread.Sleep(100);
                 ConvertNRetry(item);
             }
+            TitleChange?.Invoke("OpenTTS", TextResource.Count);
         }
 
         private Result ConvertNRetry(TextItem item)
@@ -121,6 +123,7 @@ namespace SpeechGenerator
         public delegate void PollFailDelegate(object sender, string message);
         public event PollDelegate TextRowChanged;
         public event PollDelegate TitleChange;
+        public event PollDelegate Finish;
         //public event PollFailDelegate FailEvent;
         //public event PollFailDelegate LimitEvent;
     }
