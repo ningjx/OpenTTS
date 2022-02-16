@@ -21,11 +21,12 @@ namespace SpeechGenerator
             keyinput.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.SubscriptionKey) ? keyinput.Text : ResourcePool.Instance.Config.SubscriptionKey;
             reginput.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.Region) ? reginput.Text : ResourcePool.Instance.Config.Region;
 
-            if (string.IsNullOrEmpty(ResourcePool.Instance.Config.SubscriptionKey))
-            {
-                configSpeech.Visibility = Visibility.Hidden;
+            if (Helper.CheckUpdate())
+                update.Visibility = Visibility.Visible;
+            else if (string.IsNullOrEmpty(ResourcePool.Instance.Config.SubscriptionKey))
                 configKey.Visibility = Visibility.Visible;
-            }
+            else
+                configSpeech.Visibility = Visibility.Visible;
 
             speechSelect.SelectedValue = ResourcePool.Instance.SpeechResource.First(t => t.Code == ResourcePool.Instance.Config.SpeechConf.SpeechName).Name;
             styleSelect.SelectedValue = ResourcePool.Instance.Config.SpeechConf.SpeechStyle;
@@ -37,7 +38,6 @@ namespace SpeechGenerator
 
             ResourcePool.Instance.TextRowChanged += Instance_TextRowChanged;
             ResourcePool.Instance.TitleChange += Instance_TitleChange;
-            //ResourcePool.Instance.Finish += Instance_Finish; 
         }
 
         private void Instance_TitleChange(object sender, int index)
@@ -79,7 +79,7 @@ namespace SpeechGenerator
             //styleSelect.ToolTip = "2222";
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_ShiTing(object sender, RoutedEventArgs e)
         {
             TextItem text = new TextItem("", speechText.Text);
             ResourcePool.Instance.StartTask(text);
@@ -121,6 +121,11 @@ namespace SpeechGenerator
                 configSpeech.Visibility = Visibility.Hidden;
                 convertgrid.Visibility = Visibility.Visible;
             }
+            else if (bu.Name == "skipupdate")
+            {
+                update.Visibility = Visibility.Hidden;
+                configKey.Visibility = Visibility.Visible;
+            }
         }
 
         private void LastStep(object sender, RoutedEventArgs e)
@@ -161,7 +166,7 @@ namespace SpeechGenerator
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_OpenFolder(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
 
@@ -176,7 +181,7 @@ namespace SpeechGenerator
             }
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Click_OpenFile(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
 
@@ -201,12 +206,12 @@ namespace SpeechGenerator
             }
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void Button_Click_StartTask(object sender, RoutedEventArgs e)
         {
             ResourcePool.Instance.StartTask();
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        private void Button_Click_AbordTask(object sender, RoutedEventArgs e)
         {
             ResourcePool.Instance.AbordTask();
         }
@@ -232,6 +237,11 @@ namespace SpeechGenerator
             {
                 com.ToolTip = ResourcePool.Instance.SpeechResource.FirstOrDefault(t => t.Name == selectSpeech)?.Styles.FirstOrDefault(t => t.Style == selectStyle)?.Description;
             }
+        }
+
+        private void Button_Click_Update(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://gitee.com/n-i-n-g/SpeechGenerator/releases");
         }
     }
 }

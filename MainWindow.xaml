@@ -7,17 +7,11 @@
         mc:Ignorable="d"
         Title="OpenTTS" Height="430" Width="330" Closing="Window_Closing">
     <Grid Height="400" Width="300">
-        <Grid x:Name="update" Background="White" Visibility="Hidden">
-            <StackPanel>
-                <Label Content="有新版本" HorizontalAlignment="Center"></Label>
-                <TextBlock Height="300" x:Name="updateMessage"></TextBlock>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="忽略" Margin="50,0,50,0"></Button>
-                    <Button Content="更新" Margin="50,0,50,0"></Button>
-                </StackPanel>
-
-
-
+        <Grid x:Name="update" Background="White" Visibility="Visible">
+            <Label Content="有新版本" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+            <StackPanel Width="300" Height="30" VerticalAlignment="Bottom" Orientation="Horizontal">
+                <Button x:Name="skipupdate" Width="100" Content="忽略" Margin="0,0,0,0" Click="NextStep"></Button>
+                <Button Content="更新" Width="100" Margin="100,0,0,0" Click="Button_Click_Update"></Button>
             </StackPanel>
         </Grid>
 
@@ -29,7 +23,7 @@
             <Button x:Name="keynetxbutton" Height="30" Width="100" Content="下一步" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,10" Click="NextStep"></Button>
         </Grid>
 
-        <Grid x:Name="configSpeech" Height="400" Width="300" Background="White" Visibility="Visible">
+        <Grid x:Name="configSpeech" Height="400" Width="300" Background="White" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="40"/>
@@ -75,7 +69,7 @@
                     <TextBox Height="200" Width="300" HorizontalAlignment="Left" x:Name="speechText" BorderBrush="Black" AcceptsReturn="True" TextWrapping="WrapWithOverflow"></TextBox>
                     <StackPanel Orientation="Horizontal">
                         <Button x:Name="splastbutton" Content="上一步" Height="30" Width="100" Click="LastStep"></Button>
-                        <Button Content="试听" Height="30" Width="100" HorizontalAlignment="Center" Click="Button_Click"></Button>
+                        <Button Content="试听" Height="30" Width="100" HorizontalAlignment="Center" Click="Button_Click_ShiTing"></Button>
                         <Button x:Name="spnextbutton" Content="下一步" Height="30" Width="100" Click="NextStep"></Button>
                     </StackPanel>
 
@@ -92,15 +86,15 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="1"  Margin="0,10,0,0">
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Name="flodertext" ToolTip="保存路径" Text="保存路径" VerticalContentAlignment="Center" Width="250" MouseDoubleClick="Button_Click_1"/>
-                    <Button Width="50" Content="浏览..." Click="Button_Click_1"></Button>
+                    <TextBox Name="flodertext" ToolTip="保存路径" Text="保存路径" VerticalContentAlignment="Center" Width="250" MouseDoubleClick="Button_Click_OpenFolder"/>
+                    <Button Width="50" Content="浏览..." Click="Button_Click_OpenFolder"></Button>
                 </StackPanel>
 
             </Grid>
             <Grid Grid.Row="0">
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Name="filetext" ToolTip="资源文件" Text="资源文件" VerticalContentAlignment="Center" Width="250" MouseDoubleClick="Button_Click_2"/>
-                    <Button Width="50" Content="浏览..." Click="Button_Click_2"></Button>
+                    <TextBox Name="filetext" ToolTip="资源文件" Text="资源文件" VerticalContentAlignment="Center" Width="250" MouseDoubleClick="Button_Click_OpenFile"/>
+                    <Button Width="50" Content="浏览..." Click="Button_Click_OpenFile"></Button>
                 </StackPanel>
             </Grid>
 
@@ -116,8 +110,8 @@
             <Grid Grid.Row="3" Width="300">
                 <StackPanel Orientation="Horizontal">
                     <Button Name="connextstep" Content="上一步" Width="100" Click="LastStep"></Button>
-                    <Button Content="开始" Height="30" Width="100"  Margin="0,0,0,0" Click="Button_Click_3"></Button>
-                    <Button Content="停止" Height="30" Width="100" Margin="0,0,0,0" Click="Button_Click_4"></Button>
+                    <Button Content="开始" Height="30" Width="100"  Margin="0,0,0,0" Click="Button_Click_StartTask"></Button>
+                    <Button Content="停止" Height="30" Width="100" Margin="0,0,0,0" Click="Button_Click_AbordTask"></Button>
                 </StackPanel>
             </Grid>
 

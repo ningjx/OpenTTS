@@ -15,7 +15,7 @@ namespace SpeechGenerator
             try
             {
                 var client = new HttpClient();
-                using (var request = new HttpRequestMessage(HttpMethod.Get, "https://gitee.com/n-i-n-g/F1-2020-Telemetering-Tools/raw/master/WpfApp1/Properties/AssemblyInfo.cs"))
+                using (var request = new HttpRequestMessage(HttpMethod.Get, "https://gitee.com/n-i-n-g/SpeechGenerator/blob/master/Properties/AssemblyInfo.cs"))
                 {
                     var response = client.SendAsync(request).Result;
 
