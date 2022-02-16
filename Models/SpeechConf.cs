@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace SpeechGenerator.Models
 {
@@ -15,22 +11,27 @@ namespace SpeechGenerator.Models
         /// <summary>
         /// 语音语言 zh-cn zh-hk zh-tw，实际全部使用zh-cn即可
         /// </summary>
+        [JsonProperty("语言代码")]
         public string SpeechLang { get; set; }
         /// <summary>
         /// 语音名字，也就是讲话的“人”
         /// </summary>
+        [JsonProperty("语言风格")] 
         public string SpeechName { get; set; }
         /// <summary>
         /// 语速 默认1
         /// </summary>
+        [JsonProperty("语速")] 
         public double SpeechRate { get; set; }
         /// <summary>
         /// 语气类型 不同语音可以支持的与其类型不尽相同
         /// </summary>
+        [JsonProperty("语气")] 
         public string SpeechStyle { get; set; }
         /// <summary>
         /// 语气强度 0.01-2 默认1
         /// </summary>
+        [JsonProperty("语气强度")] 
         public double SpeechDegree { get; set; }
     }
 }

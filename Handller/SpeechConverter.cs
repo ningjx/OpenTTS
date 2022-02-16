@@ -25,7 +25,12 @@ namespace SpeechGenerator.Handller
             path = conf.SavePath.TrimEnd('\\');
         }
 
-
+        /// <summary>
+        /// 转换语音并保存文件
+        /// </summary>
+        /// <param name="dicName">要保存到的次级文件夹名</param>
+        /// <param name="textItem">要转语音的文本资源</param>
+        /// <returns></returns>
         public Result CreateAudioFileFromText(string dicName, TextItem textItem)
         {
             var xml = ReplaceParams(Resources.ssml, textItem);

@@ -1,4 +1,5 @@
-﻿using SpeechGenerator.Models;
+﻿using NAudio.Wave;
+using SpeechGenerator.Models;
 using System;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,14 @@ namespace SpeechGenerator.Handller
 {
     internal static class FileHelper
     {
+        /// <summary>
+        /// 保存文件
+        /// </summary>
+        /// <param name="path">文件夹路径</param>
+        /// <param name="dicName">次级文件夹</param>
+        /// <param name="fileName">文件名</param>
+        /// <param name="bytes">字节流</param>
+        /// <returns></returns>
         public static Result SaveFile(string path, string dicName, string fileName, byte[] bytes)
         {
             path = path.TrimEnd('\\');
@@ -19,17 +28,29 @@ namespace SpeechGenerator.Handller
             if (!dic.Exists)
                 dic.Create();
 
-            try
+            using (var reader = new AudioFileReader($"{path}\\{dicName}\\{fileName}", bytes))
             {
-                File.WriteAllBytes($"{path}\\{dicName}\\{fileName}", bytes);
-                return Result.Sucess();
-            }
-            catch (Exception ex)
-            {
-                return Result.Fail(ex.Message);
+                try
+                {
+                    reader.Volume = ResourcePool.Instance.Config.Volume;
+
+                    WaveFileWriter.CreateWaveFile16($"{path}\\{dicName}\\{fileName}", reader);
+                    return Result.Sucess();
+                }
+                catch (Exception ex)
+                {
+                    return Result.Fail(ex.Message);
+                }
             }
         }
 
+        /// <summary>
+        /// 保存文件
+        /// </summary>
+        /// <param name="path">文件夹路径</param>
+        /// <param name="filename">文件名</param>
+        /// <param name="text">文本</param>
+        /// <returns></returns>
         public static Result SaveFile(string path, string filename, string text)
         {
             path = path.TrimEnd('\\');
@@ -53,6 +74,11 @@ namespace SpeechGenerator.Handller
             }
         }
 
+        /// <summary>
+        /// 读取文件
+        /// </summary>
+        /// <param name="path">路径</param>
+        /// <returns></returns>
         public static Result ReadFile(string path)
         {
             if (string.IsNullOrEmpty(path))
@@ -71,6 +97,11 @@ namespace SpeechGenerator.Handller
             }
         }
 
+        /// <summary>
+        /// 将要翻译的文本，读取到<see cref="ResourcePool"/>中，共享资源都在该类
+        /// </summary>
+        /// <param name="path">路径</param>
+        /// <returns></returns>
         public static Result ReadFileToResource(string path)
         {
             try

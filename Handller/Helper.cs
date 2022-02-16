@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace SpeechGenerator
 {
     public static class Helper
     {
+        /// <summary>
+        /// 从Gitee检查最新文件中的版本号，以实现检查更新
+        /// </summary>
+        /// <returns></returns>
         public static bool CheckUpdate()
         {
             try
