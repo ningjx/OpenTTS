@@ -14,7 +14,7 @@ namespace SpeechGenerator
         private bool CancleReq = false;
         private readonly Regex PathRegex = new Regex(@"(?<=\\).*(?=\.txt$)");
         private System.Timers.Timer Timer = new System.Timers.Timer(1000);
-        private int Count = 30;//请求受限等待时间
+        private int Count = 10;//请求受限等待时间
         private int Backwards;
 
         public static ResourcePool Instance
