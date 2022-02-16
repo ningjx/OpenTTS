@@ -34,6 +34,27 @@ namespace SpeechGenerator
 
             flodertext.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.SavePath) ? flodertext.Text : ResourcePool.Instance.Config.SavePath;
             filetext.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.FilePath) ? filetext.Text : ResourcePool.Instance.Config.FilePath;
+
+            ResourcePool.Instance.TextRowChanged += Instance_TextRowChanged;
+            ResourcePool.Instance.TitleChange += Instance_TitleChange; ;
+        }
+
+        private void Instance_TitleChange(object sender, int index)
+        {
+            Dispatcher.Invoke(new WindowDelegate(() =>
+            {
+                this.Title = (string)sender;
+            }
+            ));
+        }
+
+        private void Instance_TextRowChanged(object sender, int index)
+        {
+            datagrid.Dispatcher.Invoke(new WindowDelegate(() =>
+            {
+                datagrid.ScrollIntoView(sender);
+            }
+            ));
         }
 
         private void styleSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -96,7 +117,6 @@ namespace SpeechGenerator
                 configSpeech.Visibility = Visibility.Hidden;
                 convertgrid.Visibility = Visibility.Visible;
             }
-
         }
 
         private void LastStep(object sender, RoutedEventArgs e)
@@ -148,7 +168,7 @@ namespace SpeechGenerator
             }
             else
             {
-                //点击了取消
+
             }
         }
 
@@ -160,78 +180,43 @@ namespace SpeechGenerator
             {
                 ResourcePool.Instance.Config.FilePath = dialog.FileName;
                 filetext.Text = dialog.FileName;
-                var readfile = FileHelper.ReadFile(dialog.FileName);
-
-                if (!readfile.Success)
-                    MessageBox.Show(readfile.Message);
+                ResourcePool.Instance.TextResource.DicName = dialog.SafeFileName.Split('.')[0];
+                var res = FileHelper.ReadFileToResource(dialog.FileName);
+                if (!res.Success)
+                {
+                    MessageBox.Show(res.Message);
+                }
                 else
                 {
-                    ResourcePool.Instance.TextResource.DicName = dialog.SafeFileName.Split('.')[0];
-                    var data = (string[])readfile.Data;
-
-                    data.ToList().ForEach(x =>
-                    {
-                        var item = x.Split(' ');
-                        ResourcePool.Instance.TextResource.Add(new TextItem(item[0], item[1]));
-                    });
                     datagrid.ItemsSource = ResourcePool.Instance.TextResource;
                 }
             }
             else
             {
-                //点击了取消
-            }
-        }
 
-        private void textbox_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            var box = sender as TextBox;
-            string message = "";
-            switch (box.Name)
-            {
-                case "keyinput":
-                    message = "输入秘钥";
-                    break;
-                case "reginput":
-                    message = "输入区域标识符";
-                    break;
-                case "flodertext":
-                    message = "保存路径";
-                    break;
-                case "filetext":
-                    message = "资源文件";
-                    break;
-                default: break;
             }
-            //box.ToolTip = message;
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            this.Dispatcher.Invoke(new ProcessAudio(ConvertAudio));
+            ResourcePool.Instance.StartTask();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-
+            ResourcePool.Instance.AbordTask();
         }
 
-        public void ConvertAudio()
+        private void convertgrid_Loaded(object sender, RoutedEventArgs e)
         {
-            foreach (var item in ResourcePool.Instance.TextResource)
+            if (!string.IsNullOrEmpty(filetext.Text))
             {
-                Thread.Sleep(1000);
-                var res = SpeechConverter.Instance.CreateAudioFileFromText(ResourcePool.Instance.TextResource.DicName, item);
-                if (!res.Success)
-                {
-                    MessageBox.Show(res.Message);
-
-                    break;
-
-                }
+                var res = FileHelper.ReadFileToResource(filetext.Text);
+                if (res.Success)
+                    datagrid.ItemsSource = ResourcePool.Instance.TextResource;
             }
         }
 
-        public delegate void ProcessAudio();
+        private delegate void WindowDelegate();
     }
 }

@@ -18,13 +18,11 @@ namespace SpeechGenerator.Handller
 
         private SpeechGen speech = null;
         private string path = null;
-        private Config config = null;
 
         private SpeechConverter(Config conf)
         {
             speech = new SpeechGen(conf.SubscriptionKey, conf.Region);
             path = conf.SavePath.TrimEnd('\\');
-            config = conf;
         }
 
 
@@ -57,17 +55,22 @@ namespace SpeechGenerator.Handller
                 return Result.Fail(audioRes.Message);
         }
 
+        public void ReConnect()
+        {
+            speech.Dispose();
+            speech = new SpeechGen(ResourcePool.Instance.Config.SubscriptionKey, ResourcePool.Instance.Config.Region);
+        }
 
         private string ReplaceParams(string xml, TextItem textItem)
         {
             var result = xml;
             if (textItem.SpeechConf == null)
             {
-                result = result.Replace("@Param1", config.SpeechConf.SpeechLang);
-                result = result.Replace("@Param2", config.SpeechConf.SpeechName);
-                result = result.Replace("@Param3", config.SpeechConf.SpeechRate.ToString());
-                result = result.Replace("@Param4", config.SpeechConf.SpeechStyle);
-                result = result.Replace("@Param5", config.SpeechConf.SpeechDegree.ToString());
+                result = result.Replace("@Param1", ResourcePool.Instance.Config.SpeechConf.SpeechLang);
+                result = result.Replace("@Param2", ResourcePool.Instance.Config.SpeechConf.SpeechName);
+                result = result.Replace("@Param3", ResourcePool.Instance.Config.SpeechConf.SpeechRate.ToString());
+                result = result.Replace("@Param4", ResourcePool.Instance.Config.SpeechConf.SpeechStyle);
+                result = result.Replace("@Param5", ResourcePool.Instance.Config.SpeechConf.SpeechDegree.ToString());
             }
             else
             {

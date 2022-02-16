@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpeechGenerator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="430" Width="330" Closing="Window_Closing">
+        Title="OpenTTS" Height="430" Width="330" Closing="Window_Closing">
     <Grid Height="400" Width="300">
         <Grid x:Name="update" Background="White" Visibility="Hidden">
             <StackPanel>
@@ -23,8 +23,8 @@
 
         <Grid Height="400" Width="300" x:Name="configKey" Background="White" Visibility="Hidden">
             <StackPanel Width="300" Height="150">
-                <TextBox x:Name="keyinput" Height="50" Width="300" BorderBrush="Black" Margin="0,0,0,0" ToolTip="输入秘钥" Text="输入秘钥" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="keyinput_TextChanged" MouseEnter="textbox_MouseEnter"></TextBox>
-                <TextBox x:Name="reginput" Height="50" Width="300" BorderBrush="Black" Margin="0,50,0,0" ToolTip="输入区域标识符" Text="输入区域标识符" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="reginput_TextChanged" MouseEnter="textbox_MouseEnter"></TextBox>
+                <TextBox x:Name="keyinput" Height="50" Width="300" BorderBrush="Black" Margin="0,0,0,0" ToolTip="输入秘钥" Text="输入秘钥" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="keyinput_TextChanged"></TextBox>
+                <TextBox x:Name="reginput" Height="50" Width="300" BorderBrush="Black" Margin="0,50,0,0" ToolTip="输入区域标识符" Text="输入区域标识符" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="reginput_TextChanged"></TextBox>
             </StackPanel>
             <Button x:Name="keynetxbutton" Height="30" Width="100" Content="下一步" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,10" Click="NextStep"></Button>
         </Grid>
@@ -83,7 +83,7 @@
             </Grid>
         </Grid>
 
-        <Grid x:Name="convertgrid" Height="400" Width="300" Background="White" Visibility="Visible">
+        <Grid x:Name="convertgrid" Height="400" Width="300" Background="White" Visibility="Visible" Loaded="convertgrid_Loaded">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="40"/>
@@ -92,14 +92,14 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="1"  Margin="0,10,0,0">
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Name="flodertext" ToolTip="保存路径" Text="保存路径" Width="250" MouseDoubleClick="Button_Click_1" MouseEnter="textbox_MouseEnter"/>
+                    <TextBox Name="flodertext" ToolTip="保存路径" Text="保存路径" VerticalContentAlignment="Center" Width="250" MouseDoubleClick="Button_Click_1"/>
                     <Button Width="50" Content="浏览..." Click="Button_Click_1"></Button>
                 </StackPanel>
 
             </Grid>
             <Grid Grid.Row="0">
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Name="filetext" ToolTip="资源文件" Text="资源文件" Width="250" MouseDoubleClick="Button_Click_2" MouseEnter="textbox_MouseEnter"/>
+                    <TextBox Name="filetext" ToolTip="资源文件" Text="资源文件" VerticalContentAlignment="Center" Width="250" MouseDoubleClick="Button_Click_2"/>
                     <Button Width="50" Content="浏览..." Click="Button_Click_2"></Button>
                 </StackPanel>
             </Grid>
@@ -115,9 +115,9 @@
             </Grid>
             <Grid Grid.Row="3" Width="300">
                 <StackPanel Orientation="Horizontal">
-                    <Button Name="connextstep" Content="上一步" Width="80" Click="LastStep"></Button>
-                    <Button Content="开始" Height="30" Width="80"  Margin="30,0,0,0" Click="Button_Click_3"></Button>
-                    <Button Content="停止" Height="30" Width="80" Margin="30,0,0,0" Click="Button_Click_4"></Button>
+                    <Button Name="connextstep" Content="上一步" Width="100" Click="LastStep"></Button>
+                    <Button Content="开始" Height="30" Width="100"  Margin="0,0,0,0" Click="Button_Click_3"></Button>
+                    <Button Content="停止" Height="30" Width="100" Margin="0,0,0,0" Click="Button_Click_4"></Button>
                 </StackPanel>
             </Grid>
 

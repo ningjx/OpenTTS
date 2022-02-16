@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SpeechGenerator.Handller
 {
-    internal class SpeechGen
+    internal class SpeechGen:IDisposable
     {
         private SpeechSynthesizer speechSynthesizer = null;
 
@@ -45,6 +45,11 @@ namespace SpeechGenerator.Handller
                     Message = $"转换失败，原因：{check.Reason}\r\n详情{check.ErrorDetails}"
                 };
             }
+        }
+
+        public void Dispose()
+        {
+            speechSynthesizer.Dispose();
         }
     }
 }

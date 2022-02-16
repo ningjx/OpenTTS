@@ -1,6 +1,7 @@
 ﻿using SpeechGenerator.Models;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace SpeechGenerator.Handller
 {
@@ -68,7 +69,34 @@ namespace SpeechGenerator.Handller
             {
                 return Result.Fail(ex.Message);
             }
+        }
 
+        public static Result ReadFileToResource(string path)
+        {
+            try
+            {
+                var readfile = ReadFile(path);
+
+                if (!readfile.Success)
+                {
+                    return readfile;
+                }
+                else
+                {
+                    var data = (string[])readfile.Data;
+
+                    data.ToList().ForEach(x =>
+                    {
+                        var item = x.Split(' ');
+                        ResourcePool.Instance.TextResource.Add(new TextItem(item[0], item[1]));
+                    });
+                }
+                return Result.Sucess();
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
         }
     }
 }

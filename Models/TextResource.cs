@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SpeechGenerator.Models
 {
     public class TextResource : List<TextItem>
+
     {
         public string DicName { get; set; }
+
     }
 
-    public class TextItem
+    public class TextItem : INotifyPropertyChanged
     {
         /// <summary>
         /// 该条语音保存的文件名
@@ -22,12 +25,25 @@ namespace SpeechGenerator.Models
         /// </summary>
         public SpeechConf SpeechConf { get; set; }
 
-        public bool IsProcessed { get; set; }
+        private bool _isProcessed;
+
+
+        public bool IsProcessed
+        {
+            get => _isProcessed;
+            set
+            {
+                _isProcessed = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsProcessed"));
+            }
+        }
 
         public TextItem(string filename, string text)
         {
             FileName = filename;
             Text = text;
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+
     }
 }
