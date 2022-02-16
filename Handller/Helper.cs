@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Text.RegularExpressions;
+using System.Web;
 
 namespace SpeechGenerator
 {
@@ -21,10 +22,11 @@ namespace SpeechGenerator
 
                     if (response.IsSuccessStatusCode)
                     {
-                        var dataString = response.Content.ReadAsStringAsync().Result;
+                        var dataString = HttpUtility.HtmlDecode(response.Content.ReadAsStringAsync().Result);
                         if (!string.IsNullOrEmpty(dataString))
                         {
                             var re = new Regex(@"(?<=AssemblyVersion\("")\d\.\d\.\d\.\d(?<!\""\))");
+
                             var version = re.Match(dataString).Value;
                             if (!string.IsNullOrEmpty(version))
                             {
