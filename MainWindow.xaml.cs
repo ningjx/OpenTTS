@@ -1,8 +1,6 @@
 ﻿using SpeechGenerator.Handller;
 using SpeechGenerator.Models;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,7 +14,8 @@ namespace SpeechGenerator
         public MainWindow()
         {
             InitializeComponent();
-
+            Top = ResourcePool.Instance.Config.Top;
+            Left = ResourcePool.Instance.Config.Left;
             speechSelect.ItemsSource = ResourcePool.Instance.SpeechResource.Select(t => t.Name).ToArray();
             keyinput.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.SubscriptionKey) ? keyinput.Text : ResourcePool.Instance.Config.SubscriptionKey;
             reginput.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.Region) ? reginput.Text : ResourcePool.Instance.Config.Region;
@@ -80,11 +79,13 @@ namespace SpeechGenerator
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             TextItem text = new TextItem("", speechText.Text);
-            var res = SpeechConverter.Instance.CreateAudioFromText(text);
+            ResourcePool.Instance.StartTask(text);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            ResourcePool.Instance.Config.Top = Top;
+            ResourcePool.Instance.Config.Left = Left;
             Config.SaveConfig(ResourcePool.Instance.Config);
         }
 
@@ -140,15 +141,15 @@ namespace SpeechGenerator
             var slider = sender as Slider;
             if (slider.Name == "degree")
             {
-                degreelable.Content = $"语气强度{slider.Value}";
+                degreelable.Content = $"语气强度{slider.Value:F1}";
                 if (slider.Value > 0)
                     ResourcePool.Instance.Config.SpeechConf.SpeechDegree = slider.Value;
             }
             else if (slider.Name == "rate")
             {
-                ratelable.Content = $"语速{slider.Value}";
-                if (slider.Value > 0)
-                    ResourcePool.Instance.Config.SpeechConf.SpeechRate = slider.Value;
+                ratelable.Content = $"语速{slider.Value:F1}";
+                //if (slider.Value > 0)
+                ResourcePool.Instance.Config.SpeechConf.SpeechRate = slider.Value;
             }
         }
 

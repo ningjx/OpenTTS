@@ -66,13 +66,13 @@
             <Grid Grid.Column="0" Grid.Row="3"  Margin="0,10,0,0">
                 <StackPanel Orientation="Horizontal">
                     <Label x:Name="ratelable" Content="语速" Width="100"></Label>
-                    <Slider x:Name="rate" Minimum="0" Maximum="10" Width="200" Value="0" TickFrequency="0.1" IsSnapToTickEnabled="True" TickPlacement="TopLeft"  ValueChanged="degree_ValueChanged_1"></Slider>
+                    <Slider x:Name="rate" Minimum="-5" Maximum="5" Width="200" Value="1" TickFrequency="0.1" IsSnapToTickEnabled="True" TickPlacement="TopLeft"  ValueChanged="degree_ValueChanged_1"></Slider>
                 </StackPanel>
             </Grid>
 
             <Grid Grid.Column="0" Grid.Row="4" Margin="0,10,0,0">
                 <StackPanel Orientation="Vertical">
-                    <TextBox Height="200" Width="300" HorizontalAlignment="Left" x:Name="speechText" BorderBrush="Black" TextWrapping="Wrap"></TextBox>
+                    <TextBox Height="200" Width="300" HorizontalAlignment="Left" x:Name="speechText" BorderBrush="Black" AcceptsReturn="True" TextWrapping="WrapWithOverflow"></TextBox>
                     <StackPanel Orientation="Horizontal">
                         <Button x:Name="splastbutton" Content="上一步" Height="30" Width="100" Click="LastStep"></Button>
                         <Button Content="试听" Height="30" Width="100" HorizontalAlignment="Center" Click="Button_Click"></Button>
@@ -83,7 +83,7 @@
             </Grid>
         </Grid>
 
-        <Grid x:Name="convertgrid" Height="400" Width="300" Background="White" Visibility="Visible" Loaded="convertgrid_Loaded">
+        <Grid x:Name="convertgrid" Height="400" Width="300" Background="White" Visibility="Hidden" Loaded="convertgrid_Loaded">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="40"/>

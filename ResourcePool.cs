@@ -1,7 +1,6 @@
 ﻿using SpeechGenerator.Handller;
 using SpeechGenerator.Models;
 using System;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -67,6 +66,11 @@ namespace SpeechGenerator
                 //Thread.Sleep(2000);
                 //ConvertTask.Dispose();
             }
+        }
+
+        public void StartTask(TextItem item)
+        {
+            Task.Run(() => { SpeechConverter.Instance.CreateAudioFromText(item); });
         }
 
         private void ConvertingTask()

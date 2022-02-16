@@ -14,6 +14,9 @@ namespace SpeechGenerator
         public string SavePath { get; set; } = "";
         public string FilePath { get; set; } = "";
 
+        public double Top;
+        public double Left;
+
         public SpeechConf SpeechConf { get; set; }
 
         public static Config LoadConfig()

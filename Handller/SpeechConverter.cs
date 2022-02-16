@@ -68,9 +68,9 @@ namespace SpeechGenerator.Handller
             {
                 result = result.Replace("@Param1", ResourcePool.Instance.Config.SpeechConf.SpeechLang);
                 result = result.Replace("@Param2", ResourcePool.Instance.Config.SpeechConf.SpeechName);
-                result = result.Replace("@Param3", ResourcePool.Instance.Config.SpeechConf.SpeechRate.ToString());
+                result = result.Replace("@Param3", ResourcePool.Instance.Config.SpeechConf.SpeechRate.ToString("F1"));
                 result = result.Replace("@Param4", ResourcePool.Instance.Config.SpeechConf.SpeechStyle);
-                result = result.Replace("@Param5", ResourcePool.Instance.Config.SpeechConf.SpeechDegree.ToString());
+                result = result.Replace("@Param5", ResourcePool.Instance.Config.SpeechConf.SpeechDegree.ToString("F1"));
             }
             else
             {
