@@ -139,7 +139,7 @@ namespace SpeechGenerator
 
         }
 
-        private void degree_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             var slider = sender as Slider;
             if (slider.Name == "degree")

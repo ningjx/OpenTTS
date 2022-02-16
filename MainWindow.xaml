@@ -59,14 +59,14 @@
             <Grid Grid.Column="0" Grid.Row="2" Margin="0,10,0,0">
                 <StackPanel Orientation="Horizontal" >
                     <Label x:Name="degreelable" Content="语气强度" Width="100"></Label>
-                    <Slider x:Name="degree" Minimum="0" Maximum="2" Width="200" Value="0" TickFrequency="0.1" IsSnapToTickEnabled="True" TickPlacement="TopLeft" ValueChanged="degree_ValueChanged_1"></Slider>
+                    <Slider x:Name="degree" Minimum="0" Maximum="2" Width="200" Value="0" TickFrequency="0.1" IsSnapToTickEnabled="True" TickPlacement="TopLeft" ValueChanged="slider_ValueChanged"></Slider>
                 </StackPanel>
             </Grid>
 
             <Grid Grid.Column="0" Grid.Row="3"  Margin="0,10,0,0">
                 <StackPanel Orientation="Horizontal">
                     <Label x:Name="ratelable" Content="语速" Width="100"></Label>
-                    <Slider x:Name="rate" Minimum="-5" Maximum="5" Width="200" Value="1" TickFrequency="0.1" IsSnapToTickEnabled="True" TickPlacement="TopLeft"  ValueChanged="degree_ValueChanged_1"></Slider>
+                    <Slider x:Name="rate" Minimum="-5" Maximum="5" Width="200" Value="1" TickFrequency="0.1" IsSnapToTickEnabled="True" TickPlacement="TopLeft"  ValueChanged="slider_ValueChanged"></Slider>
                 </StackPanel>
             </Grid>
 
