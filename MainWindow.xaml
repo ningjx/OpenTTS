@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="OpenTTS" Height="430" Width="330" Closing="Window_Closing">
     <Grid Height="400" Width="300">
-        <Grid x:Name="update" Background="White" Visibility="Visible">
+        <Grid x:Name="update" Background="White" Visibility="Hidden">
             <Label Content="有新版本" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
             <StackPanel Width="300" Height="30" VerticalAlignment="Bottom" Orientation="Horizontal">
                 <Button x:Name="skipupdate" Width="100" Content="忽略" Margin="0,0,0,0" Click="NextStep"></Button>
