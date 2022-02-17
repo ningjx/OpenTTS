@@ -317,7 +317,7 @@ namespace SpeechGenerator
         /// <param name="e"></param>
         private void Button_Click_Update(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://gitee.com/n-i-n-g/SpeechGenerator/releases");
+            System.Diagnostics.Process.Start("explorer.exe", "https://gitee.com/n-i-n-g/OpenTTS/releases");
         }
     }
 }
