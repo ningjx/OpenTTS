@@ -8,7 +8,8 @@ namespace SpeechGenerator
 {
     public class Config
     {
-        private static readonly string CnfPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\SpeechGenerator";
+        //private static readonly string CnfPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\SpeechGenerator";
+        private static readonly string CnfPath = $"{System.IO.Directory.GetCurrentDirectory()}";
 
         [JsonProperty("服务秘钥")]
         public string SubscriptionKey { get; set; } = "";
@@ -44,9 +45,9 @@ namespace SpeechGenerator
         {
             try
             {
-                if (File.Exists($"{CnfPath}\\config.json"))
+                if (File.Exists($"{CnfPath}\\Config.json"))
                 {
-                    var text = File.ReadAllText($"{CnfPath}\\config.json");
+                    var text = File.ReadAllText($"{CnfPath}\\Config.json");
                     return JsonConvert.DeserializeObject<Config>(text);
                 }
                 else
@@ -66,7 +67,7 @@ namespace SpeechGenerator
         /// <param name="config"></param>
         public static void SaveConfig(Config config)
         {
-            FileHelper.SaveFile(CnfPath, "config.json", JsonConvert.SerializeObject(config));
+            FileHelper.SaveFile(CnfPath, "Config.json", JsonConvert.SerializeObject(config));
         }
 
         /// <summary>
