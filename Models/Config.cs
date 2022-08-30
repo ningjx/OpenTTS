@@ -32,7 +32,7 @@ namespace SpeechGenerator
         /// 调节文件音频电平的倍数，1为不调节
         /// </summary>
         [JsonProperty("音量放大倍数")]
-        public float Volume = 4f;
+        public float Volume = 1f;
 
         [JsonProperty("语音配置")]
         public SpeechConf SpeechConf { get; set; }

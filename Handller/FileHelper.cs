@@ -28,11 +28,12 @@ namespace SpeechGenerator.Handller
             if (!dic.Exists)
                 dic.Create();
 
-            using (var reader = new AudioFileReader($"{path}\\{dicName}\\{fileName}", bytes))
+            using (var reader = new CAudioFileReader($"{path}\\{dicName}\\{fileName}", bytes))
             {
                 try
                 {
-                    reader.Volume = ResourcePool.Instance.Config.Volume;
+                    if (ResourcePool.Instance.Config.Volume != 1f)
+                        reader.Volume = ResourcePool.Instance.Config.Volume;
 
                     WaveFileWriter.CreateWaveFile16($"{path}\\{dicName}\\{fileName}", reader);
                     return Result.Sucess();
