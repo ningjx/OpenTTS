@@ -33,6 +33,10 @@ namespace SpeechGenerator.Handller
         /// <returns></returns>
         public Result CreateAudioFileFromText(string dicName, TextItem textItem)
         {
+            //跳过已经生成的项目
+            if (FileHelper.FileExist(path, dicName, textItem.FileName).Success)
+                return Result.Sucess();
+
             var xml = ReplaceParams(Resources.ssml, textItem);
             var audioRes = speech.GetAudioFromText(xml);
 

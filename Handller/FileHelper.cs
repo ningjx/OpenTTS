@@ -120,7 +120,7 @@ namespace SpeechGenerator.Handller
                     data.ToList().ForEach(x =>
                     {
                         var item = x.Split(' ');
-                        if (item.Length > 1)
+                        if (item.Length > 1 && !string.IsNullOrWhiteSpace(item[1]))
                             ResourcePool.Instance.TextResource.Add(new TextItem(item[0], item[1]));
                     });
                 }
@@ -130,6 +130,12 @@ namespace SpeechGenerator.Handller
             {
                 return Result.Fail(ex.Message);
             }
+        }
+
+        public static Result FileExist(string path, string dicName, string fileName)
+        {
+            var exist = File.Exists($"{path}\\{dicName}\\{fileName}");
+            return new Result() { Success = exist };
         }
     }
 }
