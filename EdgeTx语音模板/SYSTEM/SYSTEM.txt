@@ -201,7 +201,7 @@ thralert.wav 油门位置不正确
 timovr1.wav 计时器1完成
 timovr2.wav 计时器2完成
 timovr3.wav 计时器3完成
-telemco.wav 教练信号已连接
+trainco.wav 教练信号已连接
 trainko.wav 教练信号丢失
 trainok.wav 教练信号恢复
 us0.wav 微秒
