@@ -120,7 +120,8 @@ namespace SpeechGenerator.Handller
                     data.ToList().ForEach(x =>
                     {
                         var item = x.Split(' ');
-                        ResourcePool.Instance.TextResource.Add(new TextItem(item[0], item[1]));
+                        if (item.Length > 1)
+                            ResourcePool.Instance.TextResource.Add(new TextItem(item[0], item[1]));
                     });
                 }
                 return Result.Sucess();

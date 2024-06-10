@@ -1,64 +1,296 @@
+2wd.wav 两驱模式
 3d.wav 3D
-acro.wav 开启特技模式
+3d-mod.wav 3D模式
+4wd.wav 四驱模式
+acrmod.wav 固定翼模式
+acro.wav 固定翼模式启动
+active.wav 激活
+actnmd.wav 固定翼训练模式
+agmxof.wav
+agmxon.wav
+airmod.wav
+airmof.wav
+airmon.wav
+alnch.wav
+althld.wav
+althof.wav
+althon.wav
+angmod.wav
 armed.wav 已解锁
-crowof.wav 关闭升降提示音
-crowon.wav 开启升降提示音
+auro.wav
+auto.wav
+awd.wav
+bad.wav
+bank-0.wav
+bank-1.wav
+bank-2.wav
+bank-3.wav
+blkact.wav
+blkers.wav
+brakof.wav
+brakon.wav
+btfoff.wav
+btfon.wav
+buzact.wav
+buzoff.wav
+clobat.wav
+cmode.wav
+cpower.wav
+crfact.wav
+crowof.wav 关闭提示音
+crowon.wav 开启提示音
+crshld.wav 航向保持模式
+crshof.wav 航向保持模式关闭
+crshon.wav 航向保持模式激活
+cruise.wav 巡航模式
+cstart.wav 打开摄像头
+cstop.wav 关闭摄像头
+cwifi.wav 摄像头WIFI按钮
+danger.wav 危险！
+deact.wav
+difloc.wav
+difulc.wav
+digmod.wav 挖掘模式
+disabl.wav 禁用
 disarm.wav 已锁定
+drifof.wav 漂移模式关闭
+drifon.wav 漂移模式启动
+dyntxp.wav 遥控动态功率
+enabl.wav 启用
 engoff.wav 关闭引擎
+engon.wav 打开引擎
+engsrt.wav 启动引擎
+engstp.wav 停止引擎
+expo1.wav
+expo2.wav
+expo3.wav
+fepact.wav 电子围栏开启
+fepoff.wav 电子围栏关闭
 flapdn.wav 放下襟翼
 flapup.wav 收起襟翼
-fm-1.wav 1号飞行模式
-fm-2.wav 2号飞行模式
-fm-3.wav 3号飞行模式
-fm-4.wav 4号飞行模式
-fm-5.wav 5号飞行模式
-fm-6.wav 6号飞行模式
-fm-7.wav 7号飞行模式
-fm-8.wav 8号飞行模式
-fm-acr.wav 特技模式
+flip.wav
+flp1.wav 襟翼一
+flp2.wav 襟翼二
+flp3.wav 襟翼三
+flp4.wav 襟翼四
+flp5.wav 襟翼五
+fm-1.wav 飞行模式1
+fm-2.wav 飞行模式2
+fm-3.wav 飞行模式3
+fm-4.wav 飞行模式4
+fm-5.wav 飞行模式5
+fm-6.wav 飞行模式6
+fm-7.wav 飞行模式7
+fm-8.wav 飞行模式8
+fm-acr.wav 固定翼模式
 fm-ang.wav 角度模式
+fm-atu.wav 自动调参模式
+fm-aut.wav 自动驾驶模式
 fm-crs.wav 巡航模式
+fm-fbw.wav 电传模式
 fm-flt.wav 悬停模式
 fm-fst.wav 快速模式
 fm-hor.wav 地平线模式
-fm-id1.wav 特技1档
-fm-id2.wav 特技2档
+fm-id1.wav 怠速上升模式一
+fm-id2.wav 怠速上升模式二
 fm-lch.wav 发射模式
 fm-lnd.wav 降落模式
+fm-mau.wav 手动模式
 fm-nrm.wav 正常模式
-fm-png.wav 平飞模式
+fm-png.wav flight mode ping
 fm-pwr.wav 动力模式
 fm-rce.wav 竞速模式
+fm-rtl.wav 返航模式
 fm-spd.wav 高速模式
 fm-stb.wav 自稳模式
+fm-tkf.wav 起飞模式
 fm-thl.wav 左侧热气流模式
 fm-thm.wav 热气流模式
 fm-thr.wav 右侧热气流模式
+fsact.wav 故障保护打开
+fsoff.wav 故障保护关闭
+fwd.wav 前驱模式
 geardn.wav 放下起落架
 gearup.wav 收起起落架
-landing.wav 降落
+good.wav 正常
+gps.wav GPS
+gpsoff.wav GPS关闭
+gpson.wav GPS打开
+gyroof.wav
+gyroon.wav
+hdadj.wav
+hdfmof.wav 自由航向模式关闭
+hdfmon.wav 自由航向模式启动
+headlo.wav 航向锁定
+highgr.wav
+homrst.wav 起点重置
+hznmod.wav 地平线模式
+idleu1.wav 怠速上升1
+idleu2.wav 怠速上升2
+landin.wav 降落
+launch.wav 弹射模式已激活
+lghtof.wav 灯光关闭
+lghton.wav 灯光开启
+lncmod.wav 弹射模式
 lnding.wav 开启降落模式
+loiter.wav
 lowbat.wav 电池电压低
-lq.wav 连接质量
-nrmmod.wav 开启正常模式
+lowgr.wav
+lq.wav LQ
+lvlmod.wav 水平模式
+manmod.wav 手动模式
+manual.wav 手动
+maxast.wav 最高辅助
+maxgyr.wav
+maxtxp.wav 遥控最大功率
+motarm.wav 电机已解锁
+mothot.wav 电机过热
+navalh.wav 导航高度保持
+navcrs.wav
+navcsh.wav
+navpos.wav 导航位置保持
+navrth.wav 
+navwp.wav
+negpof.wav
+negpon.wav
+normal.wav 正常
+normod.wav 正常模式
+nrmmod.wav 正常模式启动
+off.wav 关闭
+on.wav 打开
+osd.wav  屏显
+osd1.wav 屏显1
+osd2.wav 屏显2
+osd3.wav 屏显3
+osdoff.wav 关闭屏显
+osdon.wav 打开屏显
+osdprf.wav 屏显设置
+overht.wav 过热
 pattern.wav 模式
+pitmod.wav 低功率模式
+poshld.wav 位置保持模式
+poshof.wav 位置保持模式关闭
+poshon.wav 位置保持模式打开
+power.wav
+preact.wav 预解锁已激活
+rates1.wav 比率配置1
+rates2.wav 比率配置2
+rates3.wav 比率配置3
+rates4.wav 比率配置4
+rates5.wav 比率配置5
+rates6.wav 比率配置6
 rathi.wav 较高比率
 ratlow.wav 较低比率
 ratmed.wav 中等比率
+ratmod.wav 比率模式
+ready.wav 准备起飞
+recsrt.wav 开始记录
+recstp.wav 停止记录
+revfwd.wav 推力向前
+revid.wav 反推怠速
+revoff.wav 反推关闭
+revon.wav 反推开启
+revthr.wav 反推模式
 rfmode.wav 射频模式
+rscmof.wav 救援模式关闭
+rscmon.wav 救援模式启动
+rth.wav 返航
+rthstp.wav 返航已停止
+rthstr.wav 返航已开始
+rwd.wav 后驱模式
+safeof.wav 安全模式关闭
+safeon.wav 安全模式打开
+scmdof.wav 禁用摇杆
+scmdon.wav 启用摇杆
+sftyof.wav 保险关闭
+sftyon.wav 保险打开
 sigcrt.wav 射频信号危险
 siglow.wav 射频信号弱
 spdmod.wav 激活高速模式
+speed.wav 速度
 splrdn.wav 放下扰流板
 splrup.wav 收起扰流板
-sport.wav 运动
-takeoff.wav 起飞
-thmmod.wav 开启热气流模式
+sport.wav 运动模式
+stabmo.wav 自稳模式
+start.wav 启动
+stbmod.wav 稳定模式
+stop.wav 停止
+stoprc.wav 停止记录
+str-4w.wav 四轮转向
+str-cr.wav 螃蟹转向
+str-f.wav 前轮转向
+str-mr.wav 镜像转向
+str-r.wav 后轮转向
+strtrc.wav 开始记录
+sxrahd.wav 高度保持模式
+sxrman.wav 手动模式
+sxrsmd.wav 自稳模式
+sxrsof.wav 自稳模式关闭
+sxrstb.wav 自稳模式启动
+sxrwr.wav 排风模式
+takeoff.wav 起飞模式
+telem.wav 回传
+therml.wav
+thmmod.wav 热气流模式
 thract.wav 开启油门
 thrcut.wav 关断油门
+thrdis.wav 禁用油门
+thren.wav 启用油门
+thrhld.wav 油门保持
+thridl.wav 油门怠速
+thrrel.wav 释放油门
+timrs1.wav 计时器1已重置
+timrs2.wav 计时器1已重置
+timrs3.wav 计时器1已重置
+tlogof.wav 回传日志关闭
+tlogon.wav 回传日志打开
 tohigh.wav 太高
 tolow.wav 太低
-trnoff.wav 关闭教练
-trnon.wav 开启教练
+trnoff.wav 关闭教练模式
+trnon.wav 开启教练模式
+turnof.wav 信号关闭
+turnon.wav 信号打开
+turtof.wav 乌龟模式关闭
+turton.wav 乌龟模式启动
 vrioff.wav 关闭升降仪
 vrion.wav 开启升降仪
+vtx.wav 图传
+vtx100.wav 图传功率一百毫瓦
+vtx1w.wav 图传功率一瓦
+vtx200.wav 图传功率二百毫瓦
+vtx25.wav 图传功率二百五十毫瓦
+vtx2w.wav 图传功率二瓦
+vtx300.wav 图传功率三百毫瓦
+vtx400.wav 图传功率四百毫瓦
+vtx4w.wav 图传功率四瓦
+vtx50.wav 图传功率五十毫瓦
+vtx500.wav 图传功率五百毫瓦
+vtx600.wav 图传功率六百毫瓦
+vtx700.wav 图传功率七百毫瓦
+vtx800.wav 图传功率八百毫瓦
+vtx900.wav 图传功率九百毫瓦
+vtxfr1.wav 图传频率R1
+vtxfr2.wav 图传频率R2
+vtxfr3.wav 图传频率R3
+vtxfr4.wav 图传频率R4
+vtxfr5.wav 图传频率R5
+vtxfr6.wav 图传频率R6
+vtxfr7.wav 图传频率R7
+vtxfr8.wav 图传频率R8
+vtxmax.wav 图传最大功率
+vtxoff.wav 关闭图传
+vtxon.wav 打开图传
+vtxpm.wav 图传低功率模式
+vtxrm.wav 图传竞赛模式
+warnng.wav 警告
+waypnt.wav 航路点
+wchdis.wav 绞盘已禁用
+wchen.wav 绞盘已启用
+wchin.wav 
+wchout.wav
+wetmde.wav
+whlbrf.wav 关闭轮刹
+whlbro.wav 开启轮刹
+wngswp.wav 机翼后掠
+wpnstp.wav 停止航路点导航
+wpnstr.wav 开始航路点导航
