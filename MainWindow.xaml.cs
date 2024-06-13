@@ -1,6 +1,5 @@
 ﻿using SpeechGenerator.Handller;
 using SpeechGenerator.Models;
-using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,37 +16,42 @@ namespace SpeechGenerator
             InitializeComponent();
 
             //从配置文件中，加载窗口位置
-            Top = ResourcePool.Instance.Config.Top;
-            Left = ResourcePool.Instance.Config.Left;
-
-            //绑定支持的语言风格
-            speechSelect.ItemsSource = ResourcePool.Instance.SpeechResource.Select(t => t.Name).ToArray();
+            Top = ResourcePool.Config.Top;
+            Left = ResourcePool.Config.Left;
 
             //从配置中加载保存的秘钥和区域代码
-            keyinput.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.SubscriptionKey) ? keyinput.Text : ResourcePool.Instance.Config.SubscriptionKey;
-            reginput.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.Region) ? reginput.Text : ResourcePool.Instance.Config.Region;
+            keyinput.Text = string.IsNullOrEmpty(ResourcePool.Config.SubscriptionKey) ? keyinput.Text : ResourcePool.Config.SubscriptionKey;
+            reginput.Text = string.IsNullOrEmpty(ResourcePool.Config.Region) ? reginput.Text : ResourcePool.Config.Region;
 
             //根据条件切换启动时展示的页面
             if (Helper.CheckUpdate())
                 update.Visibility = Visibility.Visible;
-            else if (string.IsNullOrEmpty(ResourcePool.Instance.Config.SubscriptionKey))
+            else if (string.IsNullOrEmpty(ResourcePool.Config.SubscriptionKey))
                 configKey.Visibility = Visibility.Visible;
             else
                 configSpeech.Visibility = Visibility.Visible;
 
+            //绑定支持的语言风格
+            speechSelect.ItemsSource = ResourcePool.SpeechResource;
             //从配置中加载选择的语言风格、语气、语气强度和语速
-            speechSelect.SelectedValue = ResourcePool.Instance.SpeechResource.First(t => t.Code == ResourcePool.Instance.Config.SpeechConf.SpeechName).Name;
-            styleSelect.SelectedValue = ResourcePool.Instance.Config.SpeechConf.SpeechStyle;
-            degree.Value = ResourcePool.Instance.Config.SpeechConf.SpeechDegree;
-            rate.Value = ResourcePool.Instance.Config.SpeechConf.SpeechRate;
+            speechSelect.SelectedItem = ResourcePool.SpeechResource.First(t => t.Code == ResourcePool.Config.SpeechConf.SpeechCode);
+
+            var styles = ResourcePool.SpeechResource.Where(l => l.Code == ResourcePool.Config.SpeechConf.SpeechCode).FirstOrDefault()?.Styles;
+            styleSelect.ItemsSource = styles;
+            var selectSty = styles.Where(l => l.Style == ResourcePool.Config.SpeechConf.SpeechStyle).FirstOrDefault();
+            if (selectSty != null)
+                styleSelect.SelectedItem = selectSty;
+
+            degree.Value = ResourcePool.Config.SpeechConf.SpeechDegree;
+            rate.Value = ResourcePool.Config.SpeechConf.SpeechRate;
 
             //从配置中加载保存文件夹和资源文件路径
-            flodertext.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.SavePath) ? flodertext.Text : ResourcePool.Instance.Config.SavePath;
-            filetext.Text = string.IsNullOrEmpty(ResourcePool.Instance.Config.FilePath) ? filetext.Text : ResourcePool.Instance.Config.FilePath;
+            flodertext.Text = string.IsNullOrEmpty(ResourcePool.Config.SavePath) ? flodertext.Text : ResourcePool.Config.SavePath;
+            filetext.Text = string.IsNullOrEmpty(ResourcePool.Config.FilePath) ? filetext.Text : ResourcePool.Config.FilePath;
 
             //订阅转换任务的事件
-            ResourcePool.Instance.TextRowChanged += Instance_TextRowChanged;
-            ResourcePool.Instance.TitleChange += Instance_TitleChange;
+            ResourcePool.TextRowChanged += Instance_TextRowChanged;
+            ResourcePool.TitleChange += Instance_TitleChange;
         }
 
         private void Instance_TitleChange(object sender, int index)
@@ -76,7 +80,8 @@ namespace SpeechGenerator
         private void styleSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var combox = sender as ComboBox;
-            ResourcePool.Instance.Config.SpeechConf.SpeechStyle = (string)combox.SelectedValue;
+            var style = combox.SelectedValue as SpeechStyle;
+            ResourcePool.Config.SpeechConf.SpeechStyle = style?.Style;
         }
 
         /// <summary>
@@ -87,15 +92,16 @@ namespace SpeechGenerator
         private void speechSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var combox = sender as ComboBox;
-            var selectValue = (string)combox.SelectedValue;
+            var selectItem = (Voice)combox.SelectedValue;
 
-            if (string.IsNullOrEmpty(selectValue))
+            if (selectItem == null)
                 return;
 
-            var voice = ResourcePool.Instance.SpeechResource.FirstOrDefault(t => t.Name == (string)combox.SelectedValue);
-            ResourcePool.Instance.Config.SpeechConf.SpeechName = voice.Code;
-
-            styleSelect.ItemsSource = voice.Styles?.Select(t => t.Style).ToArray();
+            var voice = ResourcePool.SpeechResource.FirstOrDefault(t => t.Name == selectItem.Name);
+            ResourcePool.Config.SpeechConf.SpeechCode = voice.Code;
+            var styles = ResourcePool.SpeechResource.Where(l => l.Code == ResourcePool.Config.SpeechConf.SpeechCode).FirstOrDefault()?.Styles;
+            styleSelect.ItemsSource = styles;
+            styleSelect.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -103,10 +109,14 @@ namespace SpeechGenerator
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click_ShiTing(object sender, RoutedEventArgs e)
+        private async void Button_Click_ShiTing(object sender, RoutedEventArgs e)
         {
             TextItem text = new TextItem("", speechText.Text);
-            ResourcePool.Instance.StartTask(text);
+            audition.IsEnabled = false;
+            var result = await ResourcePool.AuditionAsync(text);
+            audition.IsEnabled = true;
+            if (!result.Success)
+                MessageBox.Show(result.Message);
         }
 
         /// <summary>
@@ -116,9 +126,9 @@ namespace SpeechGenerator
         /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            ResourcePool.Instance.Config.Top = Top;
-            ResourcePool.Instance.Config.Left = Left;
-            Config.SaveConfig(ResourcePool.Instance.Config);
+            ResourcePool.Config.Top = Top;
+            ResourcePool.Config.Left = Left;
+            Config.SaveConfig(ResourcePool.Config);
         }
 
         /// <summary>
@@ -131,7 +141,7 @@ namespace SpeechGenerator
             var tb = sender as TextBox;
             if (tb.Text == "输入秘钥")
                 return;
-            ResourcePool.Instance.Config.SubscriptionKey = tb.Text;
+            ResourcePool.Config.SubscriptionKey = tb.Text;
         }
 
         /// <summary>
@@ -144,7 +154,7 @@ namespace SpeechGenerator
             var tb = sender as TextBox;
             if (tb.Text == "输入区域标识符")
                 return;
-            ResourcePool.Instance.Config.Region = tb.Text;
+            ResourcePool.Config.Region = tb.Text;
         }
 
         /// <summary>
@@ -205,13 +215,13 @@ namespace SpeechGenerator
             {
                 degreelable.Content = $"语气强度{slider.Value:F1}";
                 if (slider.Value > 0)
-                    ResourcePool.Instance.Config.SpeechConf.SpeechDegree = slider.Value;
+                    ResourcePool.Config.SpeechConf.SpeechDegree = slider.Value;
             }
             else if (slider.Name == "rate")
             {
                 ratelable.Content = $"语速{slider.Value:F1}";
                 //if (slider.Value > 0)
-                ResourcePool.Instance.Config.SpeechConf.SpeechRate = slider.Value;
+                ResourcePool.Config.SpeechConf.SpeechRate = slider.Value;
             }
         }
 
@@ -226,7 +236,7 @@ namespace SpeechGenerator
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                ResourcePool.Instance.Config.SavePath = dialog.SelectedPath.TrimEnd('\\');
+                ResourcePool.Config.SavePath = dialog.SelectedPath.TrimEnd('\\');
                 flodertext.Text = dialog.SelectedPath.TrimEnd('\\');
             }
         }
@@ -242,9 +252,9 @@ namespace SpeechGenerator
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                ResourcePool.Instance.Config.FilePath = dialog.FileName;
+                ResourcePool.Config.FilePath = dialog.FileName;
                 filetext.Text = dialog.FileName;
-                ResourcePool.Instance.TextResource.DicName = dialog.SafeFileName.Split('.')[0];
+                ResourcePool.TextResource.DicName = dialog.SafeFileName.Split('.')[0];
                 var res = FileHelper.ReadFileToResource(dialog.FileName);
                 if (!res.Success)
                 {
@@ -252,7 +262,8 @@ namespace SpeechGenerator
                 }
                 else
                 {
-                    datagrid.ItemsSource = ResourcePool.Instance.TextResource;
+                    datagrid.ItemsSource = null;
+                    datagrid.ItemsSource = ResourcePool.TextResource;
                 }
             }
         }
@@ -262,9 +273,13 @@ namespace SpeechGenerator
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click_StartTask(object sender, RoutedEventArgs e)
+        private async void Button_Click_StartTask(object sender, RoutedEventArgs e)
         {
-            ResourcePool.Instance.StartTask();
+            start.IsEnabled = false;
+            var res = await ResourcePool.StartConvertingAsync();
+            start.IsEnabled = true;
+            if (!res.Success)
+                MessageBox.Show(res.Message);
         }
 
         /// <summary>
@@ -274,7 +289,7 @@ namespace SpeechGenerator
         /// <param name="e"></param>
         private void Button_Click_AbordTask(object sender, RoutedEventArgs e)
         {
-            ResourcePool.Instance.AbordTask();
+            ResourcePool.AbordTask();
         }
 
         /// <summary>
@@ -288,27 +303,11 @@ namespace SpeechGenerator
             {
                 var res = FileHelper.ReadFileToResource(filetext.Text);
                 if (res.Success)
-                    datagrid.ItemsSource = ResourcePool.Instance.TextResource;
+                    datagrid.ItemsSource = ResourcePool.TextResource;
             }
         }
 
         private delegate void WindowDelegate();
-
-        /// <summary>
-        /// 提示
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void styleSelect_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            var com = sender as ComboBox;
-            var selectStyle = Convert.ToString(com.SelectedValue);
-            var selectSpeech = Convert.ToString(speechSelect.SelectedValue);
-            if (!string.IsNullOrEmpty(selectStyle) && !string.IsNullOrEmpty(selectSpeech))
-            {
-                com.ToolTip = ResourcePool.Instance.SpeechResource.FirstOrDefault(t => t.Name == selectSpeech)?.Styles.FirstOrDefault(t => t.Style == selectStyle)?.Description;
-            }
-        }
 
         /// <summary>
         /// 更新按钮

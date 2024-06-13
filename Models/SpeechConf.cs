@@ -14,10 +14,10 @@ namespace SpeechGenerator.Models
         [JsonProperty("语言代码")]
         public string SpeechLang { get; set; }
         /// <summary>
-        /// 语音名字，也就是讲话的“人”
+        /// 语音代码，也就是讲话的“人”的代码
         /// </summary>
         [JsonProperty("语言风格")] 
-        public string SpeechName { get; set; }
+        public string SpeechCode { get; set; }
         /// <summary>
         /// 语速 默认1
         /// </summary>

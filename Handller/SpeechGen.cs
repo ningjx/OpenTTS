@@ -1,6 +1,7 @@
 ﻿using Microsoft.CognitiveServices.Speech;
 using SpeechGenerator.Models;
 using System;
+using System.Threading.Tasks;
 
 namespace SpeechGenerator.Handller
 {
@@ -29,16 +30,38 @@ namespace SpeechGenerator.Handller
         /// </summary>
         /// <param name="text">XML文件</param>
         /// <returns></returns>
-        public Result GetAudioFromText(string text)
+        public async Task<Result> GetAudioFromTextAsync(string text)
         {
-            var res = speechSynthesizer.SpeakSsmlAsync(text).Result;
-            var check = SpeechSynthesisCancellationDetails.FromResult(res);
+            var speech =await speechSynthesizer.SpeakSsmlAsync(text);
+            var check = SpeechSynthesisCancellationDetails.FromResult(speech);
             if (check.ErrorCode == 0)
             {
                 return new Result
                 {
                     Success = true,
-                    Data = res.AudioData
+                    Data = speech.AudioData
+                };
+            }
+            else
+            {
+                return new Result
+                {
+                    Success = false,
+                    Message = $"转换失败，原因：{check.Reason}\r\n详情{check.ErrorDetails}"
+                };
+            }
+        }
+
+        public  Result GetAudioFromText(string text)
+        {
+            var speech = speechSynthesizer.SpeakSsmlAsync(text).Result;
+            var check = SpeechSynthesisCancellationDetails.FromResult(speech);
+            if (check.ErrorCode == 0)
+            {
+                return new Result
+                {
+                    Success = true,
+                    Data = speech.AudioData
                 };
             }
             else

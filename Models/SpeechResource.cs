@@ -89,16 +89,16 @@ namespace SpeechGenerator.Models
             Style = style; Description = description;
         }
         [JsonProperty("语气")]
-        public string Style;
+        public string Style { get; set; }
         [JsonProperty("描述")]
-        public string Description;
+        public string Description { get; set; }
     }
 
     public class SpeechRole
     {
         [JsonProperty("角色")]
-        public string Role;
+        public string Role { get; set; }
         [JsonProperty("描述")]
-        public string Description;
+        public string Description { get; set; }
     }
 }

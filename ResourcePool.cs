@@ -1,10 +1,9 @@
 ﻿using SpeechGenerator.Handller;
 using SpeechGenerator.Models;
 using System;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Timer = System.Timers.Timer;
 
 namespace SpeechGenerator
 {
@@ -13,147 +12,121 @@ namespace SpeechGenerator
     /// </summary>
     public class ResourcePool
     {
-        private static ResourcePool pool = null;
-
         /// <summary>
         /// 用来转换语音的线程
         /// </summary>
-        private Task ConvertTask = null;
-        private bool CancleReq = false;
-
-        /// <summary>
-        /// 从文件路径中提取不含后缀的文件名
-        /// </summary>
-        private readonly Regex PathRegex = new Regex(@"(?<=^[A-Z]:\\).*(?=\.txt$)");
-
+        private static CancellationTokenSource cts;
+        private static int retryTimenow = 0;
         /// <summary>
         /// 计时器
         /// </summary>
-        private System.Timers.Timer Timer = new System.Timers.Timer(1000);
-        private int Count = 10;//可以配置请求受限等待的时间
-        private int Backwards;
-
-        /// <summary>
-        /// 单例
-        /// </summary>
-        public static ResourcePool Instance
-        {
-            get
-            {
-                if (pool == null)
-                    pool = new ResourcePool();
-                return pool;
-            }
-        }
+        private static Timer RetryTimer = new Timer(1000);
+        private static int Backwards;
 
         /// <summary>
         /// 加载预置的支持的语言格式
         /// </summary>
-        public SpeechResource SpeechResource = null;
+        public static SpeechResource SpeechResource = null;
         /// <summary>
         /// 程序配置
         /// </summary>
-        public Config Config = null;
+        public static Config Config = null;
         /// <summary>
         /// 文本资源
         /// </summary>
-        public TextResource TextResource = new TextResource();
+        public static TextResource TextResource = new TextResource();
 
-        private ResourcePool()
+        static ResourcePool()
         {
             SpeechResource = SpeechResource.LoadSpeechResources();
             Config = Config.LoadConfig();
 
-            Timer.AutoReset = true;
-            Timer.Elapsed += Timer_Elapsed;
+            RetryTimer.AutoReset = true;
+            RetryTimer.Elapsed += (sender, e) => { TitleChange?.Invoke($"连接受限，{--Backwards}秒后尝试第({retryTimenow}/{Config.RetryTime})次重试", 0); };
 
-            Backwards = Count;
-        }
-
-        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            TitleChange?.Invoke($"连接受限，{--Backwards}秒后自动继续", 0);
-        }
-
-        /// <summary>
-        /// 开始转换
-        /// </summary>
-        public void StartTask()
-        {
-            if ((ConvertTask != null && ConvertTask.Status != TaskStatus.Running) || ConvertTask == null)
-            {
-                ConvertTask = new Task(ConvertingTask);
-                ConvertTask.Start();
-            }
+            Backwards = Config.RetryInterval / 1000;
         }
 
         /// <summary>
         /// 终止转换
         /// </summary>
-        public void AbordTask()
+        public static void AbordTask()
         {
-            if (ConvertTask != null && ConvertTask.Status == TaskStatus.Running)
-            {
-                CancleReq = true;
-                TitleChange?.Invoke("OpenTTS", 0);
-                TimerReset();
-                //Thread.Sleep(2000);
-                //ConvertTask.Dispose();
-            }
+            cts.Cancel();
+            TitleChange?.Invoke("OpenTTS", 0);
+            TimerReset();
         }
 
         /// <summary>
         /// 转换单个资源，用于试听按钮
         /// </summary>
         /// <param name="item"></param>
-        public void StartTask(TextItem item)
+        public static async Task<Result> AuditionAsync(TextItem item)
         {
-            Task.Run(() => { SpeechConverter.Instance.CreateAudioFromText(item); });
+            return await SpeechConverter.CreateAudioFromTextAsync(item);
         }
 
-        private void ConvertingTask()
+        public static async Task<Result> StartConvertingAsync()
         {
-            TextResource.DicName = PathRegex.Match(Config.FilePath).Value?.Split('\\').ToList().LastOrDefault();
-            foreach (var item in TextResource)
+            var result = new Result();
+            cts = new CancellationTokenSource();
+            await Task.Run(() => { result = ConvertTextToSpeachAsync(cts); });
+            return result;
+        }
+
+
+        private static Result ConvertTextToSpeachAsync(CancellationTokenSource cts)
+        {
+            try
             {
-                if (CancleReq)
+                foreach (var item in TextResource)
                 {
-                    CancleReq = false;
-                    return;
+                    retryTimenow = 0;
+                    cts.Token.ThrowIfCancellationRequested();
+
+                    TitleChange?.Invoke($"({TextResource.IndexOf(item)}/{TextResource.Count})转换中...", TextResource.IndexOf(item));
+
+                    if (item.IsProcessed)
+                        continue;
+
+                    var covRes = SpeechConverter.CreateAudioFileFromText(TextResource.DicName, item);
+
+                    if (!covRes.Success)
+                    {
+                        //失败，进入重试
+                        for (int i = 0; i < Config.RetryTime; i++)
+                        {
+                            retryTimenow++;
+                            cts.Token.ThrowIfCancellationRequested();
+                            RetryTimer.Start();
+                            Thread.Sleep(Config.RetryInterval);
+                            TimerReset();
+                            covRes = SpeechConverter.CreateAudioFileFromText(TextResource.DicName, item);
+                        }
+
+                        if (!covRes.Success)
+                            return new Result { Success = false, Message = $"重试{Config.RetryTime}次依然无法生成该条语音，\r\n建议检查格式，\r\n并重启程序再试" };
+                    }
+                    TextRowChanged?.Invoke(item, TextResource.IndexOf(item));
+                    item.IsProcessed = true;
                 }
-
-                if (item.IsProcessed)
-                    continue;
-
-                TitleChange?.Invoke("转换中...", TextResource.IndexOf(item));
-                Thread.Sleep(100);
-                ConvertNRetry(item);
             }
-            TitleChange?.Invoke("OpenTTS", TextResource.Count);
+            catch (OperationCanceledException)
+            {
+                return Result.Fail("任务已停止");
+            }
+            finally
+            {
+                TitleChange?.Invoke("OpenTTS", TextResource.Count);
+            }
+
+            return Result.Sucess("转换完成");
         }
 
-        private Result ConvertNRetry(TextItem item)
+        private static void TimerReset()
         {
-            var newRes = SpeechConverter.Instance.CreateAudioFileFromText(TextResource.DicName, item);
-            if (!newRes.Success)
-            {
-                Timer.Start();
-                Thread.Sleep(TimeSpan.FromSeconds(Count));
-                TimerReset();
-                return ConvertNRetry(item);
-            }
-            else
-            {
-                TextRowChanged?.Invoke(item, TextResource.IndexOf(item));
-                item.IsProcessed = true;
-                return newRes;
-            }
-        }
-
-        private void TimerReset()
-        {
-            Timer.Stop();
-            Backwards = Count;
+            RetryTimer.Stop();
+            Backwards = Config.RetryInterval / 1000;
         }
 
         public delegate void PollDelegate(object sender, int index);
@@ -161,10 +134,10 @@ namespace SpeechGenerator
         /// <summary>
         /// 每个文本资源处理完成后触发
         /// </summary>
-        public event PollDelegate TextRowChanged;
+        public static event PollDelegate TextRowChanged;
         /// <summary>
         /// 通过该事件修改窗口的标题
         /// </summary>
-        public event PollDelegate TitleChange;
+        public static event PollDelegate TitleChange;
     }
 }

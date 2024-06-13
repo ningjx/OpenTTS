@@ -23,10 +23,15 @@ namespace SpeechGenerator
         [JsonProperty("文本读取路径")]
         public string FilePath { get; set; } = "";
 
-        [JsonProperty("窗口顶部距离")]
+        [JsonProperty("窗口顶部距离像素")]
         public double Top = 500;
-        [JsonProperty("窗口左侧距离")]
+        [JsonProperty("窗口左侧距离像素")]
         public double Left = 1000;
+
+        [JsonProperty("重试间隔时间毫秒")]
+        public int RetryInterval = 5000;
+        [JsonProperty("最大重试次数")]
+        public int RetryTime = 3;
 
         /// <summary>
         /// 调节文件音频电平的倍数，1为不调节
@@ -79,7 +84,7 @@ namespace SpeechGenerator
             SpeechConf sConfig = new SpeechConf
             {
                 SpeechLang = "zh-cn",
-                SpeechName = "zh-CN-XiaoxiaoNeural",
+                SpeechCode = "zh-CN-XiaoxiaoNeural",
                 SpeechRate = 1,
                 SpeechStyle = "cheerful",
                 SpeechDegree = 1
