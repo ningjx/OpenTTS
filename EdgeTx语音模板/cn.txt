@@ -2,10 +2,10 @@
 3d.wav 3D
 3d-mod.wav 3D模式
 4wd.wav 四驱模式
-acrmod.wav 固定翼模式
-acro.wav 固定翼模式启动
+acrmod.wav 特技模式
+acro.wav 特技模式启动
 active.wav 激活
-actnmd.wav 固定翼训练模式
+actnmd.wav 特技训练模式
 agmxof.wav
 agmxon.wav
 airmod.wav
@@ -82,7 +82,7 @@ fm-5.wav 飞行模式5
 fm-6.wav 飞行模式6
 fm-7.wav 飞行模式7
 fm-8.wav 飞行模式8
-fm-acr.wav 固定翼模式
+fm-acr.wav 特技模式
 fm-ang.wav 角度模式
 fm-atu.wav 自动调参模式
 fm-aut.wav 自动驾驶模式
