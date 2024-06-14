@@ -106,28 +106,25 @@ namespace SpeechGenerator.Handller
         {
             try
             {
-                var readfile = ReadFile(path);
-                var createDice = PathRegex.Match(path).Value.Split('\\').LastOrDefault() ;
+                var readfileRes = ReadFile(path);
+                if (!readfileRes.Success)
+                    return readfileRes;
+
+                var createDice = PathRegex.Match(path).Value.Split('\\').LastOrDefault();
 
                 ResourcePool.TextResource.DicName = createDice;
-                if (!readfile.Success)
+                ResourcePool.TextResource.Clear();
+                var textLines = (string[])readfileRes.Data;
+                foreach (var line in textLines)
                 {
-                    return readfile;
-                }
-                else
-                {
-                    ResourcePool.TextResource.Clear();
-                    var textLines = (string[])readfile.Data;
-                    foreach (var line in textLines)
+                    if (LineRegex.IsMatch(line))
                     {
-                        if (LineRegex.IsMatch(line))
-                        {
-                            var items = LineRegex.Matches(line)[0].Groups;
-                            if (!string.IsNullOrWhiteSpace(items[3].Value))
-                                ResourcePool.TextResource.Add(new TextItem(items[1].Value, items[3].Value));
-                        }
+                        var items = LineRegex.Matches(line)[0].Groups;
+                        if (!string.IsNullOrWhiteSpace(items[3].Value))
+                            ResourcePool.TextResource.Add(new TextItem(items[1].Value, items[3].Value));
                     }
                 }
+
                 return Result.Sucess();
             }
             catch (Exception ex)

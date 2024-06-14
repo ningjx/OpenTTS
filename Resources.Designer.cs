@@ -61,12 +61,32 @@ namespace SpeechGenerator {
         }
         
         /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] AllRoles {
+            get {
+                object obj = ResourceManager.GetObject("AllRoles", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] AllSpeachStyles {
+            get {
+                object obj = ResourceManager.GetObject("AllSpeachStyles", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 [
         ///  {
         ///    &quot;名字&quot;: &quot;小晗&quot;,
         ///    &quot;编码&quot;: &quot;zh-CN-XiaohanNeural&quot;,
-        ///    &quot;性别&quot;: true,
-        ///    &quot;语言&quot;: 0,
+        ///    &quot;性别&quot;: &quot;女&quot;,
+        ///    &quot;语言&quot;: &quot;zh_CN&quot;,
         ///    &quot;语气&quot;: null,
         ///    &quot;角色&quot;: null,
         ///    &quot;支持的角色&quot;: null,
@@ -86,7 +106,7 @@ namespace SpeechGenerator {
         ///      },
         ///      {
         ///        &quot;语气&quot;: &quot;fearful&quot;,
-        ///        &quot;描述&quot;: &quot;以较高的音 [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///        &quot;描述&quot;: &quot; [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string SpeechResources {
             get {

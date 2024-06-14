@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using System;
 using System.Text.RegularExpressions;
+using static SpeechGenerator.Models.Voice;
 
 namespace SpeechGenerator.Models.Tests
 {
@@ -14,10 +16,14 @@ namespace SpeechGenerator.Models.Tests
         [TestMethod()]
         public void LoadSpeechResourcesTest()
         {
-            string test = @"C:\Users\aa\Desktop\SpeechGenerator\EdgeTx语音模板\新建文本文档.txt";
-            var w = PathRegex.Match(test).Value;
-            Console.WriteLine( PathRegex.Match(test).Value);
-            //var res = SpeechResource.LoadSpeechResources();
+            var a = new a();
+            a.b = GenderEnum.Male;
+            string test = JsonConvert.SerializeObject(a);
+            Console.WriteLine(test);
+        }
+        class a
+        {
+            public GenderEnum b { get; set; }
         }
     }
 }

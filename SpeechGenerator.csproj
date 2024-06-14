@@ -334,6 +334,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\AllRoles.json" />
+    <None Include="Resources\AllSpeachStyles.json" />
     <None Include="Resources\SpeechResources.json" />
     <None Include="Resources\ssml.xml" />
   </ItemGroup>

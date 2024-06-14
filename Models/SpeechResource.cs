@@ -1,10 +1,16 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Xml.Serialization;
+
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json.Converters;
 
 namespace SpeechGenerator.Models
 {
-    public class SpeechResource: List<Voice>
+    public class SpeechResource : List<Voice>
     {
         public static SpeechResource LoadSpeechResources()
         {
@@ -19,9 +25,9 @@ namespace SpeechGenerator.Models
         [JsonProperty("编码")]
         public string Code { get; set; }
         [JsonProperty("性别")]
-        public bool Female { get; set; }
+        public GenderEnum Gender { get; set; }
         [JsonProperty("语言")]
-        public Lan Language { get; set; }
+        public LanguageEnum Language { get; set; }
         [JsonProperty("语气")]
         public SpeechStyle Style
         {
@@ -67,16 +73,6 @@ namespace SpeechGenerator.Models
         [JsonIgnore]
         public bool SupportRole => Roles?.Any() == true;
 
-        /// <summary>
-        /// 语言类型
-        /// </summary>
-        public enum Lan
-        {
-            CN,
-            HK,
-            TW
-        }
-
         private float _styleDegree = 1;
         private SpeechRole _role;
         private SpeechStyle _style;
@@ -84,12 +80,12 @@ namespace SpeechGenerator.Models
 
     public class SpeechStyle
     {
-        public SpeechStyle(string style, string description)
+        public SpeechStyle(SpeechStyleEnum style, string description)
         {
             Style = style; Description = description;
         }
         [JsonProperty("语气")]
-        public string Style { get; set; }
+        public SpeechStyleEnum Style { get; set; }
         [JsonProperty("描述")]
         public string Description { get; set; }
     }
@@ -97,8 +93,51 @@ namespace SpeechGenerator.Models
     public class SpeechRole
     {
         [JsonProperty("角色")]
-        public string Role { get; set; }
+        public RoleEnum Role { get; set; }
         [JsonProperty("描述")]
         public string Description { get; set; }
+    }
+    public class AllSpeachStyles : List<SpeechStyle>
+    {
+
+    }
+
+    /// <summary>
+    /// 语言类型
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum LanguageEnum
+    {
+        zh_CN,
+        zh_HK,
+        zh_TW,
+        yue_CN,
+        wuu_CN,
+            zh_cn_GUANGXI, zh_cn_henan, zh_cn_liaoning, zh_cn_shaanxi, zh_cn_shandong, zh_cn_sichuan
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum GenderEnum
+    {
+        男,
+        女,
+        沃尔玛购物袋,
+        武装直升机
+    }
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum SpeechStyleEnum
+    {
+        advertisement_upbeat,
+        affectionate,
+        angry,
+        assistant, calm, chat, cheerful, customerservice, depressed, disgruntled, documentary_narration,
+        embarrassed, empathetic, envious, excited, fearful, friendly, gentle, hopeful, lyrical, narration_professional
+            , narration_relaxed, newscast, newscast_casual, newscast_formal, poetry_reading, sad, serious, shouting,
+        sports_commentary, sports_commentary_excited, whispering, terrified, unfriendly
+    }
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum RoleEnum
+    {
+        Girl, Boy, YoungAdultFemale, YoungAdultMale, OlderAdultFemale, OlderAdultMale, SeniorFemale, SeniorMale
     }
 }

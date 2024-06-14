@@ -12,7 +12,7 @@ namespace SpeechGenerator.Models
         /// 语音语言 zh-cn zh-hk zh-tw，实际全部使用zh-cn即可
         /// </summary>
         [JsonProperty("语言代码")]
-        public string SpeechLang { get; set; }
+        public LanguageEnum SpeechLang { get; set; }
         /// <summary>
         /// 语音代码，也就是讲话的“人”的代码
         /// </summary>
@@ -27,7 +27,7 @@ namespace SpeechGenerator.Models
         /// 语气类型 不同语音可以支持的与其类型不尽相同
         /// </summary>
         [JsonProperty("语气")] 
-        public string SpeechStyle { get; set; }
+        public SpeechStyleEnum SpeechStyle { get; set; }
         /// <summary>
         /// 语气强度 0.01-2 默认1
         /// </summary>
