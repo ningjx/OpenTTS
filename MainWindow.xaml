@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OpenTTS"
         mc:Ignorable="d"
-        Title="OpenTTS" Height="480" Width="330" Closing="Window_Closing">
+        Title="OpenTTS" Height="500" Width="330" Closing="Window_Closing">
     <Grid Height="450" Width="300">
         <!--检查更新页面-->
         <Grid x:Name="update" Background="White" Visibility="Hidden">
@@ -125,8 +125,8 @@
             <Grid Grid.Row="2" >
                 <DataGrid Name="datagrid"  Margin="0,5,0,0" VerticalAlignment="Top" Grid.Column="3" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding FileName}" Header="文件名" IsReadOnly="True" />
-                        <DataGridTextColumn Binding="{Binding Text}" Header="文本" IsReadOnly="True"  />
+                        <DataGridTextColumn Binding="{Binding FileName}" Header="文件名" IsReadOnly="True" Width="80"/>
+                        <DataGridTextColumn Binding="{Binding Text}" Header="文本" IsReadOnly="True" Width="170"/>
                         <DataGridCheckBoxColumn Binding="{Binding IsProcessed}" Header="已保存" IsReadOnly="True" Width="50"  CanUserResize="False"/>
                     </DataGrid.Columns>
                 </DataGrid>

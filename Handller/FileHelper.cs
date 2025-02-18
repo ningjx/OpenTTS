@@ -4,6 +4,10 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Globalization;
+using CsvHelper;
+using CsvHelper.Configuration;
+using System.Collections.Generic;
 
 namespace OpenTTS.Handller
 {
@@ -12,7 +16,7 @@ namespace OpenTTS.Handller
         /// <summary>
         /// 从文件路径中提取不含后缀的文件名
         /// </summary>
-        public static readonly Regex PathRegex = new Regex(@"(?<=\\).*(?=\.txt)");
+        public static readonly Regex PathRegex = new Regex(@"(?<=\\).*(?=\.+)");
         private static readonly Regex LineRegex = new Regex(@"(.+\..+?)( +)(.+)");
 
         public static Result SaveFile(string path, string dicName, string fileName, byte[] bytes)
@@ -22,8 +26,13 @@ namespace OpenTTS.Handller
             //{
             //    return Result<string>.Fail(null, $"保存路径{path}不存在");
             //}
-
-            var dic = new DirectoryInfo($"{path}\\{dicName}");
+            //如果保存文件名不是.wav后缀，就改成wav后缀
+            fileName.TrimStart('\\');
+            if (!fileName.EndsWith(".wav"))
+                fileName += ".wav";
+            
+            //如果文件名上包含目录，那么创建目录
+            var dic = new DirectoryInfo(Path.GetDirectoryName($"{path}\\{dicName}\\{fileName}"));
             if (!dic.Exists)
                 dic.Create();
 
@@ -79,7 +88,7 @@ namespace OpenTTS.Handller
         /// </summary>
         /// <param name="path">路径</param>
         /// <returns></returns>
-        public static Result ReadFile(string path)
+        public static Result ReadTxtFile(string path)
         {
             if (string.IsNullOrEmpty(path))
                 return Result.Fail("文件路径为空");
@@ -106,26 +115,14 @@ namespace OpenTTS.Handller
         {
             try
             {
-                var readfileRes = ReadFile(path);
-                if (!readfileRes.Success)
-                    return readfileRes;
+                //读取svg
+                if (path.EndsWith(".csv"))
+                    return ReadCsvToResource(path);
 
-                var createDice = PathRegex.Match(path).Value.Split('\\').LastOrDefault();
+                if (path.EndsWith(".txt"))
+                    return ReadTxtToResource(path);
 
-                ResourcePool.TextResource.DicName = createDice;
-                ResourcePool.TextResource.Clear();
-                var textLines = (string[])readfileRes.Data;
-                foreach (var line in textLines)
-                {
-                    if (LineRegex.IsMatch(line))
-                    {
-                        var items = LineRegex.Matches(line)[0].Groups;
-                        if (!string.IsNullOrWhiteSpace(items[3].Value))
-                            ResourcePool.TextResource.Add(new TextItem(items[1].Value, items[3].Value));
-                    }
-                }
-
-                return Result.Sucess();
+                return Result.Fail();
             }
             catch (Exception ex)
             {
@@ -137,6 +134,82 @@ namespace OpenTTS.Handller
         {
             var exist = File.Exists($"{path}\\{dicName}\\{fileName}");
             return new Result() { Success = exist };
+        }
+
+        public static Result ReadCsvToResource(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+                return Result.Fail("文件路径为空");
+            if (!File.Exists(path))
+                return Result.Fail("文件不存在");
+
+            //将提供的待转换文件的文件名，作为转换后文件存放的文件夹名字
+            var createDice = PathRegex.Match(path).Value.Split('\\').LastOrDefault();
+
+            ResourcePool.TextResource.DicName = createDice;
+            ResourcePool.TextResource.Clear();
+
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                HasHeaderRecord = true, // 文件包含标题行
+                MissingFieldFound = null, // 忽略缺失字段
+                PrepareHeaderForMatch = args => args.Header.ToLower() // 列名不区分大小写
+            };
+
+            var csvRecords = new List<CsvRow>();
+            using (var reader = new StreamReader(path))
+            {
+                using (var csv = new CsvReader(reader, config))
+                {
+                    csv.Read();
+                    csv.ReadHeader();
+
+                    while (csv.Read())
+                    {
+                        var record = csv.GetRecord<CsvRow>();
+                        csvRecords.Add(record);
+                    }
+                }
+            }
+
+            foreach (var csvLine in csvRecords)
+            {
+                if (string.IsNullOrEmpty(csvLine.Filename) || string.IsNullOrEmpty(csvLine.Translation))
+                    continue;
+
+                string fileName = string.Empty;
+                if (!string.IsNullOrEmpty(csvLine.Path))
+                    fileName = csvLine.Path + "\\";
+
+                ResourcePool.TextResource.Add(new TextItem(fileName + csvLine.Filename, csvLine.Translation));
+            }
+
+            return Result.Sucess();
+        }
+        public static Result ReadTxtToResource(string path)
+        {
+            var readfileRes = ReadTxtFile(path);
+            if (!readfileRes.Success)
+                return readfileRes;
+
+            //将提供的待转换文件的文件名，作为转换后文件存放的文件夹名字
+            var createDice = PathRegex.Match(path).Value.Split('\\').LastOrDefault();
+
+            ResourcePool.TextResource.DicName = createDice;
+            ResourcePool.TextResource.Clear();
+
+            var textLines = (string[])readfileRes.Data;
+            foreach (var line in textLines)
+            {
+                if (LineRegex.IsMatch(line))
+                {
+                    var items = LineRegex.Matches(line)[0].Groups;
+                    if (!string.IsNullOrWhiteSpace(items[3].Value))
+                        ResourcePool.TextResource.Add(new TextItem(items[1].Value, items[3].Value));
+                }
+            }
+
+            return Result.Sucess();
         }
     }
 }

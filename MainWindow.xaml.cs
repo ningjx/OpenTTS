@@ -267,7 +267,7 @@ namespace OpenTTS
         private void Button_Click_OpenFile(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
-
+            dialog.Filter = "支持的文件 (*.txt, *.csv)|*.txt;*.csv";
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 ResourcePool.Config.FilePath = dialog.FileName;
