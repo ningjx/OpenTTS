@@ -32,7 +32,7 @@ namespace OpenTTS
                 configKey.Visibility = Visibility.Visible;
             else
                 configSpeech.Visibility = Visibility.Visible;
-            
+
             //绑定语言选项
             language.ItemsSource = Enum.GetValues(typeof(LanguageEnum));
 
@@ -72,6 +72,7 @@ namespace OpenTTS
         {
             var combox = sender as ComboBox;
             var selectLan = combox.SelectedIndex;
+            ResourcePool.Config.SpeechConf.SpeechLang = (LanguageEnum)selectLan;
             speechSelect.ItemsSource = ResourcePool.SpeechResource.Where(l => (int)l.Language == selectLan);
             speechSelect.SelectedIndex = 0;
         }
@@ -334,7 +335,10 @@ namespace OpenTTS
             //设置讲话人
             speechSelect.SelectedIndex = ResourcePool.SpeechResource.Where(l => l.Language == conf.SpeechLang).Select(l => l.Code).ToList().IndexOf(conf.SpeechCode);
             //设置语气
-            styleSelect.SelectedIndex = (int)conf.SpeechStyle;
+            var supportStyles = ResourcePool.SpeechResource.Where(l => l.Code == conf.SpeechCode).Select(l => l.Styles).FirstOrDefault();
+            var currentStyle = supportStyles?.Where(l => l.Style == conf.SpeechStyle).FirstOrDefault();
+            if (currentStyle != null)
+                styleSelect.SelectedIndex = supportStyles.IndexOf(currentStyle);
             //设置语气强度
             degree.Value = conf.SpeechDegree;
             //设置语速
