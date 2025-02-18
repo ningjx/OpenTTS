@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OpenTTS"
         mc:Ignorable="d"
-        Title="OpenTTS" Height="500" Width="330" Closing="Window_Closing">
+        Title="OpenTTS" Height="500" Width="330" Closing="Window_Closing" Loaded="Window_Loaded" >
     <Grid Height="450" Width="300">
         <!--检查更新页面-->
         <Grid x:Name="update" Background="White" Visibility="Hidden">

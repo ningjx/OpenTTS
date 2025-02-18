@@ -32,22 +32,9 @@ namespace OpenTTS
                 configKey.Visibility = Visibility.Visible;
             else
                 configSpeech.Visibility = Visibility.Visible;
-
+            
+            //绑定语言选项
             language.ItemsSource = Enum.GetValues(typeof(LanguageEnum));
-            language.SelectedIndex = 0;
-            //绑定支持的语言风格
-            //speechSelect.ItemsSource = ResourcePool.SpeechResource;
-            //从配置中加载选择的语言风格、语气、语气强度和语速
-            speechSelect.SelectedItem = ResourcePool.SpeechResource.First(t => t.Code == ResourcePool.Config.SpeechConf.SpeechCode);
-
-            var styles = ResourcePool.SpeechResource.Where(l => l.Code == ResourcePool.Config.SpeechConf.SpeechCode).FirstOrDefault()?.Styles;
-            styleSelect.ItemsSource = styles;
-            var selectSty = styles.Where(l => l.Style == ResourcePool.Config.SpeechConf.SpeechStyle).FirstOrDefault();
-            if (selectSty != null)
-                styleSelect.SelectedItem = selectSty;
-
-            degree.Value = ResourcePool.Config.SpeechConf.SpeechDegree;
-            rate.Value = ResourcePool.Config.SpeechConf.SpeechRate;
 
             //从配置中加载保存文件夹和资源文件路径
             flodertext.Text = string.IsNullOrEmpty(ResourcePool.Config.SavePath) ? flodertext.Text : ResourcePool.Config.SavePath;
@@ -85,12 +72,12 @@ namespace OpenTTS
         {
             var combox = sender as ComboBox;
             var selectLan = combox.SelectedIndex;
-            speechSelect.ItemsSource = ResourcePool.SpeechResource.Where(l =>  (int)l.Language == selectLan);
+            speechSelect.ItemsSource = ResourcePool.SpeechResource.Where(l => (int)l.Language == selectLan);
             speechSelect.SelectedIndex = 0;
         }
 
         /// <summary>
-        /// 选择语言风格
+        /// 选择讲话人
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -337,6 +324,21 @@ namespace OpenTTS
             System.Diagnostics.Process.Start("explorer.exe", "https://gitee.com/n-i-n-g/OpenTTS/releases");
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //加载配置文件上一次保存的语音配置
+            var conf = Config.LoadConfig().SpeechConf;
 
+            //设置语言
+            language.SelectedIndex = (int)conf.SpeechLang;
+            //设置讲话人
+            speechSelect.SelectedIndex = ResourcePool.SpeechResource.Where(l => l.Language == conf.SpeechLang).Select(l => l.Code).ToList().IndexOf(conf.SpeechCode);
+            //设置语气
+            styleSelect.SelectedIndex = (int)conf.SpeechStyle;
+            //设置语气强度
+            degree.Value = conf.SpeechDegree;
+            //设置语速
+            rate.Value = conf.SpeechRate;
+        }
     }
 }
