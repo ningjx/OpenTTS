@@ -1,4 +1,4 @@
-﻿namespace SpeechGenerator.Models
+﻿namespace OpenTTS.Models
 {
     public class Result
     {

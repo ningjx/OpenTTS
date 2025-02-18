@@ -1,11 +1,11 @@
-﻿using SpeechGenerator.Handller;
-using SpeechGenerator.Models;
+﻿using OpenTTS.Handller;
+using OpenTTS.Models;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Timer = System.Timers.Timer;
 
-namespace SpeechGenerator
+namespace OpenTTS
 {
     /// <summary>
     /// 程序运行资源池，所有共享的配置、资源和线程，都放在了此处

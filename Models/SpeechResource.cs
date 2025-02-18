@@ -8,7 +8,7 @@ using System;
 using System.Runtime.Serialization;
 using Newtonsoft.Json.Converters;
 
-namespace SpeechGenerator.Models
+namespace OpenTTS.Models
 {
     public class SpeechResource : List<Voice>
     {
@@ -77,7 +77,13 @@ namespace SpeechGenerator.Models
         private SpeechRole _role;
         private SpeechStyle _style;
     }
-
+    public class SpeachLang
+    {
+        [JsonProperty("语言")]
+        public LanguageEnum Language { get; set; }
+        [JsonProperty("描述")]
+        public string Description { get; set; }
+    }
     public class SpeechStyle
     {
         public SpeechStyle(SpeechStyleEnum style, string description)
@@ -97,10 +103,15 @@ namespace SpeechGenerator.Models
         [JsonProperty("描述")]
         public string Description { get; set; }
     }
-    public class AllSpeachStyles : List<SpeechStyle>
-    {
 
-    }
+    /// <summary>
+    /// 从文件中反序列化
+    /// </summary>
+    public class SpeachStylesStorage : List<SpeechStyle> { }
+    public class RolesStorage : List<SpeechRole> { }
+    public class LanguagesStorage : List<SpeachLang> { }
+
+
 
     /// <summary>
     /// 语言类型
@@ -113,7 +124,7 @@ namespace SpeechGenerator.Models
         zh_TW,
         yue_CN,
         wuu_CN,
-            zh_cn_GUANGXI, zh_cn_henan, zh_cn_liaoning, zh_cn_shaanxi, zh_cn_shandong, zh_cn_sichuan
+        zh_cn_GUANGXI, zh_cn_henan, zh_cn_liaoning, zh_cn_shaanxi, zh_cn_shandong, zh_cn_sichuan
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
@@ -124,6 +135,7 @@ namespace SpeechGenerator.Models
         沃尔玛购物袋,
         武装直升机
     }
+
     [JsonConverter(typeof(StringEnumConverter))]
     public enum SpeechStyleEnum
     {
@@ -135,9 +147,10 @@ namespace SpeechGenerator.Models
             , narration_relaxed, newscast, newscast_casual, newscast_formal, poetry_reading, sad, serious, shouting,
         sports_commentary, sports_commentary_excited, whispering, terrified, unfriendly
     }
+
     [JsonConverter(typeof(StringEnumConverter))]
     public enum RoleEnum
     {
-        Girl, Boy, YoungAdultFemale, YoungAdultMale, OlderAdultFemale, OlderAdultMale, SeniorFemale, SeniorMale
+        Unspecified, Girl, Boy, YoungAdultFemale, YoungAdultMale, OlderAdultFemale, OlderAdultMale, SeniorFemale, SeniorMale
     }
 }

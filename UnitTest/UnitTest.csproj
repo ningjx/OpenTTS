@@ -143,9 +143,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SpeechGenerator.csproj">
+    <ProjectReference Include="..\OpenTTS.csproj">
       <Project>{75493138-32d2-4f35-9ddf-5125fd579f2b}</Project>
-      <Name>SpeechGenerator</Name>
+      <Name>OpenTTS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

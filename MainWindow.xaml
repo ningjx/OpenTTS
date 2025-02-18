@@ -1,12 +1,13 @@
-﻿<Window x:Class="SpeechGenerator.MainWindow"
+﻿<Window x:Class="OpenTTS.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SpeechGenerator"
+        xmlns:local="clr-namespace:OpenTTS"
         mc:Ignorable="d"
-        Title="OpenTTS" Height="430" Width="330" Closing="Window_Closing">
-    <Grid Height="400" Width="300">
+        Title="OpenTTS" Height="480" Width="330" Closing="Window_Closing">
+    <Grid Height="450" Width="300">
+        <!--检查更新页面-->
         <Grid x:Name="update" Background="White" Visibility="Hidden">
             <Label Content="有新版本" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
             <StackPanel Width="300" Height="30" VerticalAlignment="Bottom" Orientation="Horizontal">
@@ -15,7 +16,9 @@
             </StackPanel>
         </Grid>
 
-        <Grid Height="400" Width="300" x:Name="configKey" Background="White" Visibility="Hidden">
+
+        <!--密钥配置页面-->
+        <Grid Height="450" Width="300" x:Name="configKey" Background="White" Visibility="Hidden">
             <StackPanel Width="300" Height="150">
                 <TextBox x:Name="keyinput" Height="50" Width="300" BorderBrush="Black" Margin="0,0,0,0" ToolTip="输入秘钥" Text="输入秘钥" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="keyinput_TextChanged"></TextBox>
                 <TextBox x:Name="reginput" Height="50" Width="300" BorderBrush="Black" Margin="0,50,0,0" ToolTip="输入区域标识符" Text="输入区域标识符" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="reginput_TextChanged"></TextBox>
@@ -23,31 +26,40 @@
             <Button x:Name="keynetxbutton" Height="30" Width="100" Content="下一步" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,10" Click="NextStep"></Button>
         </Grid>
 
-        <Grid x:Name="configSpeech" Height="400" Width="300" Background="White" Visibility="Hidden">
+        <!--语音配置页面-->
+        <Grid x:Name="configSpeech" Height="450" Width="300" Background="White" Visibility="Visible">
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="330"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition />
             </Grid.RowDefinitions>
             <!--列定义，3列-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
+            
             <Grid Grid.Column="0" Grid.Row="0" >
-               
+
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="选择讲话风格" Width="100"></Label>
-                    <ComboBox x:Name="speechSelect" DisplayMemberPath="Name" VerticalContentAlignment="Center" Width="200" SelectionChanged="speechSelect_SelectionChanged" ></ComboBox>
+                    <Label Content="语言" Width="100" VerticalContentAlignment="Center"></Label>
+                    <ComboBox x:Name="language" VerticalContentAlignment="Center" Height="30" Width="200" SelectionChanged="language_Select_SelectionChanged" ></ComboBox>
                 </StackPanel>
             </Grid>
 
-
-            <Grid Grid.Column="0" Grid.Row="1"  Margin="0,10,0,0">
+            <Grid Grid.Column="0" Grid.Row="1" >
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="选择语气" Width="100"></Label>
-                    <ComboBox x:Name="styleSelect" DisplayMemberPath="Style" VerticalContentAlignment="Center" Width="200" SelectionChanged="styleSelect_SelectionChanged" >
+                    <Label Content="人物代码" Width="100" VerticalContentAlignment="Center"></Label>
+                    <ComboBox x:Name="speechSelect" DisplayMemberPath="Name" VerticalContentAlignment="Center" Height="30" Width="200" SelectionChanged="person_Select_SelectionChanged" ></ComboBox>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="0" Grid.Row="2">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="语气" Width="100" VerticalContentAlignment="Center"></Label>
+                    <ComboBox x:Name="styleSelect" DisplayMemberPath="Style" VerticalContentAlignment="Center" Height="30" Width="200" SelectionChanged="styleSelect_SelectionChanged" >
                         <ComboBox.ItemContainerStyle>
                             <Style TargetType="ComboBoxItem">
                                 <Setter Property="ToolTip">
@@ -61,24 +73,24 @@
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Column="0" Grid.Row="2" Margin="0,10,0,0">
+            <Grid Grid.Column="0" Grid.Row="3">
                 <StackPanel Orientation="Horizontal" >
-                    <Label x:Name="degreelable" Content="语气强度" Width="100"></Label>
-                    <Slider x:Name="degree" Minimum="0" Maximum="2" Width="200" Value="0" TickFrequency="0.1" IsSnapToTickEnabled="True" TickPlacement="TopLeft" ValueChanged="slider_ValueChanged"></Slider>
+                    <Label x:Name="degreelable" Content="语气强度" Width="100" VerticalContentAlignment="Center"></Label>
+                    <Slider x:Name="degree" Minimum="0" Maximum="2" Width="200" Value="0" TickFrequency="0.1" Height="30" IsSnapToTickEnabled="True" TickPlacement="TopLeft" ValueChanged="slider_ValueChanged"></Slider>
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Column="0" Grid.Row="3"  Margin="0,10,0,0">
+            <Grid Grid.Column="0" Grid.Row="4">
                 <StackPanel Orientation="Horizontal">
-                    <Label x:Name="ratelable" Content="语速" Width="100"></Label>
-                    <Slider x:Name="rate" Minimum="-5" Maximum="5" Width="200" Value="1" TickFrequency="0.1" IsSnapToTickEnabled="True" TickPlacement="TopLeft"  ValueChanged="slider_ValueChanged"></Slider>
+                    <Label x:Name="ratelable" Content="语速" Width="100" VerticalContentAlignment="Center"></Label>
+                    <Slider x:Name="rate" Minimum="-5" Maximum="5" Width="200" Value="1" TickFrequency="0.1" Height="30" IsSnapToTickEnabled="True" TickPlacement="TopLeft"  ValueChanged="slider_ValueChanged"></Slider>
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Column="0" Grid.Row="4" Margin="0,10,0,0">
-                <StackPanel Orientation="Vertical">
-                    <TextBox Height="200" Width="300" HorizontalAlignment="Left" x:Name="speechText" BorderBrush="Black" AcceptsReturn="True" TextWrapping="WrapWithOverflow"></TextBox>
-                    <StackPanel Orientation="Horizontal">
+            <Grid Grid.Column="0" Grid.Row="5">
+                <StackPanel Orientation="Vertical" >
+                    <TextBox MinWidth="300" MinHeight="210" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="speechText" BorderBrush="Black" AcceptsReturn="True" TextWrapping="WrapWithOverflow"></TextBox>
+                    <StackPanel Margin="0,10,0,0" Orientation="Horizontal" VerticalAlignment="Bottom">
                         <Button x:Name="splastbutton" Content="上一步" Height="30" Width="100" Click="LastStep"></Button>
                         <Button x:Name="audition" Content="试听" Height="30" Width="100" HorizontalAlignment="Center" Click="Button_Click_ShiTing"></Button>
                         <Button x:Name="spnextbutton" Content="下一步" Height="30" Width="100" Click="NextStep"></Button>
@@ -88,41 +100,42 @@
             </Grid>
         </Grid>
 
-        <Grid x:Name="convertgrid" Height="400" Width="300" Background="White" Visibility="Hidden" Loaded="convertgrid_Loaded">
+        <!--翻译页面-->
+        <Grid x:Name="convertgrid" Height="450" Width="300" Background="White" Visibility="Hidden" Loaded="convertgrid_Loaded">
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="290"/>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition />
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="1"  Margin="0,10,0,0">
+            <Grid Grid.Row="1" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Name="flodertext" ToolTip="保存路径" Text="保存路径" VerticalContentAlignment="Center" Width="250" MouseDoubleClick="Button_Click_OpenFolder"/>
-                    <Button Width="50" Content="浏览..." Click="Button_Click_OpenFolder"></Button>
+                    <TextBox Name="flodertext" ToolTip="保存路径" Text="保存路径" Height="30" VerticalContentAlignment="Center" Width="250" MouseDoubleClick="Button_Click_OpenFolder"/>
+                    <Button Width="50" Height="30" Content="浏览..." Click="Button_Click_OpenFolder"></Button>
                 </StackPanel>
 
             </Grid>
             <Grid Grid.Row="0">
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Name="filetext" ToolTip="资源文件" Text="资源文件" VerticalContentAlignment="Center" Width="250" MouseDoubleClick="Button_Click_OpenFile"/>
-                    <Button Width="50" Content="浏览..." Click="Button_Click_OpenFile"></Button>
+                    <TextBox Name="filetext" ToolTip="资源文件" Text="资源文件" Height="30" VerticalContentAlignment="Center" Width="250" MouseDoubleClick="Button_Click_OpenFile"/>
+                    <Button Width="50" Height="30" Content="浏览..." Click="Button_Click_OpenFile"></Button>
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Row="2">
-                <DataGrid Name="datagrid" Width="300" Height="280" Margin="0,10,0,0" VerticalAlignment="Top" Grid.Column="3" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled">
+            <Grid Grid.Row="2" >
+                <DataGrid Name="datagrid"  Margin="0,5,0,0" VerticalAlignment="Top" Grid.Column="3" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding FileName}" Header="文件名" IsReadOnly="True" Width="80"/>
-                        <DataGridTextColumn Binding="{Binding Text}" Header="文本" IsReadOnly="True"  Width="170"/>
-                        <DataGridCheckBoxColumn Binding="{Binding IsProcessed}" Header="已保存" IsReadOnly="True"  Width="50" CanUserResize="False"/>
+                        <DataGridTextColumn Binding="{Binding FileName}" Header="文件名" IsReadOnly="True" />
+                        <DataGridTextColumn Binding="{Binding Text}" Header="文本" IsReadOnly="True"  />
+                        <DataGridCheckBoxColumn Binding="{Binding IsProcessed}" Header="已保存" IsReadOnly="True" Width="50"  CanUserResize="False"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
-            <Grid Grid.Row="3" Width="300">
-                <StackPanel Orientation="Horizontal">
-                    <Button Name="connextstep" Content="上一步" Width="100" Click="LastStep"></Button>
-                    <Button x:Name="start" Content="开始" Height="30" Width="100"  Margin="0,0,0,0" Click="Button_Click_StartTask"></Button>
-                    <Button x:Name="stop" Content="停止" Height="30" Width="100" Margin="0,0,0,0" Click="Button_Click_AbordTask"></Button>
+            <Grid Grid.Row="3" Width="300" VerticalAlignment="Bottom">
+                <StackPanel Orientation="Horizontal" >
+                    <Button Name="connextstep" Content="上一步" Height="30" Width="100" Click="LastStep"></Button>
+                    <Button x:Name="start" Content="开始" Height="30" Width="100" Click="Button_Click_StartTask"></Button>
+                    <Button x:Name="stop" Content="停止" Height="30" Width="100" Click="Button_Click_AbordTask"></Button>
                 </StackPanel>
             </Grid>
 

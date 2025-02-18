@@ -1,9 +1,9 @@
 ﻿using Microsoft.CognitiveServices.Speech;
-using SpeechGenerator.Models;
+using OpenTTS.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace SpeechGenerator.Handller
+namespace OpenTTS.Handller
 {
     internal class SpeechGen : IDisposable
     {

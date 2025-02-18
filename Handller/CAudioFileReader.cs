@@ -3,7 +3,7 @@ using NAudio.Wave.SampleProviders;
 using System;
 using System.IO;
 
-namespace SpeechGenerator.Handller
+namespace OpenTTS.Handller
 {
     /// <summary>
     /// 重新实现NAudio读取文件的类，使其可以直接从内存中读取字节流

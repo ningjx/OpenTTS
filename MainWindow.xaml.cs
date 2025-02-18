@@ -1,10 +1,12 @@
-﻿using SpeechGenerator.Handller;
-using SpeechGenerator.Models;
+﻿using OpenTTS.Handller;
+using OpenTTS.Models;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
-namespace SpeechGenerator
+namespace OpenTTS
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
@@ -31,8 +33,10 @@ namespace SpeechGenerator
             else
                 configSpeech.Visibility = Visibility.Visible;
 
+            language.ItemsSource = Enum.GetValues(typeof(LanguageEnum));
+            language.SelectedIndex = 0;
             //绑定支持的语言风格
-            speechSelect.ItemsSource = ResourcePool.SpeechResource;
+            //speechSelect.ItemsSource = ResourcePool.SpeechResource;
             //从配置中加载选择的语言风格、语气、语气强度和语速
             speechSelect.SelectedItem = ResourcePool.SpeechResource.First(t => t.Code == ResourcePool.Config.SpeechConf.SpeechCode);
 
@@ -73,15 +77,16 @@ namespace SpeechGenerator
         }
 
         /// <summary>
-        /// 选择语气
+        /// 选择语言
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void styleSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void language_Select_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var combox = sender as ComboBox;
-            var style = combox.SelectedValue as SpeechStyle;
-            ResourcePool.Config.SpeechConf.SpeechStyle = style?.Style;
+            var selectLan = combox.SelectedIndex;
+            speechSelect.ItemsSource = ResourcePool.SpeechResource.Where(l =>  (int)l.Language == selectLan);
+            speechSelect.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -89,7 +94,7 @@ namespace SpeechGenerator
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void speechSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void person_Select_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var combox = sender as ComboBox;
             var selectItem = (Voice)combox.SelectedValue;
@@ -102,6 +107,19 @@ namespace SpeechGenerator
             var styles = ResourcePool.SpeechResource.Where(l => l.Code == ResourcePool.Config.SpeechConf.SpeechCode).FirstOrDefault()?.Styles;
             styleSelect.ItemsSource = styles;
             styleSelect.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// 选择语气
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void styleSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var combox = sender as ComboBox;
+            var style = combox.SelectedValue as SpeechStyle;
+            if (style != null)
+                ResourcePool.Config.SpeechConf.SpeechStyle = style.Style;
         }
 
         /// <summary>
@@ -318,5 +336,7 @@ namespace SpeechGenerator
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://gitee.com/n-i-n-g/OpenTTS/releases");
         }
+
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SpeechGenerator.Handller;
-using SpeechGenerator.Models;
+using OpenTTS.Handller;
+using OpenTTS.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpeechGenerator.Handller.Tests
+namespace OpenTTS.Handller.Tests
 {
     [TestClass()]
     public class SpeechConverterTests

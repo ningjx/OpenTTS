@@ -1,14 +1,14 @@
 ﻿using Newtonsoft.Json;
-using SpeechGenerator.Handller;
-using SpeechGenerator.Models;
+using OpenTTS.Handller;
+using OpenTTS.Models;
 using System;
 using System.IO;
 
-namespace SpeechGenerator
+namespace OpenTTS
 {
     public class Config
     {
-        //private static readonly string CnfPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\SpeechGenerator";
+        //private static readonly string CnfPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\OpenTTS";
         private static readonly string CnfPath = $"{System.IO.Directory.GetCurrentDirectory()}";
 
         [JsonProperty("服务秘钥")]
@@ -83,11 +83,12 @@ namespace SpeechGenerator
         {
             SpeechConf sConfig = new SpeechConf
             {
-                SpeechLang = "zh-cn",
+                SpeechLang = LanguageEnum.zh_CN,
                 SpeechCode = "zh-CN-XiaoxiaoNeural",
                 SpeechRate = 1,
-                SpeechStyle = "cheerful",
-                SpeechDegree = 1
+                SpeechStyle = SpeechStyleEnum.cheerful,
+                SpeechDegree = 1,
+                Role = RoleEnum.Unspecified
             };
 
             Config config = new Config

@@ -2,9 +2,9 @@
 using Newtonsoft.Json;
 using System;
 using System.Text.RegularExpressions;
-using static SpeechGenerator.Models.Voice;
+using static OpenTTS.Models.Voice;
 
-namespace SpeechGenerator.Models.Tests
+namespace OpenTTS.Models.Tests
 {
     [TestClass()]
     public class SpeechResourceTests
@@ -17,7 +17,7 @@ namespace SpeechGenerator.Models.Tests
         public void LoadSpeechResourcesTest()
         {
             var a = new a();
-            a.b = GenderEnum.Male;
+            a.b = GenderEnum.男;
             string test = JsonConvert.SerializeObject(a);
             Console.WriteLine(test);
         }

@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace SpeechGenerator
+namespace OpenTTS
 {
     public static class Helper
     {

@@ -1,11 +1,11 @@
 ﻿using NAudio.Wave;
-using SpeechGenerator.Models;
+using OpenTTS.Models;
 using System;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace SpeechGenerator.Handller
+namespace OpenTTS.Handller
 {
     internal static class FileHelper
     {

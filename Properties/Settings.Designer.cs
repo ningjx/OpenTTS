@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SpeechGenerator.Properties
+namespace OpenTTS.Properties
 {
 
 

@@ -1,7 +1,7 @@
-﻿using SpeechGenerator.Models;
+﻿using OpenTTS.Models;
 using System.Threading.Tasks;
 
-namespace SpeechGenerator.Handller
+namespace OpenTTS.Handller
 {
     public class SpeechConverter
     {
@@ -68,18 +68,18 @@ namespace SpeechGenerator.Handller
             var result = xml;
             if (textItem.SpeechConf == null)
             {
-                result = result.Replace("@Param1", ResourcePool.Config.SpeechConf.SpeechLang);
+                result = result.Replace("@Param1", ResourcePool.Config.SpeechConf.SpeechLang.ToString());
                 result = result.Replace("@Param2", ResourcePool.Config.SpeechConf.SpeechCode);
                 result = result.Replace("@Param3", ResourcePool.Config.SpeechConf.SpeechRate.ToString("F1"));
-                result = result.Replace("@Param4", ResourcePool.Config.SpeechConf.SpeechStyle);
+                result = result.Replace("@Param4", ResourcePool.Config.SpeechConf.SpeechStyle.ToString());
                 result = result.Replace("@Param5", ResourcePool.Config.SpeechConf.SpeechDegree.ToString("F1"));
             }
             else
             {
-                result = result.Replace("@Param1", textItem.SpeechConf.SpeechLang);
+                result = result.Replace("@Param1", textItem.SpeechConf.SpeechLang.ToString());
                 result = result.Replace("@Param2", textItem.SpeechConf.SpeechCode);
                 result = result.Replace("@Param3", textItem.SpeechConf.SpeechRate.ToString());
-                result = result.Replace("@Param4", textItem.SpeechConf.SpeechStyle);
+                result = result.Replace("@Param4", textItem.SpeechConf.SpeechStyle.ToString());
                 result = result.Replace("@Param5", textItem.SpeechConf.SpeechDegree.ToString());
             }
             result = result.Replace("@Param6", textItem.Text);

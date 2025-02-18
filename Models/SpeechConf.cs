@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using NAudio.CoreAudioApi;
+using Newtonsoft.Json;
 
-namespace SpeechGenerator.Models
+namespace OpenTTS.Models
 {
     /// <summary>
     /// 通过语音合成标记语言 (SSML) 改善合成
@@ -9,7 +10,7 @@ namespace SpeechGenerator.Models
     public class SpeechConf
     {
         /// <summary>
-        /// 语音语言 zh-cn zh-hk zh-tw，实际全部使用zh-cn即可
+        /// 语言
         /// </summary>
         [JsonProperty("语言代码")]
         public LanguageEnum SpeechLang { get; set; }
@@ -33,5 +34,7 @@ namespace SpeechGenerator.Models
         /// </summary>
         [JsonProperty("语气强度")] 
         public double SpeechDegree { get; set; }
+        [JsonProperty("角色")]
+        public RoleEnum Role { get; set; }
     }
 }

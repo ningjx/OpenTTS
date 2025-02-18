@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechGenerator", "SpeechGenerator.csproj", "{75493138-32D2-4F35-9DDF-5125FD579F2B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTTS", "OpenTTS.csproj", "{75493138-32D2-4F35-9DDF-5125FD579F2B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{2968F72A-C579-40F4-93D5-A04D53985933}"
 EndProject
