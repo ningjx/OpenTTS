@@ -1,0 +1,545 @@
+﻿String ID,Source text,Translation,Context,Path,Filename
+1,0,0,,SYSTEM,0000.wav
+2,1,1,,SYSTEM,0001.wav
+3,2,2,,SYSTEM,0002.wav
+4,3,3,,SYSTEM,0003.wav
+5,4,4,,SYSTEM,0004.wav
+6,5,5,,SYSTEM,0005.wav
+7,6,6,,SYSTEM,0006.wav
+8,7,7,,SYSTEM,0007.wav
+9,8,8,,SYSTEM,0008.wav
+10,9,9,,SYSTEM,0009.wav
+11,10,10,,SYSTEM,0010.wav
+12,11,11,,SYSTEM,0011.wav
+13,12,12,,SYSTEM,0012.wav
+14,13,13,,SYSTEM,0013.wav
+15,14,14,,SYSTEM,0014.wav
+16,15,15,,SYSTEM,0015.wav
+17,16,16,,SYSTEM,0016.wav
+18,17,17,,SYSTEM,0017.wav
+19,18,18,,SYSTEM,0018.wav
+20,19,19,,SYSTEM,0019.wav
+21,20,20,,SYSTEM,0020.wav
+22,21,21,,SYSTEM,0021.wav
+23,22,22,,SYSTEM,0022.wav
+24,23,23,,SYSTEM,0023.wav
+25,24,24,,SYSTEM,0024.wav
+26,25,25,,SYSTEM,0025.wav
+27,26,26,,SYSTEM,0026.wav
+28,27,27,,SYSTEM,0027.wav
+29,28,28,,SYSTEM,0028.wav
+30,29,29,,SYSTEM,0029.wav
+31,30,30,,SYSTEM,0030.wav
+32,31,31,,SYSTEM,0031.wav
+33,32,32,,SYSTEM,0032.wav
+34,33,33,,SYSTEM,0033.wav
+35,34,34,,SYSTEM,0034.wav
+36,35,35,,SYSTEM,0035.wav
+37,36,36,,SYSTEM,0036.wav
+38,37,37,,SYSTEM,0037.wav
+39,38,38,,SYSTEM,0038.wav
+40,39,39,,SYSTEM,0039.wav
+41,40,40,,SYSTEM,0040.wav
+42,41,41,,SYSTEM,0041.wav
+43,42,42,,SYSTEM,0042.wav
+44,43,43,,SYSTEM,0043.wav
+45,44,44,,SYSTEM,0044.wav
+46,45,45,,SYSTEM,0045.wav
+47,46,46,,SYSTEM,0046.wav
+48,47,47,,SYSTEM,0047.wav
+49,48,48,,SYSTEM,0048.wav
+50,49,49,,SYSTEM,0049.wav
+51,50,50,,SYSTEM,0050.wav
+52,51,51,,SYSTEM,0051.wav
+53,52,52,,SYSTEM,0052.wav
+54,53,53,,SYSTEM,0053.wav
+55,54,54,,SYSTEM,0054.wav
+56,55,55,,SYSTEM,0055.wav
+57,56,56,,SYSTEM,0056.wav
+58,57,57,,SYSTEM,0057.wav
+59,58,58,,SYSTEM,0058.wav
+60,59,59,,SYSTEM,0059.wav
+61,60,60,,SYSTEM,0060.wav
+62,61,61,,SYSTEM,0061.wav
+63,62,62,,SYSTEM,0062.wav
+64,63,63,,SYSTEM,0063.wav
+65,64,64,,SYSTEM,0064.wav
+66,65,65,,SYSTEM,0065.wav
+67,66,66,,SYSTEM,0066.wav
+68,67,67,,SYSTEM,0067.wav
+69,68,68,,SYSTEM,0068.wav
+70,69,69,,SYSTEM,0069.wav
+71,70,70,,SYSTEM,0070.wav
+72,71,71,,SYSTEM,0071.wav
+73,72,72,,SYSTEM,0072.wav
+74,73,73,,SYSTEM,0073.wav
+75,74,74,,SYSTEM,0074.wav
+76,75,75,,SYSTEM,0075.wav
+77,76,76,,SYSTEM,0076.wav
+78,77,77,,SYSTEM,0077.wav
+79,78,78,,SYSTEM,0078.wav
+80,79,79,,SYSTEM,0079.wav
+81,80,80,,SYSTEM,0080.wav
+82,81,81,,SYSTEM,0081.wav
+83,82,82,,SYSTEM,0082.wav
+84,83,83,,SYSTEM,0083.wav
+85,84,84,,SYSTEM,0084.wav
+86,85,85,,SYSTEM,0085.wav
+87,86,86,,SYSTEM,0086.wav
+88,87,87,,SYSTEM,0087.wav
+89,88,88,,SYSTEM,0088.wav
+90,89,89,,SYSTEM,0089.wav
+91,90,90,,SYSTEM,0090.wav
+92,91,91,,SYSTEM,0091.wav
+93,92,92,,SYSTEM,0092.wav
+94,93,93,,SYSTEM,0093.wav
+95,94,94,,SYSTEM,0094.wav
+96,95,95,,SYSTEM,0095.wav
+97,96,96,,SYSTEM,0096.wav
+98,97,97,,SYSTEM,0097.wav
+99,98,98,,SYSTEM,0098.wav
+100,99,99,,SYSTEM,0099.wav
+101,100,100,,SYSTEM,0100.wav
+102,200,200,,SYSTEM,0101.wav
+103,300,300,,SYSTEM,0102.wav
+104,400,400,,SYSTEM,0103.wav
+105,500,500,,SYSTEM,0104.wav
+106,600,600,,SYSTEM,0105.wav
+107,700,700,,SYSTEM,0106.wav
+108,800,800,,SYSTEM,0107.wav
+109,900,900,,SYSTEM,0108.wav
+110,thousand,千,,SYSTEM,0109.wav
+111,and,和,,SYSTEM,0110.wav
+112,minus,负,,SYSTEM,0111.wav
+113,point,点,,SYSTEM,0112.wav
+114,volt,伏,,SYSTEM,volt0.wav
+115,volts,伏,,SYSTEM,volt1.wav
+116,amp,安,,SYSTEM,amp0.wav
+117,amps,安,,SYSTEM,amp1.wav
+118,milliamp,毫安,,SYSTEM,mamp0.wav
+119,milliamps,毫安,,SYSTEM,mamp1.wav
+120,knot,节,,SYSTEM,knot0.wav
+121,knots,节,,SYSTEM,knot1.wav
+122,meter per second,米每秒,,SYSTEM,mps0.wav
+123,meters per second,米每秒,,SYSTEM,mps1.wav
+124,foot per second,英尺每秒,,SYSTEM,fps0.wav
+125,feet per second,英尺每秒,,SYSTEM,fps1.wav
+126,kilometer per hour,公里每小时,,SYSTEM,kph0.wav
+127,kilometers per hour,公里每小时,,SYSTEM,kph1.wav
+128,mile per hour,英里每小时,,SYSTEM,mph0.wav
+129,miles per hour,英里每小时,,SYSTEM,mph1.wav
+130,meter,米,,SYSTEM,meter0.wav
+131,meters,米,,SYSTEM,meter1.wav
+132,foot,英尺,,SYSTEM,foot0.wav
+133,feet,英尺,,SYSTEM,foot1.wav
+134,degree celsius,摄氏度,,SYSTEM,celsius0.wav
+135,degrees celsius,摄氏度,,SYSTEM,celsius1.wav
+136,degree fahrenheit,华氏度,,SYSTEM,fahr0.wav
+137,degrees fahrenheit,华氏度,,SYSTEM,fahr1.wav
+138,percent,百分比,,SYSTEM,percent0.wav
+139,percent,百分比,,SYSTEM,percent1.wav
+140,milliamp-hour,毫安时,,SYSTEM,mamph0.wav
+141,milliamp-hours,毫安时,,SYSTEM,mamph1.wav
+142,watt,瓦,,SYSTEM,watt0.wav
+143,watts,瓦,,SYSTEM,watt1.wav
+144,milli-watt,毫瓦,,SYSTEM,mwatt0.wav
+145,milli-watts,毫瓦,,SYSTEM,mwatt1.wav
+146,DB,分贝,,SYSTEM,db0.wav
+147,DB,分贝,,SYSTEM,db1.wav
+148,RPM,赚每分,,SYSTEM,rpm0.wav
+149,RPM,赚每分,,SYSTEM,rpm1.wav
+150,g,克,,SYSTEM,g0.wav
+151,g,克,,SYSTEM,g1.wav
+152,degree,度,,SYSTEM,degree0.wav
+153,degrees,度,,SYSTEM,degree1.wav
+154,radian,弧度,,SYSTEM,rad0.wav
+155,radians,弧度,,SYSTEM,rad1.wav
+156,millilitre,毫升,,SYSTEM,ml0.wav
+157,millilitres,毫升,,SYSTEM,ml1.wav
+158,fluid ounce,盎司,,SYSTEM,founce0.wav
+159,fluid ounces,盎司,,SYSTEM,founce1.wav
+160,millilitre per minute,毫升每分钟,,SYSTEM,mlpm0.wav
+161,millilitres per minute,毫升每分钟,,SYSTEM,mlpm1.wav
+162,hertz,赫兹,,SYSTEM,hertz0.wav
+163,hertz,赫兹,,SYSTEM,hertz1.wav
+164,milli-second,毫秒,,SYSTEM,ms0.wav
+165,milli-seconds,毫秒,,SYSTEM,ms1.wav
+166,microsecond,微秒,,SYSTEM,us0.wav
+167,microseconds,微秒,,SYSTEM,us1.wav
+168,hour,小时,,SYSTEM,hour0.wav
+169,hours,小时,,SYSTEM,hour1.wav
+170,minute,分钟,,SYSTEM,minute0.wav
+171,minutes,分钟,,SYSTEM,minute1.wav
+172,second,秒,,SYSTEM,second0.wav
+173,seconds,秒,,SYSTEM,second1.wav
+174,point zero,点零,,SYSTEM,0167.wav
+175,point one,点一,,SYSTEM,0168.wav
+176,point two,点二,,SYSTEM,0169.wav
+177,point three,点三,,SYSTEM,0170.wav
+178,point four,点四,,SYSTEM,0171.wav
+179,point five,点五,,SYSTEM,0172.wav
+180,point six,点六,,SYSTEM,0173.wav
+181,point seven,点七,,SYSTEM,0174.wav
+182,point eight,点八,,SYSTEM,0175.wav
+183,point nine,点九,,SYSTEM,0176.wav
+184,trim center,微调中点,,SYSTEM,midtrim.wav
+185,maximum trim reached,微调最大,,SYSTEM,maxtrim.wav
+186,minimum trim reached,微调最小,,SYSTEM,mintrim.wav
+187,timer 1 elapsed,计时器1已超时,,SYSTEM,timovr1.wav
+188,timer 2 elapsed,计时器2已超时,,SYSTEM,timovr2.wav
+189,timer 3 elapsed,计时器3已超时,,SYSTEM,timovr3.wav
+190,transmitter battery low,遥控器电量低,,SYSTEM,lowbatt.wav
+191,inactivity alarm,警告 长时间无操作,,SYSTEM,inactiv.wav
+192,throttle warning,警告 油门位置不正确,,SYSTEM,thralert.wav
+193,switch warning,警告 开关位置不正确,,SYSTEM,swalert.wav
+194,bad eeprom,警告 存储错误,,SYSTEM,eebad.wav
+195,Welcome to EdgeTX,欢迎使用Edge TX,,SYSTEM,hello.wav
+196,RF signal low,射频信号弱,,SYSTEM,rssi_org.wav
+197,RF signal critical,射频信号极弱,,SYSTEM,rssi_red.wav
+198,radio antenna defective,天线故障,,SYSTEM,swr_red.wav
+199,telemetry lost,回传丢失,,SYSTEM,telemko.wav
+200,telemetry recovered,回传恢复,,SYSTEM,telemok.wav
+201,Trainer connected,教练信号已连接,,SYSTEM,trainco.wav
+202,trainer signal lost,教练信号丢失,,SYSTEM,trainko.wav
+203,trainer signal recovered,教练信号恢复,,SYSTEM,trainok.wav
+204,sensor lost,传感器丢失,,SYSTEM,sensorko.wav
+205,servo overload,舵机过载,,SYSTEM,servoko.wav
+206,power overload,功率过载,,SYSTEM,rxko.wav
+207,receiver still connected,接收机未关闭,,SYSTEM,modelpwr.wav
+208,armed,已解锁,,,armed.wav
+209,disarmed,已锁定,,,disarm.wav
+210,throttle cut,油门关断,,,thrcut.wav
+211,throttle active,油门开启,,,thract.wav
+212,gear up,收起起落架,plane,,gearup.wav
+213,gear down,放下起落架,plane,,geardn.wav
+214,flaps up,收起襟翼,plane,,flapup.wav
+215,flaps down,放下襟翼,plane,,flapdn.wav
+216,spoiler up,收起扰流板,,,splrup.wav
+217,spoiler down,放下扰流板,,,splrdn.wav
+218,trainer on,开启教练功能,,,trnon.wav
+219,trainer off,关闭教练功能,,,trnoff.wav
+220,engine off,关闭引擎,,,engoff.wav
+221,too high,太高,,,tohigh.wav
+222,too low,太低,,,tolow.wav
+223,low battery,电量低,,,lowbat.wav
+224,crow on,反推打开,,,crowon.wav
+225,crow off,反推关闭,,,crowof.wav
+226,rf signal low,射频信号弱,rc-link,,siglow.wav
+227,rf signal critical,射频信号极弱,rc-link,,sigcrt.wav
+228,LQ,连接质量,rc-link,,lq.wav
+229,RF mode,射频模式,rc-link,,rfmode.wav
+230,high speed mode active,高速模式激活,rc-link,,spdmod.wav
+231,thermal mode on,热气流模式打开,,,thmmod.wav
+232,normal mode on,正常模式打开,,,nrmmod.wav
+233,landing mode on,降落模式打开,,,lnding.wav
+234,acro mode on,特技模式打开,,,acro.wav
+235,flight mode 1,飞行模式1,,,fm-1.wav
+236,flight mode 2,飞行模式2,,,fm-2.wav
+237,flight mode 3,飞行模式3,,,fm-3.wav
+238,flight mode 4,飞行模式4,,,fm-4.wav
+239,flight mode 5,飞行模式5,,,fm-5.wav
+240,flight mode 6,飞行模式6,,,fm-6.wav
+241,flight mode 7,飞行模式7,,,fm-7.wav
+242,flight mode 8,飞行模式8,,,fm-8.wav
+244,vario on,升降仪开启,,,vrion.wav
+245,vario off,升降仪关闭,,,vrioff.wav
+246,flight mode power,动力模式,,,fm-pwr.wav
+247,flight mode land,降落模式,,,fm-lnd.wav
+248,flight mode float,悬停模式,,,fm-flt.wav
+249,flight mode speed,高速模式,,,fm-spd.wav
+250,flight mode fast,快速模式,,,fm-fst.wav
+251,flight mode normal,正常模式,,,fm-nrm.wav
+252,flight mode cruise,巡航模式,,,fm-crs.wav
+253,flight mode acro,特技模式,,,fm-acr.wav
+254,flight mode race,竞速模式,,,fm-rce.wav
+255,flight mode launch,抛飞模式,,,fm-lch.wav
+256,flight mode ping,平飞模式,,,fm-png.wav
+257,flight mode thermal,热气流模式,,,fm-thm.wav
+258,flight mode thermal left,左侧热气流模式,,,fm-thl.wav
+259,flight mode thermal right,右侧热气流模式,,,fm-thr.wav
+260,flight mode stabilise,自稳模式,,,fm-stb.wav
+261,flight mode horizon,水平自稳模式,,,fm-hor.wav
+262,flight mode angle,ANGLE模式,,,fm-ang.wav
+263,flight mode idle up 1,怠速模式加一档,,,fm-id1.wav
+264,flight mode idle up 2,怠速模式加二档,,,fm-id2.wav
+265,low rate,低比率,,,ratlow.wav
+266,medium rate,中比率,,,ratmed.wav
+267,high rate,高比率,,,rathi.wav
+268,take off,起飞,,,takeof.wav
+269,sport,运动,,,sport.wav
+270,pattern,模式,,,pattrn.wav
+271,3D,3D,,,3d.wav
+272,landing,降落中,,,landin.wav
+273,idle up 1,怠速加一档,,,idleu1.wav
+274,idle up 2,怠速加二档,,,idleu2.wav
+275,normal mode,正常模式,,,normod.wav
+276,bank 0,分组0,,,bank-0.wav
+277,bank 1,分组1,,,bank-1.wav
+278,bank 2,分组2,,,bank-2.wav
+279,bank 3,分组3,,,bank-3.wav
+280,heading lock,锁定航向,,,headlo.wav
+281,rate mode,速率模式,,,ratmod.wav
+282,3D Mode,3D模式,,,3d-mod.wav
+283,Stabilise Mode,自稳模式,,,stabmo.wav
+284,on,开,,,on.wav
+285,off,关,,,off.wav
+286,buzzer active,蜂鸣器激活,,,buzact.wav
+287,crash-flip active,坠机翻转激活,multicopter,,crfact.wav
+288,blackbox active,黑匣子激活,,,blkact.wav
+289,pre-arm active,预解锁激活,,,preact.wav
+290,stable mode,稳定模式,,,stbmod.wav
+291,brakes on,刹车打开,plane,,brakon.wav
+292,brakes off,刹车关闭,plane,,brakof.wav
+293,butterfly on,蝴蝶刹打开,,,btfon.wav
+294,butterfly off,蝴蝶刹关闭,,,btfoff.wav
+295,flaps one,襟翼1,plane,,flp1.wav
+296,flaps two,襟翼2,plane,,flp2.wav
+297,flaps three,襟翼3,plane,,flp3.wav
+298,flaps four,襟翼4,plane,,flp4.wav
+299,flaps five,襟翼5,plane,,flp5.wav
+300,wingsweep,机翼后掠,plane,,wngswp.wav
+301,wheelbrakes on,轮刹打开,plane,,whlbro.wav
+302,wheelbrakes off,轮刹关闭,plane,,whlbrf.wav
+303,manual mode,手动模式,,,manmod.wav
+304,acro mode,特技模式,,,acrmod.wav
+305,angle mode,angle模式,,,angmod.wav
+306,horizon mode,水平自稳模式,,,hznmod.wav
+307,launch mode,抛飞模式,,,lncmod.wav
+308,air mode,空中模式,,,airmod.wav
+309,pit mode,场地模式,,,pitmod.wav
+310,navigation cruise,导航 巡航,autopilot,,navcrs.wav
+311,navigation course hold,导航 航线保持,autopilot,,navcsh.wav
+312,navigation altitude hold,导航 定高,autopilot,,navalh.wav
+313,navigation position hold,导航 定点,autopilot,,navpos.wav
+314,navigation return to home,导航 返航,autopilot,,navrth.wav
+315,navigation waypoint,导航 导航点,autopilot,,navwp.wav
+316,cruise,巡航,autopilot,,cruise.wav
+317,course hold,巡航保持,autopilot,,crshld.wav
+318,altitude hold,定高,autopilot,,althld.wav
+319,position hold,定点,autopilot,,poshld.wav
+320,return to home,返航,autopilot,,rth.wav
+321,waypoint,航点,autopilot,,waypnt.wav
+322,manual,手动,,,manual.wav
+323,auto,自动,,,auto.wav
+324,OSD,屏显,video,,osd.wav
+325,OSD profile,屏显配置,video,,osdprf.wav
+326,attitude hold mode,定高模式,autopilot,,sxrahd.wav
+327,manual mode,手动模式,,,sxrman.wav
+328,stabiliser mode,自稳模式,,,sxrsmd.wav
+329,stabiliser off,自稳关闭,,,sxrsof.wav
+330,stabiliser on,自稳打开,,,sxrstb.wav
+331,wind rejection mode,抗风模式,,,sxrwr.wav
+332,turtle mode on,乌龟模式打开,multicopter,,turton.wav
+333,turtle mode off,乌龟模式关闭,multicopter,,turtof.wav
+334,flip,翻滚,,,flip.wav
+335,Autorotation,自转,heli,,auro.wav
+336,failsafe active,故障保护激活,,,fsact.wav
+337,failsafe off,故障保护关闭,,,fsoff.wav
+338,OSD Profile 1,OSD配置1,video,,osd1.wav
+339,OSD Profile 2,OSD配置2,video,,osd2.wav
+340,OSD Profile 3,OSD配置3,video,,osd3.wav
+341,rate profile 1,速率配置1,,,rates1.wav
+342,rate profile 2,速率配置2,,,rates2.wav
+343,rate profile 3,速率配置3,,,rates3.wav
+344,rate profile 4,速率配置4,,,rates4.wav
+345,rate profile 5,速率配置5,,,rates5.wav
+346,rate profile 6,速率配置6,,,rates6.wav
+347,stick commands disabled,摇杆控制禁用,,,scmdof.wav
+348,stick commands enabled,摇杆控制启用,,,scmdon.wav
+349,telemetry,回传,,,telem.wav
+350,telemetry logging on,回传日志打开,,,tlogon.wav
+351,telemetry logging off,回传日志关闭,,,tlogof.wav
+352,VTX,图传,video,,vtx.wav
+353,VTX on,图传打开,video,,vtxon.wav
+354,VTX off,图传关闭,video,,vtxoff.wav
+355,VTX 25 milliwatts,图传 25毫瓦,video,,vtx25.wav
+356,VTX 50 milliwatts,图传 50毫瓦,video,,vtx50.wav
+357,VTX 100 milliwatts,图传 100毫瓦,video,,vtx100.wav
+358,VTX 200 milliwatts,图传 200毫瓦,video,,vtx200.wav
+359,VTX 300 milliwatts,图传 300毫瓦,video,,vtx300.wav
+360,VTX 400 milliwatts,图传 400毫瓦,video,,vtx400.wav
+361,VTX 500 milliwatts,图传 500毫瓦,video,,vtx500.wav
+362,VTX 600 milliwatts,图传 600毫瓦,video,,vtx600.wav
+363,VTX 700 milliwatts,图传 700毫瓦,video,,vtx700.wav
+364,VTX 800 milliwatts,图传 800毫瓦,video,,vtx800.wav
+365,VTX 900 milliwatts,图传 900毫瓦,video,,vtx900.wav
+366,VTX Pit Mode,图传 场地模式,video,,vtxpm.wav
+367,VTX Race Mode,图传 竞速模式,video,,vtxrm.wav
+368,VTX 1 watt,图传 1瓦,video,,vtx1w.wav
+369,VTX 2 watts,图传2瓦,video,,vtx2w.wav
+370,VTX 4 watts,图传 4瓦,video,,vtx4w.wav
+371,critical low battery,电池电量极低,,,clobat.wav
+372,start,开始,,,start.wav
+373,stop,停止,,,stop.wav
+374,lights on,灯光打开,,,lghton.wav
+375,lights off,灯光关闭,,,lghtof.wav
+376,buzzer off,蜂鸣器关闭,,,buzoff.wav
+377,dynamic TX power,遥控器动态功率,rc-link,,dyntxp.wav
+378,maximum TX power,遥控器最大功率,rc-link,,maxtxp.wav
+379,throttle hold,油门保持,plane/heli,,thrhld.wav
+380,throttle idle,油门怠速,plane/heli,,thridl.wav
+381,throttle release,油门关闭,plane/heli,,thrrel.wav
+382,negative pitch allowed,允许负螺距,heli,,negpon.wav
+383,negative pitch disallowed,禁止负螺距,heli,,negpof.wav
+384,autolaunch started,自动发射启动,autopilot,,alnch.wav
+385,rescue mode active,救援模式激活,autopilot,,rscmon.wav
+386,rescue mode off,救援模式关闭,autopilot,,rscmof.wav
+387,headfree mode active,无头模式激活,multicopter,,hdfmon.wav
+388,headfree mode off,无头模式关闭,multicopter,,hdfmof.wav
+389,heading adjust,航向调整,multicopter,,hdadj.wav
+390,FPV angle mix active,FPV角度混合激活,multicopter,,agmxon.wav
+391,FPV angle mix off,FPV角度混合关闭,multicopter,,agmxof.wav
+392,air mode on,空中模式开启,,,airmon.wav
+393,air mode off,空中模式关闭,,,airmof.wav
+394,OSD on,屏显打开,video,,osdon.wav
+395,OSD off,屏显关闭,video,,osdoff.wav
+396,return to home started,返航开始,autopilot,,rthstr.wav
+397,return to home stopped,返航停止,autopilot,,rthstp.wav
+398,waypoint navigation started,航点导航开始,autopilot,,wpnstr.wav
+399,waypoint navigation stopped,航点导航停止,autopilot,,wpnstp.wav
+400,course hold active,航向保持激活,autopilot,,crshon.wav
+401,course hold off,航向保持关闭,autopilot,,crshof.wav
+402,position hold active,位置保持激活,autopilot,,poshon.wav
+403,position hold off,位置保持关闭,autopilot,,poshof.wav
+404,altitude hold active,高度保持激活,autopilot,,althon.wav
+405,altitude hold off,高度保持关闭,autopilot,,althof.wav
+406,loiter,盘旋,autopilot,,loiter.wav
+407,safety on,安全模式打开,,,sftyon.wav
+408,safety off,安全模式关闭,,,sftyof.wav
+409,SAFE on,SAFE模式打开,plane,,safeon.wav
+410,SAFE off,SAFE模式关闭,plane,,safeof.wav
+411,flight envelope protection active,飞行包线保护激活,plane,,fepact.wav
+412,flight envelope protection off,飞行包线保护关闭,plane,,fepoff.wav
+413,timer 1 reset,计时器1重置,,,timrs1.wav
+414,timer 2 reset,计时器2重置,,,timrs2.wav
+415,timer 3 reset,计时器3重置,,,timrs3.wav
+416,expo 1,指数曲线1,,,expo1.wav
+417,expo 2,指数曲线2,,,expo2.wav
+418,expo 3,指数曲线3,,,expo3.wav
+419,active,激活,,,active.wav
+420,deactivated,停用,,,deact.wav
+421,enabled,启用,,,enabl.wav
+422,disabled,禁用,,,disabl.wav
+423,good,良好,,,good.wav
+424,bad,异常,,,bad.wav
+425,normal,正常,,,normal.wav
+426,warning,警告,,,warnng.wav
+427,danger,危险,,,danger.wav
+428,ready to fly,准备就绪,,,ready.wav
+429,home reset,返航点重置,,,homrst.wav
+430,GPS,GPS,,,gps.wav
+431,GPS on,GPS开启,,,gpson.wav
+432,GPS off,GPS关闭,,,gpsoff.wav
+433,VTX Frequency R1,图传频率1,video,,vtxfr1.wav
+434,VTX Frequency R2,图传频率2,video,,vtxfr2.wav
+435,VTX Frequency R3,图传频率3,video,,vtxfr3.wav
+436,VTX Frequency R4,图传频率4,video,,vtxfr4.wav
+437,VTX Frequency R5,图传频率5,video,,vtxfr5.wav
+438,VTX Frequency R6,图传频率6,video,,vtxfr6.wav
+439,VTX Frequency R7,图传频率7,video,,vtxfr7.wav
+440,VTX Frequency R8,图传频率8,video,,vtxfr8.wav
+441,VTX Maximum Power,图传最大功率,video,,vtxmax.wav
+442,blackbox erase,黑匣子擦除,,,blkers.wav
+443,acro trainer mode,特技训练模式,,,actnmd.wav
+444,Camera wifi button,相机WiFi按钮,camera,,cwifi.wav
+445,Camera power button,相机电源按钮,camera,,cpower.wav
+446,Camera change mode,相机模式切换,camera,,cmode.wav
+447,Camera start,相机打开,camera,,cstart.wav
+448,Camera stop,相机停止,camera,,cstop.wav
+449,Recording start,录制开始,,,recsrt.wav
+450,Recording stop,录制停止,,,recstp.wav
+451,Start recording,开始录制,,,strtrc.wav
+452,Stop recording,停止录制,,,stoprc.wav
+453,DBM,分贝毫瓦,,SYSTEM,dbm0.wav
+454,DBM,分贝毫瓦,,SYSTEM,dbm1.wav
+455,kilometer,千米,,SYSTEM,km0.wav
+456,kilometers,千米,,SYSTEM,km1.wav
+457,Reverse Thrust,反推,plane,,revthr.wav
+458,Reverse Thrust On,反推打开,plane,,revon.wav
+459,Reverse Thrust Off,反推关闭,plane,,revoff.wav
+460,Reverse Thrust Idle,反推怠速,plane,,revid.wav
+461,Forward Thrust,正向推力,plane,,revfwd.wav
+462,telemetry connected,回传已连接,,SYSTEM,telemco.wav
+463,level mode,水平模式,flight controller,,lvlmod.wav
+464,diffs locked,差速锁锁定,car,,difloc.wav
+465,diffs unlocked,差速锁解锁,car,,difulc.wav
+466,engine start,引擎启动,car,,engsrt.wav
+467,engine stop,引擎停止,car,,engstp.wav
+468,engine on,引擎开启,car,,engon.wav
+469,Turn signals on,转向灯打开,car,,turnon.wav
+470,Turn signals off,转向灯关闭,car,,turnof.wav
+471,High gear,高速档,car,,highgr.wav
+472,Low gear,低速档,car,,lowgr.wav
+473,Dig mode,挖掘模式,car,,digmod.wav
+474,Two wheel drive,两轮驱动,car,,2wd.wav
+475,Four wheel drive,四轮驱动,car,,4wd.wav
+476,Winch in,绞盘收回,car,,wchin.wav
+477,Winch out,绞盘放出,car,,wchout.wav
+478,Front Steer,前轮转向,car,,str-f.wav
+479,Rear Steer,后轮转向,car,,str-r.wav
+480,Four Wheel Steer,四轮转向,car,,str-4w.wav
+481,Mirror Steer,镜像转向,car,,str-mr.wav
+482,Crab Steer,蟹行转向,car,,str-cr.wav
+483,Motor armed,电机解锁,soaretx,,motarm.wav
+484,Power,电源,soaretx,,power.wav
+485,Speed,速度,soaretx,,speed.wav
+486,Thermal,热敏,soaretx,,therml.wav
+487,Front wheel drive,前轮驱动,car,,fwd.wav
+488,Rear wheel drive,后轮驱动,car,,rwd.wav
+489,All wheel drive,全轮驱动,car,,awd.wav
+490,Throttle enabled,油门启用,car,,thren.wav
+491,Throttle disabled,油门禁用,car,,thrdis.wav
+492,Winch enabled,绞盘启用,car,,wchen.wav
+493,Winch disabled,绞盘禁用,car,,wchdis.wav
+494,Drift mode on,漂移模式打开,car,,drifon.wav
+495,Drift mode off,漂移模式关闭,car,,drifof.wav
+496,Gyro enabled,陀螺仪启用,,,gyroon.wav
+497,Gyro disabled,陀螺仪禁用,,,gyroof.wav
+498,Launch control active,弹射激活,,,launch.wav
+499,Wet mode enabled,湿地模式启用,,,wetmde.wav
+500,Max gyro,最大陀螺仪灵敏度,,,maxgyr.wav
+501,Max assistance,最大辅助,,,maxast.wav
+502,Overheating,过热,,,overht.wav
+503,Motor overheating,电机过热,,,mothot.wav
+504,Drift Mode Enabled,漂移模式启用,,,drifen.wav
+505,Drift Mode Disabled,漂移模式禁用,,,drifdb.wav
+506,Screenshot,截图,,,screns.wav
+507,Cell,单节电池,,,cell.wav
+508,Transmitter Battery Low,遥控器电池低电量,,,txbatl.wav
+509,Left,左,,,left.wav
+510,Right,右,,,right.wav
+511,Shift,换挡,,,shift.wav
+512,Stability Control On,稳定控制打开,,,sbcton.wav
+513,Stability Control Off,稳定控制关闭,,,sbctof.wav
+514,Stability Control Enabled,稳定控制启用,,,sbcten.wav
+515,Stability Control Disabled,稳定控制禁用,,,sbctdb.wav
+516,Thermal Warning,过热警告,,,thmwrn.wav
+517,Servo Overload,舵机过载,,,srvovl.wav
+518,BEC Overload,BEC过载,,,becovl.wav
+519,Stability Control,稳定控制,,,sbct.wav
+520,Stability Control - Standard,稳定控制-标准,,,sbctst.wav
+521,Gyro,陀螺仪,,,gyro.wav
+522,Low,低,,,low.wav
+523,Medium,中,,,medium.wav
+524,High,高,,,high.wav
+525,Standard,标准,,,stanrd.wav
+526,Bash Mode,猛冲模式,car,,bashmd.wav
+527,Race Mode,竞速模式,car,,racemd.wav
+528,Chill Mode,休闲模式,car,,chilmd.wav
+529,Trainer Mode,训练模式,car,,trnmd.wav
+530,Speed Mode,速度模式,car,,spdmd.wav
+531,City Mode,城市模式,car,,citymd.wav
+532,Cruise Mode,巡航模式,car,,crusmd.wav
+533,Flaps Middle,襟翼中位,plane,,flapmd.wav
+534,Flaps Full,襟翼全开,plane,,flapfl.wav
+535,Motor On,电机开启,,,moton.wav
+536,Motor Off,电机关闭,,,motoff.wav
+537,Motor Idle,电机怠速,,,motidl.wav
+538,Autorotation,自转模式,heli,,autor.wav
+539,Rescue On,救援开启,,,reson.wav
+540,High Temperature,高温,,,htemp.wav
+541,High Vibration,高振动,,,hvibr.wav
+542,Glow On,辉光开启,,,glwon.wav
+543,Glow Off,辉光关闭,,,glwoff.wav
+544,Glow Activated,辉光激活,,,glwact.wav
+545,Glow Deactivated,辉光停用,,,glwdea.wav
