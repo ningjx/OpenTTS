@@ -4,3 +4,5 @@ fm-fwb.wav 定速定高
 fm-tkf.wav 起飞模式
 fm-rtl.wav 返航模式
 fm-al.wav 自动降落
+disarmed.wav 已锁定
+armed.wav 已解锁

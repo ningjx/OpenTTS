@@ -29,17 +29,7 @@ namespace OpenTTS.Models
         [JsonProperty("语言")]
         public LanguageEnum Language { get; set; }
         [JsonProperty("语气")]
-        public SpeechStyle Style
-        {
-            get
-            {
-                return _style ?? Styles?.FirstOrDefault();
-            }
-            set
-            {
-                _style = value;
-            }
-        }
+        public SpeechStyleEnum Style { get; set; }
         [JsonProperty("语气强度")]
         public float StyleDegree
         {
@@ -52,21 +42,12 @@ namespace OpenTTS.Models
             }
         }
         [JsonProperty("角色")]
-        public SpeechRole Role
-        {
-            get
-            {
-                return _role ?? Roles?.FirstOrDefault();
-            }
-            set
-            {
-                _role = value;
-            }
-        }
+        public RoleEnum Role { get; set; }
+
         [JsonProperty("支持的语气")]
-        public List<SpeechStyle> Styles { get; set; } = new List<SpeechStyle>();
+        public List<SpeechStyleEnum> Styles { get; set; } = new List<SpeechStyleEnum>();
         [JsonProperty("支持的角色")]
-        public List<SpeechRole> Roles { get; set; } = new List<SpeechRole>();
+        public List<RoleEnum> Roles { get; set; } = new List<RoleEnum>();
 
         [JsonIgnore]
         public bool SupportSSML => Styles?.Any() == true;
@@ -74,8 +55,6 @@ namespace OpenTTS.Models
         public bool SupportRole => Roles?.Any() == true;
 
         private float _styleDegree = 1;
-        private SpeechRole _role;
-        private SpeechStyle _style;
     }
     public class SpeachLang
     {
@@ -84,34 +63,13 @@ namespace OpenTTS.Models
         [JsonProperty("描述")]
         public string Description { get; set; }
     }
-    public class SpeechStyle
-    {
-        public SpeechStyle(SpeechStyleEnum style, string description)
-        {
-            Style = style; Description = description;
-        }
-        [JsonProperty("语气")]
-        public SpeechStyleEnum Style { get; set; }
-        [JsonProperty("描述")]
-        public string Description { get; set; }
-    }
-
-    public class SpeechRole
-    {
-        [JsonProperty("角色")]
-        public RoleEnum Role { get; set; }
-        [JsonProperty("描述")]
-        public string Description { get; set; }
-    }
 
     /// <summary>
     /// 从文件中反序列化
     /// </summary>
-    public class SpeachStylesStorage : List<SpeechStyle> { }
-    public class RolesStorage : List<SpeechRole> { }
-    public class LanguagesStorage : List<SpeachLang> { }
-
-
+    //public class SpeachStylesStorage : List<SpeechStyle> { }
+    //public class RolesStorage : List<SpeechRole> { }
+    //public class LanguagesStorage : List<SpeachLang> { }
 
     /// <summary>
     /// 语言类型

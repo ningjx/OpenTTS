@@ -59,12 +59,12 @@
             <Grid Grid.Column="0" Grid.Row="2">
                 <StackPanel Orientation="Horizontal">
                     <Label Content="语气" Width="100" VerticalContentAlignment="Center"></Label>
-                    <ComboBox x:Name="styleSelect" DisplayMemberPath="Style" VerticalContentAlignment="Center" Height="30" Width="200" SelectionChanged="styleSelect_SelectionChanged" >
+                    <ComboBox x:Name="styleSelect" DisplayMemberPath="Key" VerticalContentAlignment="Center" Height="30" Width="200" SelectionChanged="styleSelect_SelectionChanged" >
                         <ComboBox.ItemContainerStyle>
                             <Style TargetType="ComboBoxItem">
                                 <Setter Property="ToolTip">
                                     <Setter.Value>
-                                        <ToolTip Content= "{Binding Description}" />
+                                        <ToolTip Content= "{Binding Value}" />
                                     </Setter.Value>
                                 </Setter>
                             </Style>

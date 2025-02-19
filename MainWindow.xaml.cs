@@ -2,6 +2,8 @@
 using OpenTTS.Models;
 using System;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -16,7 +18,6 @@ namespace OpenTTS
         public MainWindow()
         {
             InitializeComponent();
-
             //从配置文件中，加载窗口位置
             Top = ResourcePool.Config.Top;
             Left = ResourcePool.Config.Left;
@@ -93,8 +94,7 @@ namespace OpenTTS
             var voice = ResourcePool.SpeechResource.FirstOrDefault(t => t.Name == selectItem.Name);
             ResourcePool.Config.SpeechConf.SpeechCode = voice.Code;
             var styles = ResourcePool.SpeechResource.Where(l => l.Code == ResourcePool.Config.SpeechConf.SpeechCode).FirstOrDefault()?.Styles;
-            styleSelect.ItemsSource = styles;
-            styleSelect.SelectedIndex = 0;
+            styleSelect.ItemsSource = StyleResource.Create(styles);
         }
 
         /// <summary>
@@ -105,9 +105,9 @@ namespace OpenTTS
         private void styleSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var combox = sender as ComboBox;
-            var style = combox.SelectedValue as SpeechStyle;
-            if (style != null)
-                ResourcePool.Config.SpeechConf.SpeechStyle = style.Style;
+
+            if (Enum.TryParse(combox.SelectedValue?.ToString(), out SpeechStyleEnum style))
+                ResourcePool.Config.SpeechConf.SpeechStyle = style;
         }
 
         /// <summary>
@@ -336,9 +336,9 @@ namespace OpenTTS
             speechSelect.SelectedIndex = ResourcePool.SpeechResource.Where(l => l.Language == conf.SpeechLang).Select(l => l.Code).ToList().IndexOf(conf.SpeechCode);
             //设置语气
             var supportStyles = ResourcePool.SpeechResource.Where(l => l.Code == conf.SpeechCode).Select(l => l.Styles).FirstOrDefault();
-            var currentStyle = supportStyles?.Where(l => l.Style == conf.SpeechStyle).FirstOrDefault();
-            if (currentStyle != null)
-                styleSelect.SelectedIndex = supportStyles.IndexOf(currentStyle);
+            var currentStyle = supportStyles?.Where(l => l == conf.SpeechStyle).FirstOrDefault();
+            if (currentStyle != null && currentStyle.HasValue)
+                styleSelect.SelectedIndex = supportStyles.IndexOf(currentStyle.Value);
             //设置语气强度
             degree.Value = conf.SpeechDegree;
             //设置语速

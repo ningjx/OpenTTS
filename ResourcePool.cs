@@ -28,6 +28,14 @@ namespace OpenTTS
         /// </summary>
         public static SpeechResource SpeechResource = null;
         /// <summary>
+        /// 加载预置的支持的语气描述
+        /// </summary>
+        public static StyleResource StyleResource = null;
+        /// <summary>
+        /// 加载预置的支持的角色描述
+        /// </summary>
+        public static RoleResource RoleResource = null;
+        /// <summary>
         /// 程序配置
         /// </summary>
         public static Config Config = null;
@@ -39,6 +47,9 @@ namespace OpenTTS
         static ResourcePool()
         {
             SpeechResource = SpeechResource.LoadSpeechResources();
+            StyleResource = StyleResource.LoadStyleResource();
+            RoleResource = RoleResource.LoadRoleResource();
+
             Config = Config.LoadConfig();
 
             RetryTimer.AutoReset = true;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using OpenTTS.Handller;
 using OpenTTS.Models;
 using System;
@@ -17,29 +18,33 @@ namespace OpenTTS.Handller.Tests
         public void CreateAudioFileFromTextTest()
         {
 
-            var key = File.ReadAllText(@"D:\config.txt");
-            SpeechConf sConfig = new SpeechConf
-            {
-                SpeechLang = "zh-cn",
-                SpeechCode = "zh-CN-XiaoxiaoNeural",
-                SpeechRate = 0.5,
-                SpeechStyle = "cheerful",
-                SpeechDegree = 1
-            };
+            //var key = File.ReadAllText(@"D:\config.txt");
+            //SpeechConf sConfig = new SpeechConf
+            //{
+            //    SpeechLang = "zh-cn",
+            //    SpeechCode = "zh-CN-XiaoxiaoNeural",
+            //    SpeechRate = 0.5,
+            //    SpeechStyle = "cheerful",
+            //    SpeechDegree = 1
+            //};
 
-            Config config = new Config
-            {
-                SubscriptionKey = key,
-                Region = "southeastasia",
-                SavePath = @"D:\",
-                SpeechConf = sConfig
-            };
+            //Config config = new Config
+            //{
+            //    SubscriptionKey = key,
+            //    Region = "southeastasia",
+            //    SavePath = @"D:\",
+            //    SpeechConf = sConfig
+            //};
 
-            TextItem text = new TextItem("测试文件.wav", "警告！油门摇杆不在最低！");
-            var res = SpeechConverter.CreateAudioFileFromText("ztest", text);
+            //TextItem text = new TextItem("测试文件.wav", "警告！油门摇杆不在最低！");
+            //var res = SpeechConverter.CreateAudioFileFromText("ztest", text);
 
             //TextItem text2 = new TextItem { FileName = "测试文件2.wav", Text = "欢迎使用OpenTx" };
             //var res2 = converter.CreateAudioFileFromText("ztest", text2);
+            var d = new Dictionary<SpeechStyleEnum, string>();
+            d.Add(SpeechStyleEnum.fearful, "dddd");
+            d.Add(SpeechStyleEnum.friendly, "ffff");
+            string t = JsonConvert.SerializeObject(d);
         }
     }
 }

@@ -61,22 +61,65 @@ namespace OpenTTS {
         }
         
         /// <summary>
-        ///   查找 System.Byte[] 类型的本地化资源。
+        ///   查找类似 [
+        ///    {
+        ///        &quot;角色&quot;:&quot;Girl&quot;,
+        ///        &quot;描述&quot;:&quot;声音模仿女孩。&quot;
+        ///    },{
+        ///        &quot;角色&quot;:&quot;Boy&quot;,
+        ///        &quot;描述&quot;:&quot;声音模仿男孩。&quot;
+        ///    },{
+        ///        &quot;角色&quot;:&quot;YoungAdultFemale&quot;,
+        ///        &quot;描述&quot;:&quot;声音模仿年轻的成年女性。&quot;
+        ///    },{
+        ///        &quot;角色&quot;:&quot;YoungAdultMale&quot;,
+        ///        &quot;描述&quot;:&quot;声音模仿年轻的成年男性。&quot;
+        ///    },{
+        ///        &quot;角色&quot;:&quot;OlderAdultFemale&quot;,
+        ///        &quot;描述&quot;:&quot;声音模仿年长的成年女性。&quot;
+        ///    },{
+        ///        &quot;角色&quot;:&quot;OlderAdultMale&quot;,
+        ///        &quot;描述&quot;:&quot;声音模仿年长的成年男性。&quot;
+        ///    },{
+        ///        &quot;角色&quot;:&quot;SeniorFemale&quot;,
+        ///        &quot;描述&quot;:&quot;声音模仿年老女性。&quot;
+        ///    },{
+        ///        &quot;角色&quot;:&quot;SeniorMale&quot;,
+        ///        &quot;描述&quot;:&quot;声音 [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
-        public static byte[] AllRoles {
+        public static string AllRoles {
             get {
-                object obj = ResourceManager.GetObject("AllRoles", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("AllRoles", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Byte[] 类型的本地化资源。
+        ///   查找类似 [
+        ///    {
+        ///        &quot;语气&quot;:&quot;advertisement_upbeat&quot;,
+        ///        &quot;描述&quot;:&quot;用兴奋和精力充沛的语气推广产品或服务。&quot;
+        ///    },{
+        ///        &quot;语气&quot;:&quot;affectionate&quot;,
+        ///        &quot;描述&quot;:&quot;以较高的音调和音量表达温暖而亲切的语气。 说话者处于吸引听众注意力的状态。 说话者的个性往往是讨喜的。&quot;
+        ///    },{
+        ///        &quot;语气&quot;:&quot;angry&quot;,
+        ///        &quot;描述&quot;:&quot;表达生气和厌恶的语气。&quot;
+        ///    },{
+        ///        &quot;语气&quot;:&quot;assistant&quot;,
+        ///        &quot;描述&quot;:&quot;数字助理用的是热情而轻松的语气。&quot;
+        ///    },{
+        ///        &quot;语气&quot;:&quot;calm&quot;,
+        ///        &quot;描述&quot;:&quot;以沉着冷静的态度说话。 语气、音调和韵律与其他语音类型相比要统一得多。&quot;
+        ///    },{
+        ///        &quot;语气&quot;:&quot;chat&quot;,
+        ///        &quot;描述&quot;:&quot;表达轻松随意的语气。&quot;
+        ///    },{
+        ///        &quot;语气&quot;:&quot;cheerful&quot;,
+        ///        &quot;描述&quot;:&quot;表达 [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
-        public static byte[] AllSpeachStyles {
+        public static string AllSpeachStyles {
             get {
-                object obj = ResourceManager.GetObject("AllSpeachStyles", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("AllSpeachStyles", resourceCulture);
             }
         }
         

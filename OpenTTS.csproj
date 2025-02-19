@@ -292,6 +292,8 @@
     <Compile Include="Handller\CAudioFileReader.cs" />
     <Compile Include="Handller\Helper.cs" />
     <Compile Include="Models\CsvRow.cs" />
+    <Compile Include="Models\RoleResource.cs" />
+    <Compile Include="Models\StyleResource.cs" />
     <Compile Include="ResourcePool.cs" />
     <Compile Include="Models\SpeechConf.cs" />
     <Compile Include="Models\SpeechResource.cs" />
@@ -340,6 +342,7 @@
     <EmbeddedResource Include="Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -351,10 +354,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AllRoles.json" />
-    <None Include="Resources\AllSpeachStyles.json" />
-    <None Include="Resources\SpeechResources.json" />
-    <None Include="Resources\ssml.xml" />
+    <EmbeddedResource Include="Resources\AllRoles.json" />
+    <EmbeddedResource Include="Resources\AllSpeachStyles.json" />
+    <EmbeddedResource Include="Resources\SpeechResources.json" />
+    <EmbeddedResource Include="Resources\ssml.xml" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
