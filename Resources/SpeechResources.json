@@ -1,65 +1,151 @@
 [
   {
+    "名字": "晓晓(多语言AI)",
+    "编码": "zh-CN-XiaoxiaoMultilingualNeural",
+    "性别": "女",
+    "语言": "普通话",
+    "支持的角色": null,
+    "支持的语气": [
+      "新闻播报",
+      "客服",
+      "助手",
+      "闲聊",
+      "平静",
+      "欢快",
+      "悲伤",
+      "生气",
+      "害怕",
+      "不满",
+      "严肃",
+      "亲切",
+      "温柔",
+      "抒情"
+    ]
+  },
+  {
+    "名字": "晓晓(多语言AI)",
+    "编码": "zh-CN-XiaoxiaoDialectsNeural",
+    "性别": "女",
+    "语言": "湖南",
+    "支持的角色": null,
+    "支持的语气": null
+  },
+  {
     "名字": "小晗",
     "编码": "zh-CN-XiaohanNeural",
     "性别": "女",
-    "语言": "zh_CN",
+    "语言": "普通话",
     "支持的角色": null,
-    "支持的语气": [ "cheerful", "sad", "angry", "fearful", "disgruntled", "serious", "embarrassed", "affectionate", "gentle" ]
+    "支持的语气": [
+      "欢快",
+      "悲伤",
+      "生气",
+      "害怕",
+      "不满",
+      "严肃",
+      "尴尬",
+      "亲切",
+      "温柔"
+    ]
   },
   {
     "名字": "小沫",
     "编码": "zh-CN-XiaomoNeural",
     "性别": "女",
-    "语言": "zh_CN",
-    "支持的角色": [ "YoungAdultFemale", "OlderAdultMale", "Girl", "Boy" ],
-    "支持的语气": [ "cheerful", "angry", "fearful", "disgruntled", "serious", "depressed", "gentle" ]
+    "语言": "普通话",
+    "支持的角色": [
+      "YoungAdultFemale",
+      "OlderAdultMale",
+      "Girl",
+      "Boy"
+    ],
+    "支持的语气": [
+      "欢快",
+      "生气",
+      "害怕",
+      "不满",
+      "严肃",
+      "抑郁",
+      "温柔"
+    ]
   },
   {
     "名字": "小蕊",
     "编码": "zh-CN-XiaoruiNeural",
     "性别": "女",
-    "语言": "zh_CN",
+    "语言": "普通话",
     "支持的角色": null,
-    "支持的语气": [ "sad", "angry", "fearful" ]
+    "支持的语气": [
+      "悲伤",
+      "生气",
+      "害怕"
+    ]
   },
   {
     "名字": "小萱",
     "编码": "zh-CN-XiaoxuanNeural",
     "性别": "女",
-    "语言": "zh_CN",
-    "支持的角色": [ "YoungAdultFemale", "OlderAdultMale", "OlderAdultFemale" ],
-    "支持的语气": [ "cheerful", "angry", "fearful", "disgruntled", "serious", "depressed", "gentle" ]
+    "语言": "普通话",
+    "支持的角色": [
+      "YoungAdultFemale",
+      "OlderAdultMale",
+      "OlderAdultFemale"
+    ],
+    "支持的语气": [
+      "欢快",
+      "生气",
+      "害怕",
+      "不满",
+      "严肃",
+      "抑郁",
+      "温柔"
+    ]
   },
   {
     "名字": "云汐",
     "编码": "zh-CN-YunxiNeural",
     "性别": "男",
-    "语言": "zh_CN",
+    "语言": "普通话",
     "支持的角色": null,
-    "支持的语气": [ "cheerful", "sad", "angry", "fearful", "disgruntled", "serious", "depressed", "embarrassed" ]
+    "支持的语气": [
+      "欢快",
+      "悲伤",
+      "生气",
+      "害怕",
+      "不满",
+      "严肃",
+      "抑郁",
+      "尴尬"
+    ]
   },
   {
     "名字": "晓晓",
     "编码": "zh-CN-XiaoxiaoNeural",
     "性别": "女",
-    "语言": "zh_CN",
+    "语言": "普通话",
     "支持的角色": null,
-    "支持的语气": [ "newscast", "customerservice", "assistant", "chat", "calm", "cheerful", "sad", "angry", "fearful", "disgruntled", "serious", "affectionate", "gentle", "lyrical" ]
-  },
-  {
-    "名字": "晓晓(OpenAI)",
-    "编码": "zh-CN-XiaoxiaoMultilingualNeural",
-    "性别": "女",
-    "语言": "zh_CN",
-    "支持的角色": null,
-    "支持的语气": [ "newscast", "customerservice", "assistant", "chat", "calm", "cheerful", "sad", "angry", "fearful", "disgruntled", "serious", "affectionate", "gentle", "lyrical" ]
+    "支持的语气": [
+      "新闻播报",
+      "客服",
+      "助手",
+      "闲聊",
+      "平静",
+      "欢快",
+      "悲伤",
+      "生气",
+      "害怕",
+      "不满",
+      "严肃",
+      "亲切",
+      "温柔",
+      "抒情"
+    ]
   },
   {
     "名字": "小悠",
     "编码": "zh-CN-XiaoyouNeural",
     "性别": "女",
-    "语言": "zh_CN",
+    "语言": "普通话",
     "支持的角色": null,
     "支持的语气": null
   },
@@ -67,47 +153,57 @@
     "名字": "云阳",
     "编码": "zh-CN-YunyangNeural",
     "性别": "男",
-    "语言": "zh_CN",
+    "语言": "普通话",
     "支持的角色": null,
-    "支持的语气": [ "customerservice" ]
+    "支持的语气": [
+      "客服"
+    ]
   },
   {
     "名字": "云烨",
     "编码": "zh-CN-YunyeNeural",
     "性别": "男",
-    "语言": "zh_CN",
+    "语言": "普通话",
     "支持的角色": null,
-    "支持的语气": [ "calm", "cheerful", "sad", "angry", "fearful", "disgruntled", "serious" ]
+    "支持的语气": [
+      "平静",
+      "欢快",
+      "悲伤",
+      "生气",
+      "害怕",
+      "不满",
+      "严肃"
+    ]
   },
   {
-    "名字": "小晨（中国台湾）",
+    "名字": "小晨",
     "编码": "zh-TW-HsiaoChenNeural",
     "性别": "女",
-    "语言": "zh_TW",
+    "语言": "台湾",
     "支持的角色": null,
     "支持的语气": null
   },
   {
-    "名字": "小晨（多语言神经）",
+    "名字": "小晨(多语言AI)",
     "编码": "zh-CN-XiaochenMultilingualNeural",
     "性别": "女",
-    "语言": "zh_CN",
+    "语言": "普通话",
     "支持的角色": null,
     "支持的语气": null
   },
   {
-    "名字": "小玉（多语言神经）",
+    "名字": "小玉(多语言AI)",
     "编码": "zh-CN-XiaoyuMultilingualNeural",
     "性别": "女",
-    "语言": "zh_TW",
+    "语言": "台湾",
     "支持的角色": null,
     "支持的语气": null
   },
   {
-    "名字": "小玉（中国台湾）",
+    "名字": "小玉",
     "编码": "zh-TW-HsiaoYuNeural",
     "性别": "女",
-    "语言": "zh_TW",
+    "语言": "台湾",
     "支持的角色": null,
     "支持的语气": null
   },
@@ -115,7 +211,7 @@
     "名字": "云河",
     "编码": "zh-TW-YunJheNeural",
     "性别": "男",
-    "语言": "zh_TW",
+    "语言": "台湾",
     "支持的角色": null,
     "支持的语气": null
   },
@@ -123,7 +219,7 @@
     "名字": "小佳",
     "编码": "zh-HK-HiuGaaiNeural",
     "性别": "女",
-    "语言": "zh_HK",
+    "语言": "广东",
     "支持的角色": null,
     "支持的语气": null
   },
@@ -131,7 +227,7 @@
     "名字": "小曼",
     "编码": "zh-HK-HiuMaanNeural",
     "性别": "女",
-    "语言": "zh_HK",
+    "语言": "广东",
     "支持的角色": null,
     "支持的语气": null
   },
@@ -139,7 +235,95 @@
     "名字": "王伦",
     "编码": "zh-HK-WanLungNeural",
     "性别": "男",
-    "语言": "zh_HK",
+    "语言": "广东",
+    "支持的角色": null,
+    "支持的语气": null
+  },
+  {
+    "名字": "小桐",
+    "编码": "wuu-CN-XiaotongNeural",
+    "性别": "女",
+    "语言": "wuu_CN",
+    "支持的角色": null,
+    "支持的语气": null
+  },
+  {
+    "名字": "云哲",
+    "编码": "wuu-CN-YunzheNeural",
+    "性别": "男",
+    "语言": "wuu_CN",
+    "支持的角色": null,
+    "支持的语气": null
+  },
+  {
+    "名字": "小敏",
+    "编码": "yue-CN-XiaoMinNeural",
+    "性别": "女",
+    "语言": "yue_CN",
+    "支持的角色": null,
+    "支持的语气": null
+  },
+  {
+    "名字": "云松",
+    "编码": "yue-CN-YunSongNeural",
+    "性别": "男",
+    "语言": "yue_CN",
+    "支持的角色": null,
+    "支持的语气": null
+  },
+  {
+    "名字": "云栖",
+    "编码": "zh-CN-guangxi-YunqiNeural",
+    "性别": "男",
+    "语言": "广西",
+    "支持的角色": null,
+    "支持的语气": null
+  },
+  {
+    "名字": "云登",
+    "编码": "zh-CN-henan-YundengNeural",
+    "性别": "男",
+    "语言": "河南",
+    "支持的角色": null,
+    "支持的语气": null
+  },
+  {
+    "名字": "小贝",
+    "编码": "zh-CN-liaoning-XiaobeiNeural",
+    "性别": "女",
+    "语言": "东北",
+    "支持的角色": null,
+    "支持的语气": null
+  },
+  {
+    "名字": "云彪",
+    "编码": "zh-CN-liaoning-YunbiaoNeural",
+    "性别": "男",
+    "语言": "东北",
+    "支持的角色": null,
+    "支持的语气": null
+  },
+  {
+    "名字": "小妮",
+    "编码": "zh-CN-shaanxi-XiaoniNeural",
+    "性别": "女",
+    "语言": "陕西",
+    "支持的角色": null,
+    "支持的语气": null
+  },
+  {
+    "名字": "云祥",
+    "编码": "zh-CN-shandong-YunxiangNeural",
+    "性别": "男",
+    "语言": "山东",
+    "支持的角色": null,
+    "支持的语气": null
+  },
+  {
+    "名字": "云溪",
+    "编码": "zh-CN-sichuan-YunxiNeural",
+    "性别": "男",
+    "语言": "四川",
     "支持的角色": null,
     "支持的语气": null
   }

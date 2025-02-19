@@ -3,6 +3,7 @@ using OpenTTS.Handller;
 using OpenTTS.Models;
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace OpenTTS
 {
@@ -48,19 +49,26 @@ namespace OpenTTS
         /// <returns></returns>
         public static Config LoadConfig()
         {
-            try
+
+            if (File.Exists($"{CnfPath}\\Config.json"))
             {
-                if (File.Exists($"{CnfPath}\\Config.json"))
+                var text = File.ReadAllText($"{CnfPath}\\Config.json");
+                try
                 {
-                    var text = File.ReadAllText($"{CnfPath}\\Config.json");
                     return JsonConvert.DeserializeObject<Config>(text);
                 }
-                else
+                catch
                 {
-                    return GetDefault();
+                    //如果更新导致原来的配置文件不可用，那尽量从元累的配置中读出秘钥和区域，避免需要重新配置
+                    string serviceKey = ExtractByRegex(text, @"""服务秘钥""\s*:\s*""([^""]+)""");
+                    string regionCode = ExtractByRegex(text, @"""微软服务区域代码""\s*:\s*""([^""]+)""");
+                    var defaultConfig = GetDefault();
+                    defaultConfig.SubscriptionKey = serviceKey;
+                    defaultConfig.Region = regionCode;
+                    return defaultConfig;
                 }
             }
-            catch
+            else
             {
                 return GetDefault();
             }
@@ -83,10 +91,10 @@ namespace OpenTTS
         {
             SpeechConf sConfig = new SpeechConf
             {
-                SpeechLang = LanguageEnum.zh_CN,
+                SpeechLang = LanguageEnum.普通话,
                 SpeechCode = "zh-CN-XiaoxiaoNeural",
                 SpeechRate = 1,
-                SpeechStyle = SpeechStyleEnum.cheerful,
+                SpeechStyle = SpeechStyleEnum.欢快,
                 SpeechDegree = 1,
                 Role = RoleEnum.Unspecified
             };
@@ -99,6 +107,12 @@ namespace OpenTTS
                 SpeechConf = sConfig
             };
             return config;
+        }
+
+        private static string ExtractByRegex(string input, string pattern)
+        {
+            Match match = Regex.Match(input, pattern, RegexOptions.Multiline);
+            return match.Success ? match.Groups[1].Value.Trim() : string.Empty;
         }
     }
 }

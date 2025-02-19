@@ -19,9 +19,16 @@ namespace OpenTTS.Handller
         /// <param name="region">区域代码</param>
         public SpeechGen(string subscriptionKey, string region)
         {
-            var config = SpeechConfig.FromSubscription(subscriptionKey, region);
-            config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff16Khz16BitMonoPcm);
-            speechSynthesizer = new SpeechSynthesizer(config);
+            try
+            {
+                var config = SpeechConfig.FromSubscription(subscriptionKey, region);
+                config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff16Khz16BitMonoPcm);
+                speechSynthesizer = new SpeechSynthesizer(config);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         /// <summary>
@@ -32,7 +39,7 @@ namespace OpenTTS.Handller
         /// <returns></returns>
         public async Task<Result> GetAudioFromTextAsync(string text)
         {
-            var speech =await speechSynthesizer.SpeakSsmlAsync(text);
+            var speech = await speechSynthesizer.SpeakSsmlAsync(text);
             var check = SpeechSynthesisCancellationDetails.FromResult(speech);
             if (check.ErrorCode == 0)
             {
@@ -52,7 +59,7 @@ namespace OpenTTS.Handller
             }
         }
 
-        public  Result GetAudioFromText(string text)
+        public Result GetAudioFromText(string text)
         {
             var speech = speechSynthesizer.SpeakSsmlAsync(text).Result;
             var check = SpeechSynthesisCancellationDetails.FromResult(speech);

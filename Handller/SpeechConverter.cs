@@ -1,4 +1,7 @@
 ﻿using OpenTTS.Models;
+using System;
+using System.ComponentModel;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace OpenTTS.Handller
@@ -68,22 +71,29 @@ namespace OpenTTS.Handller
             var result = xml;
             if (textItem.SpeechConf == null)
             {
-                result = result.Replace("@Param1", ResourcePool.Config.SpeechConf.SpeechLang.ToString());
+                result = result.Replace("@Param1", GetEnumDescription(ResourcePool.Config.SpeechConf.SpeechLang));
                 result = result.Replace("@Param2", ResourcePool.Config.SpeechConf.SpeechCode);
                 result = result.Replace("@Param3", ResourcePool.Config.SpeechConf.SpeechRate.ToString("F1"));
-                result = result.Replace("@Param4", ResourcePool.Config.SpeechConf.SpeechStyle.ToString());
+                result = result.Replace("@Param4", GetEnumDescription(ResourcePool.Config.SpeechConf.SpeechStyle));
                 result = result.Replace("@Param5", ResourcePool.Config.SpeechConf.SpeechDegree.ToString("F1"));
             }
             else
             {
-                result = result.Replace("@Param1", textItem.SpeechConf.SpeechLang.ToString());
+                result = result.Replace("@Param1", GetEnumDescription(textItem.SpeechConf.SpeechLang));
                 result = result.Replace("@Param2", textItem.SpeechConf.SpeechCode);
                 result = result.Replace("@Param3", textItem.SpeechConf.SpeechRate.ToString());
-                result = result.Replace("@Param4", textItem.SpeechConf.SpeechStyle.ToString());
+                result = result.Replace("@Param4", GetEnumDescription(textItem.SpeechConf.SpeechStyle));
                 result = result.Replace("@Param5", textItem.SpeechConf.SpeechDegree.ToString());
             }
             result = result.Replace("@Param6", textItem.Text);
             return result;
+        }
+
+        private static string GetEnumDescription(Enum value)
+        {
+            FieldInfo field = value.GetType().GetField(value.ToString());
+            DescriptionAttribute attribute = field.GetCustomAttribute<DescriptionAttribute>();
+            return attribute?.Description ?? value.ToString();
         }
     }
 }

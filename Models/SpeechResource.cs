@@ -1,12 +1,8 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Xml.Serialization;
-
-using System;
-using System.Runtime.Serialization;
-using Newtonsoft.Json.Converters;
 
 namespace OpenTTS.Models
 {
@@ -77,12 +73,36 @@ namespace OpenTTS.Models
     [JsonConverter(typeof(StringEnumConverter))]
     public enum LanguageEnum
     {
-        zh_CN,
-        zh_HK,
-        zh_TW,
+        [Description("zh-CN")]
+        普通话,
+        [Description("zh-HK")]
+        广东,
+        [Description("zh-TW")]
+        台湾,
+        [Description("zh-CN-GUANGXI")]
+        广西,
+        [Description("zh-CN-henan")]
+        河南,
+        [Description("zh-CN-liaoning")]
+        东北,
+        [Description("zh-CN-shaanxi")]
+        陕西,
+        [Description("zh-CN-shandong")]
+        山东,
+        [Description("zh-CN-sichuan")]
+        四川,
+        [Description("zh-CN-anhui")]
+        安徽,
+        [Description("zh-CN-hunan")]
+        湖南,
+        [Description("zh-CN-gansu")]
+        甘肃,
+        [Description("nan-CN")]
+        nan_CN,
+        [Description("yue-CN")]
         yue_CN,
-        wuu_CN,
-        zh_cn_GUANGXI, zh_cn_henan, zh_cn_liaoning, zh_cn_shaanxi, zh_cn_shandong, zh_cn_sichuan
+        [Description("wuu-CN")]
+        wuu_CN
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
@@ -95,20 +115,16 @@ namespace OpenTTS.Models
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum SpeechStyleEnum
-    {
-        advertisement_upbeat,
-        affectionate,
-        angry,
-        assistant, calm, chat, cheerful, customerservice, depressed, disgruntled, documentary_narration,
-        embarrassed, empathetic, envious, excited, fearful, friendly, gentle, hopeful, lyrical, narration_professional
-            , narration_relaxed, newscast, newscast_casual, newscast_formal, poetry_reading, sad, serious, shouting,
-        sports_commentary, sports_commentary_excited, whispering, terrified, unfriendly
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum RoleEnum
     {
-        Unspecified, Girl, Boy, YoungAdultFemale, YoungAdultMale, OlderAdultFemale, OlderAdultMale, SeniorFemale, SeniorMale
+        Unspecified,
+        Girl,
+        Boy,
+        YoungAdultFemale,
+        YoungAdultMale,
+        OlderAdultFemale,
+        OlderAdultMale,
+        SeniorFemale,
+        SeniorMale
     }
 }
