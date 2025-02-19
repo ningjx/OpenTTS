@@ -42,8 +42,8 @@ namespace OpenTTS.Handller.Tests
             //TextItem text2 = new TextItem { FileName = "测试文件2.wav", Text = "欢迎使用OpenTx" };
             //var res2 = converter.CreateAudioFileFromText("ztest", text2);
             var d = new Dictionary<SpeechStyleEnum, string>();
-            d.Add(SpeechStyleEnum.fearful, "dddd");
-            d.Add(SpeechStyleEnum.friendly, "ffff");
+            //d.Add(SpeechStyleEnum.fearful, "dddd");
+            //d.Add(SpeechStyleEnum.friendly, "ffff");
             string t = JsonConvert.SerializeObject(d);
         }
     }
