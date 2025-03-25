@@ -81,19 +81,19 @@ namespace OpenTTS
         {
             var result = new Result();
             cts = new CancellationTokenSource();
-            await Task.Run(() => { result = ConvertTextToSpeachAsync(cts); });
+            await Task.Run(() => { result = ConvertTextToSpeachAsync(cts.Token); },cts.Token);
             return result;
         }
 
 
-        private static Result ConvertTextToSpeachAsync(CancellationTokenSource cts)
+        private static Result ConvertTextToSpeachAsync(CancellationToken token)
         {
             try
             {
                 foreach (var item in TextResource)
                 {
                     retryTimenow = 0;
-                    cts.Token.ThrowIfCancellationRequested();
+                    token.ThrowIfCancellationRequested();
 
                     TitleChange?.Invoke($"({TextResource.IndexOf(item)}/{TextResource.Count})转换中...", TextResource.IndexOf(item));
 
