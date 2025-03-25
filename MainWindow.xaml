@@ -23,7 +23,7 @@
                 <TextBox x:Name="keyinput" Height="50" Width="300" BorderBrush="Black" Margin="0,0,0,0" ToolTip="输入秘钥" Text="输入秘钥" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="keyinput_TextChanged"></TextBox>
                 <TextBox x:Name="reginput" Height="50" Width="300" BorderBrush="Black" Margin="0,50,0,0" ToolTip="输入区域标识符" Text="输入区域标识符" VerticalContentAlignment="Center" TextAlignment="Center" TextChanged="reginput_TextChanged"></TextBox>
             </StackPanel>
-            <Button x:Name="keynetxbutton" Height="30" Width="100" Content="下一步" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,10" Click="NextStep"></Button>
+            <Button x:Name="keynetxbutton" Height="30" Width="100" Content="下一步" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,0" Click="NextStep"></Button>
         </Grid>
 
         <!--语音配置页面-->
